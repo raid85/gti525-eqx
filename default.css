@@ -42,7 +42,7 @@ hr {
 
 #header {
 	width: 1000px;
-	height: 170px;
+	height: 130px;
 	margin: 0px auto;
 }
 
@@ -56,7 +56,7 @@ hr {
 #logo h1 {
 	margin: 0;
 	height: 160px;
-	padding: 40px 0 0 0px;
+	padding: 0px 0 0 0px;
 	margin-right:430px;
 	letter-spacing: -2px;
 	font-size: 4em;
@@ -124,7 +124,7 @@ hr {
 
 
 #page {
-	width: 1000px;
+	width: 1500px;
 	margin: 0px auto;
 	padding: 20px 0 0 0;
 }
@@ -133,14 +133,14 @@ hr {
 
 #content {
 	float: left;
-	width: 650px;
+	width: 1210px;
 	margin-bottom: 10px;
 }
 
 /* Post */
 
 .post {
-	margin-top: 20px;
+	margin-bottom: 100px;
 }
 
 .post .date {
@@ -216,6 +216,116 @@ hr {
 	margin: 0;
 	padding: 0 0 20px 40px;
 }
+
+/* spectacle */
+
+#spectacle {
+	float: left;
+	width: 1210px;
+	margin-bottom: 0px;
+}
+
+.date {
+	float: left;
+	width: 60px;
+	height: 50px;
+	margin: 0;
+	margin-top: 3px;
+	margin-right: 20px;
+	padding-top: 10px;
+	margin-left:40px;
+	background: #EA8101;
+	line-height: normal;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.picture {
+	margin-left:0;
+	padding: 0 0 0 0;	
+	float: left;
+	margin: 0;
+	margin-right: 20px;
+	padding-top: 5px;
+	margin-left:40px;
+}
+
+.date b {
+	margin: 0;
+	padding: 0;
+	display: block;
+	margin-top: -5px;
+	font-size: 24px;
+	color: #FFFFFF;
+	
+}
+
+.title {
+	margin: 0;
+	padding: 0px 0 0 0;
+	text-transform: uppercase;
+	margin-left: 10px;
+	margin-bottom: 30px;
+	padding-left: 10px;
+	font-size: 2.8em;
+	color: #000000;
+}
+
+.title h2 {
+	padding: 0;
+	margin: 0;
+}
+
+.hr1 {
+}
+
+.entry {
+	margin: 0;
+	padding: 0 0 20px 80px;
+}
+
+/* Représentation */
+
+.representation {
+	float: left;
+	width: 1210px;
+	margin-left: 300px;
+}
+.representation .date {
+	float: left;
+	width: 80px;
+	height: 65px;
+	margin: 0;
+	margin-top: 3px;
+	margin-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left:40px;
+	background: #0000FF;
+	line-height: normal;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.representation .salle {
+	text-decoration:underline;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:150%;
+	margin-bottom:10px;
+}
+
+.representation .places {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
 
 /* Sidebar */
 
