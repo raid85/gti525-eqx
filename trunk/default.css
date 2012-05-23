@@ -49,6 +49,7 @@ hr {
 /* Logo */
 
 #logo {
+	background-image:url('images/woolly-mc.png');
 	float: left;
 	padding: 10px 0 0 0px;
 }
@@ -142,6 +143,12 @@ hr {
 }
 
 /* spectacle */
+
+.alert {
+	margin-left: auto;
+	margin-right: auto;
+	width: 250px;
+}
 
 .spectacle {
 	float: left;
