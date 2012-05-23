@@ -137,95 +137,19 @@ hr {
 	margin-bottom: 10px;
 }
 
-/* Post */
-
-.post {
-	margin-bottom: 100px;
-}
-
-.post .date {
-	float: left;
-	width: 60px;
-	height: 50px;
-	margin: 0;
-	margin-top: 3px;
-	margin-right: 20px;
-	padding-top: 10px;
-	margin-left:40px;
-	background: #EA8101;
-	line-height: normal;
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 18px;
+#content h2 {
 	font-weight: bold;
-	color: #FFFFFF;
-}
-
-.post .picture {
-	margin-left:0;
-	padding: 0 0 0 0;	
-	float: left;
-	margin: 0;
-	margin-right: 20px;
-	padding-top: 5px;
-	margin-left:40px;
-}
-
-.post .date b {
-	margin: 0;
-	padding: 0;
-	display: block;
-	margin-top: -5px;
-	font-size: 24px;
-	color: #FFFFFF;
-	
-}
-
-.post .title {
-	margin: 0;
-	padding: 0px 0 0 0;
-	text-transform: uppercase;
-	margin-left: 10px;
-	margin-bottom: 30px;
-	padding-left: 10px;
-	font-size: 2.8em;
-	color: #000000;
-}
-
-.post .title h2 {
-	padding: 0;
-	margin: 0;
-}
-
-.post .hr1 {
-}
-
-.post .meta {
-	margin: 0 0 10px 20px;
-	padding: 0;
-	line-height:normal;
-	text-transform: uppercase;
-	color: #434343;
-}
-
-.post .meta a {
-	color: #434343;
-}
-
-.post .entry {
-	margin: 0;
-	padding: 0 0 20px 40px;
 }
 
 /* spectacle */
 
-#spectacle {
+.spectacle {
 	float: left;
 	width: 1210px;
-	margin-bottom: 0px;
+	margin-bottom: 20px;
 }
 
-.date {
+.spectacle .date {
 	float: left;
 	width: 60px;
 	height: 50px;
@@ -243,7 +167,7 @@ hr {
 	color: #FFFFFF;
 }
 
-.picture {
+.spectacle .picture {
 	margin-left:0;
 	padding: 0 0 0 0;	
 	float: left;
@@ -253,7 +177,7 @@ hr {
 	margin-left:40px;
 }
 
-.date b {
+.spectacle .date b {
 	margin: 0;
 	padding: 0;
 	display: block;
@@ -263,7 +187,7 @@ hr {
 	
 }
 
-.title {
+.spectacle .title {
 	margin: 0;
 	padding: 0px 0 0 0;
 	text-transform: uppercase;
@@ -274,15 +198,15 @@ hr {
 	color: #000000;
 }
 
-.title h2 {
+.spectacle .title h2 {
 	padding: 0;
 	margin: 0;
 }
 
-.hr1 {
+.spectacle .hr1 {
 }
 
-.entry {
+.spectacle .entry {
 	margin: 0;
 	padding: 0 0 20px 80px;
 	margin-bottom: 50px;
@@ -290,12 +214,12 @@ hr {
 
 /* Représentation */
 
-.representation {
+.spectacle .representation {
 	float: left;
 	width: 700px;
 	margin-left: 300px;
 }
-.representation .date {
+.spectacle .representation .date {
 	float: left;
 	width: 80px;
 	height: 65px;
@@ -314,7 +238,7 @@ hr {
 	color: #FFFFFF;
 }
 
-.representation .salle {
+.spectacle .representation .salle {
 	text-decoration:underline;
 	text-align:left;
 	margin-bottom:0px;
@@ -323,18 +247,18 @@ hr {
 	font-size:150%;
 	margin-right:10px;
 }
-.representation .acheter{
+.spectacle .representation .acheter{
 	float:right
 }
 
-.representation .acheter .qte{
+.spectacle .representation .acheter .qte{
 	width:50px;
 }
 
-.representation .acheter .valider{
+.spectacle .representation .acheter .valider{
 }
 
-.representation .places {
+.spectacle .representation .places {
 	margin-top:10px;
 	margin-bottom:0px;
 }
