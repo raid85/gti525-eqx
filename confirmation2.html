@@ -42,12 +42,23 @@ Description: A two-column web design, best for your personal and business bloggi
 	<div id="page">
 		<!-- start content -->
 		<div id="content">
-			<h1> Panier </h1>
-			<ul>
-				<li> Item 1 <input type='text' name='qte' value='3' /> <input type='BUTTON' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.html'"/></li>
-				<li> Item 2 <input type='text' name='qte' value='3' /> <input type='BUTTON' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.html'"/></li>
-			</ul>
-			<p> <input type='BUTTON' name='update' value='Paiement' ONCLICK="window.location.href='Achat.html'"/> </p>
+			<div class="alert">
+				<h2>Confirmation</h2>
+					<p><b>3</b> billets pour <b>Lise Dion</b></p>
+					<p><b>3</b> billets pour <b>Elvis</b></p>
+				<ul>
+					<li> Nom : Smith </li>
+					<li> Prénom : John </li>
+					<li> Courriel : john.smith@etsmtl.ca </li>
+					<li> Adresse : 1110 Notre-Dame </li>
+					<li> Ville : Montréal </li>
+					<li> Province : Québec </li>
+					<li> Pays : Canada </li>
+					<li> Carte de crédit : 1111 2222 3333 4444 5555 </li>
+					<li> Expiration : 12-12 </li>
+				</ul>
+				<p> <input type='BUTTON' name='update' value='Confirmer' ONCLICK="window.location.href='final.html'"/> <input type='BUTTON' name='update' value='Retour' ONCLICK="window.location.href='achat.html'"/> </p>
+			</div>
 		</div>
 		<!-- end content -->
 		<!-- start sidebar -->
