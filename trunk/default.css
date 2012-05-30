@@ -224,6 +224,7 @@ hr {
 	float: left;
 	width: 700px;
 	margin-left: 300px;
+	margin-bottom:20px;
 }
 .spectacle .representation .date {
 	float: left;
@@ -245,12 +246,23 @@ hr {
 }
 
 .spectacle .representation .salle {
+	margin-top: 5px;
 	text-decoration:underline;
 	text-align:left;
 	margin-bottom:0px;
 	text-transform:uppercase;
 	font-weight:bold;
 	font-size:150%;
+	margin-right:10px;
+}
+
+.spectacle .representation .prix {
+	margin-top: 5px;
+	text-align:left;
+	margin-bottom:0px;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:100%;
 	margin-right:10px;
 }
 .spectacle .representation .acheter{
@@ -265,7 +277,8 @@ hr {
 }
 
 .spectacle .representation .places {
-	margin-top:10px;
+	margin-top: 5px;
+	text-align: left;
 	margin-bottom:0px;
 }
 
