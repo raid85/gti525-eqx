@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -6,8 +7,7 @@ public class Collection {
 	Spectacle sliseDion, speterMacLeod, selvis;
 	Salle centreBell, metropolis, jeanDrapeau;
 	Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
-
-
+	private ArrayList maCollection = new ArrayList();
 	
 	private void createArtistes(){
 		aliseDion = new Artiste();
@@ -43,7 +43,7 @@ public class Collection {
 		jeanDrapeau.setNom("Parc Jean-Drapeau");
 	}
 	
-	private void createReprensentations(){
+	private void createRepresentations(){
 		juin11CentreBell = new Representation();
 		juin11CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
 		juin11CentreBell.setDate(new Date(2012,06,11,18,0));
@@ -91,7 +91,7 @@ public class Collection {
 		
 	}
 	
-	private void createSpectacle(){
+	private void createSpectacles(){
 
 		sliseDion = new Spectacle();
 		sliseDion.setArtiste(aliseDion);
@@ -102,6 +102,7 @@ public class Collection {
 		sliseDion.ajouterRepresentation(juin11CentreBell);
 		sliseDion.ajouterRepresentation(juin14Metropolis);
 		sliseDion.ajouterRepresentation(juin17JDrapeau);
+		maCollection.add(sliseDion);
 		
 		speterMacLeod = new Spectacle();
 		speterMacLeod.setArtiste(apeterMacLeod);
@@ -112,6 +113,7 @@ public class Collection {
 		speterMacLeod.ajouterRepresentation(juin12CentreBell);
 		speterMacLeod.ajouterRepresentation(juin15Metropolis);
 		speterMacLeod.ajouterRepresentation(juin18JDrapeau);
+		maCollection.add(speterMacLeod);
 		
 		selvis = new Spectacle();
 		selvis.setArtiste(aelvis);
@@ -122,7 +124,19 @@ public class Collection {
 		selvis.ajouterRepresentation(juin13CentreBell);
 		selvis.ajouterRepresentation(juin16Metropolis);
 		selvis.ajouterRepresentation(juin19JDrapeau);
+		maCollection.add(selvis);
 		
 	}
+	
+	public Collection(){
+		createArtistes();
+		createSalles();
+		createRepresentations();
+		createSpectacles();
+	}
+	
+    public ArrayList getCollection (){
+        return maCollection;
+    }
 
 }
