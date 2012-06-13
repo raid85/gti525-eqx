@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Title      : Simpleton 
+Version    : 1.0
+Released   : 20110315
+Description: A two-column web design, best for your personal and business blogging.
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Billets En File</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1><a href="#">Billets En File</a></h1>
+		<p><a href="http://www.freecsstemplates.org/">Design by Free CSS Templates</a></p>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="index.jsp">Maison</a></li>
+			<li><a href="http://www.google.com">Èvènements</a></li>
+			<li><a href="http://www.cyberpresse.ca">Mon Panier</a></li>
+			<li><a href="http://www.rds.ca">Contact </a></li>
+		</ul>
+	</div>
+</div>
+<hr />
+<!-- end header -->
+<!-- start page -->
+<div id="wrapper">
+	<div id="page">
+		<!-- start content -->
+		<div id="content">
+			<div class="spectacle">
+				<p class="date">mar<b>03</b></p>
+				<a href="liseDion.jsp"><h2 class="title">lise dion</h2></a>
+				
+				<img  class="picture" src="images/lisedion2011tpro.jpg" />
+				<div class="entry">
+					<p>Mis en scène par Michel Courtemanche, Le temps qui court propose une réflexion sur le temps qui passe et les différentes étapes de la vie : il y est question de la vieillesse et de la mort, mais à la manière de Lise Dion bien sûr.  En plus de donner des détails sur ce qu’elle a fait pendant son absence des planches qui a duré six ans, elle nous donne aussi des nouvelles de Marcel et de ses ados… qui, en principe, ne sont plus des ados.  Parmi les multiples sujets abordés, l’humoriste revient avec le personnage de la femme afghane qui découvre les avantages de son costume et propose une réflexion sur les hommes qui partent avec des femmes plus jeunes… Tout un programme!</p>
+					<p>Le temps qui court est le 3e spectacle que présente Lise Dion en carrière. Son premier spectacle a raflé 3 Félix et a été présenté 50 fois au Théâtre St-Denis 1, ce qui fait de Lise la seule femme et une des rares artistes à avoir réussi un tel exploit. Lise Dion s’est vu remettre une plaque soulignant la vente de 140,000 billets vendus de son nouveau spectacle. C’est assurément un retour en force pour l’humoriste chouchou des Québécois! </p>
+				</div>
+			</div>
+			<div class="spectacle">
+				<p class="date">feb<b>26</b></p>
+				<a href="liseDion.jsp"><h2 class="title">peter macleod 4</h2></a>
+				<img  class="picture" src="images/Peter MacLeod_new_tpro.jpg" />
+				<div class="entry">
+					<p>Après s’être lui-même canonisé Saint, l’humoriste à la gueule sympathique et aux propos corrosifs revient sur scène avec son 4e one man show Sagesse Reportée, qui confronte l’humoriste avec la quarantaine et ses implications. En effet, MacLeod devrait prêcher par l’exemple et devenir socialement plus sage. Il devrait avoir une femme et non une blonde, un compte conjoint, un mini-van, un abonnement au Costco, une passe de saison au golf, s’intéresser soudainement au Cirque du Soleil et au train de Josélito! Mais, sa quête de liberté l’amène à laisser son auréole de côté pour nous prouver que vieillir n’est pas synonyme de s’assagir. Que ce soit la surconsommation, la société matriarcale, les jeunes, le couple, ses opinions sont tranchantes et assumées. Drôle, percutant et touchant, le justicier aux 700 000 billets vendus en carrière nous prouve avec ce quatrième rendez-vous, à la mise en scène spectaculaire, qu’il fait toujours partie de l’élite humoristique au Québec.</p>
+				</div>
+			</div>
+			<div class="spectacle">
+				<p class="date">feb<b>22</b></p>
+				<a href="liseDion.jsp"><h2 class="title">elvis</h2></a>
+				<img  class="picture" src="images/Elvis poster_600.jpg" />
+				<div class="entry">
+					<p>Ce juillet, Robert Baggio est Elvis !</p>
+					<p>Sur scène, Baggio offre ses interprétations des succès d’Elvis avec une voix étonnamment ressemblante. Il est entouré par des musiciens et choristes de talent, dont certains ont participé aux tournées d’artistes reconnus de Star Académie, Garou, Marie-Mai, Dan Bigras et de plusieurs autres.</p>
+					<p>Le concert énergisant "Viva Las Vegas" inclura des classiques originaux du King et des "remakes" avec une touche moderne.</p>
+					<p>Le tout pour garder la mémoire d'Elvis vivante avec une présentation inoubliable dans l'espoir de vous faire revivre un vrai concert du King.</p>
+				</div>
+			</div>
+		</div>
+		<!-- end content -->
+		<!-- start sidebar -->
+		<div id="sidebar">
+				<li id="calendar">
+					<h2>Calendar</h2>
+					<div id="calendar_wrap">
+						<table id="wp-calendar" summary="Calendar">
+							<caption>
+							September 2008
+							</caption>
+							<thead>
+								<tr>
+									<th abbr="Monday" scope="col" title="Monday">M</th>
+									<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+									<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+									<th abbr="Thursday" scope="col" title="Thursday">T</th>
+									<th abbr="Friday" scope="col" title="Friday">F</th>
+									<th abbr="Saturday" scope="col" title="Saturday">S</th>
+									<th abbr="Sunday" scope="col" title="Sunday">S</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td abbr="July" colspan="3" id="prev"><a href="#">&laquo; Jul</a></td>
+									<td class="pad">&nbsp;</td>
+									<td abbr="September" colspan="3" id="next" class="pad"><a href="#">Sep &raquo;</a></td>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr>
+									<td colspan="2" class="pad">&nbsp;</td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+									<td>12</td>
+								</tr>
+								<tr>
+									<td>13</td>
+									<td>14</td>
+									<td>15</td>
+									<td>16</td>
+									<td>17</td>
+									<td>18</td>
+									<td>19</td>
+								</tr>
+								<tr>
+									<td>20</td>
+									<td id="today">21</td>
+									<td>22</td>
+									<td>23</td>
+									<td>24</td>
+									<td>25</td>
+									<td>26</td>
+								</tr>
+								<tr>
+									<td>27</td>
+									<td>28</td>
+									<td>29</td>
+									<td>30</td>
+									<td>31</td>
+									<td class="pad" colspan="2">&nbsp;</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<h2>Mon Panier</h2>
+					<ul>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end sidebar -->
+		<br style="clear: both;" />
+	</div>
+</div>
+<!-- end page -->
+<!-- start footer -->
+<div id="footer">
+<p id="legal"> &copy;2011 Simpleton . All Rights Reserved.
+	&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+	Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+	Icons by <a href="http://famfamfam.com/">FAMFAMFAM</a>.	<a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> &nbsp;&nbsp;&bull;&nbsp;&nbsp; <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a> </p>
+<!-- end footer -->
+</div>
+</body>
+</html>
