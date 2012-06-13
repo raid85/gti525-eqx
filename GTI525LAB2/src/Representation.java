@@ -23,5 +23,9 @@ public class Representation {
 	public void setBilletsDispo(int billetsDispo) {
 		this.billetsDispo = billetsDispo;
 	}
+	public void achatBillets(int nbBillets){
+		if (nbBillets < billetsDispo)
+			billetsDispo = billetsDispo - nbBillets;
+	}
 
 }

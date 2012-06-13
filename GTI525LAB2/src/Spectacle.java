@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class Spectacle {
 	private String nom;
@@ -5,7 +7,7 @@ public class Spectacle {
 	private int duree;
 	private String description;
 	private Artiste artiste;
-	private Representation[] representations;
+	private ArrayList representations = new ArrayList();
 	
 	public String getNom() {
 		return nom;
@@ -36,6 +38,14 @@ public class Spectacle {
 	}
 	public void setArtiste(Artiste artiste) {
 		this.artiste = artiste;
+	}
+	
+	public void ajouterRepresentation(Representation pRepresentation){
+		representations.add(pRepresentation);
+	}
+	
+	public Representation getrRepresentation(int id){
+		return (Representation)representations.get(id);
 	}
 	
 
