@@ -1,3 +1,4 @@
+package domaine;
 
 public class Salle {
 	private String nom;

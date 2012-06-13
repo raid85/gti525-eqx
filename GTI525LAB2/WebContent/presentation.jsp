@@ -19,6 +19,7 @@ Description: A two-column web design, best for your personal and business bloggi
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="default.css" rel="stylesheet" type="text/css" />
+        
 </head>
 <body>
 <!-- start header -->

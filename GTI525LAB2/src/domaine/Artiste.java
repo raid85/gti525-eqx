@@ -1,3 +1,4 @@
+package domaine;
 
 public class Artiste {
 	private String nom;
