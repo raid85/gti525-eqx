@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 
 public class Spectacle {
+	private int id;
 	private String nom;
 	private String image;
 	private int duree;
@@ -47,6 +48,12 @@ public class Spectacle {
 	
 	public Representation getrRepresentation(int id){
 		return (Representation)representations.get(id);
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 

@@ -1,6 +1,7 @@
 package domaine;
 
 public class Artiste {
+	private int id;
 	private String nom;
 	private String photo;
 	private String description;
@@ -21,6 +22,12 @@ public class Artiste {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

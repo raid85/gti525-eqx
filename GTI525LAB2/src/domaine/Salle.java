@@ -1,6 +1,7 @@
 package domaine;
 
 public class Salle {
+	private int id;
 	private String nom;
 	private String adresse;
 	private int NbPlaceMax;
@@ -21,6 +22,12 @@ public class Salle {
 	}
 	public void setNbPlaceMax(int nbPlaceMax) {
 		NbPlaceMax = nbPlaceMax;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

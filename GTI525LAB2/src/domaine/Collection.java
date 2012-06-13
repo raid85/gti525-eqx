@@ -15,16 +15,19 @@ public class Collection {
 		aliseDion.setNom("Lise Dion");
 		aliseDion.setDescription("The Famous");
 		aliseDion.setPhoto("/images/lisedion2011tpro.jpg");
+		aliseDion.setId(1001);
 		
 		apeterMacLeod = new Artiste();
 		apeterMacLeod.setNom("Peter MacLeod");
 		apeterMacLeod.setDescription("The Funny");
 		apeterMacLeod.setPhoto("/images/peter.jpg");
+		apeterMacLeod.setId(1002);
 		
 		aelvis = new Artiste();
 		aelvis.setNom("Elvis");
 		aelvis.setDescription("The King");
 		aelvis.setPhoto("/images/elvis.jpg");
+		aelvis.setId(1003);
 	}
 	
 	private void createSalles(){
@@ -32,16 +35,19 @@ public class Collection {
 		centreBell.setAdresse("1234 Avenue des Canadiens");
 		centreBell.setNbPlaceMax(21000);
 		centreBell.setNom("Centre Bell");
+		centreBell.setId(2001);
 		
 		metropolis = new Salle();
 		metropolis.setAdresse("5678 Rue Ste-Catherine");
 		metropolis.setNbPlaceMax(600);
 		metropolis.setNom("Métropolis");
+		metropolis.setId(2002);
 		
 		jeanDrapeau = new Salle();
 		jeanDrapeau.setAdresse("Ile ste Helene");
 		jeanDrapeau.setNbPlaceMax(10000);
 		jeanDrapeau.setNom("Parc Jean-Drapeau");
+		jeanDrapeau.setId(2003);
 	}
 	
 	private void createRepresentations(){
@@ -49,46 +55,55 @@ public class Collection {
 		juin11CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
 		juin11CentreBell.setDate(new Date(2012,06,11,18,0));
 		juin11CentreBell.setSalle(centreBell);
+		juin11CentreBell.setId(3001);
 		
 		juin12CentreBell = new Representation();
 		juin12CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
 		juin12CentreBell.setDate(new Date(2012,06,12,18,0));
 		juin12CentreBell.setSalle(centreBell);
+		juin12CentreBell.setId(3002);
 		
 		juin13CentreBell = new Representation();
-		juin12CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
-		juin12CentreBell.setDate(new Date(2012,06,13,18,0));
-		juin12CentreBell.setSalle(centreBell);
+		juin13CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
+		juin13CentreBell.setDate(new Date(2012,06,13,18,0));
+		juin13CentreBell.setSalle(centreBell);
+		juin13CentreBell.setId(3003);
 		
 		juin14Metropolis = new Representation();
 		juin14Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
 		juin14Metropolis.setDate(new Date(2012,06,14,18,0));
 		juin14Metropolis.setSalle(metropolis);
+		juin14Metropolis.setId(3004);
 		
 		juin15Metropolis = new Representation();
 		juin15Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
 		juin15Metropolis.setDate(new Date(2012,06,15,18,0));
 		juin15Metropolis.setSalle(metropolis);
+		juin15Metropolis.setId(3005);
 		
 		juin16Metropolis = new Representation();
 		juin16Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
 		juin16Metropolis.setDate(new Date(2012,06,16,18,0));
 		juin16Metropolis.setSalle(metropolis);
+		juin16Metropolis.setId(3006);
 		
 		juin17JDrapeau = new Representation();
 		juin17JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
 		juin17JDrapeau.setDate(new Date(2012,06,17,18,0));
 		juin17JDrapeau.setSalle(jeanDrapeau);
+		juin17JDrapeau.setId(3007);
 		
 		juin18JDrapeau = new Representation();
 		juin18JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
 		juin18JDrapeau.setDate(new Date(2012,06,18,18,0));
 		juin18JDrapeau.setSalle(jeanDrapeau);
+		juin18JDrapeau.setId(3008);
 		
 		juin19JDrapeau = new Representation();
 		juin19JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
 		juin19JDrapeau.setDate(new Date(2012,06,19,18,0));
 		juin19JDrapeau.setSalle(jeanDrapeau);
+		juin19JDrapeau.setId(3009);
 		
 	}
 	
@@ -103,6 +118,7 @@ public class Collection {
 		sliseDion.ajouterRepresentation(juin11CentreBell);
 		sliseDion.ajouterRepresentation(juin14Metropolis);
 		sliseDion.ajouterRepresentation(juin17JDrapeau);
+		sliseDion.setId(5001);
 		maCollection.add(sliseDion);
 		
 		speterMacLeod = new Spectacle();
@@ -114,6 +130,7 @@ public class Collection {
 		speterMacLeod.ajouterRepresentation(juin12CentreBell);
 		speterMacLeod.ajouterRepresentation(juin15Metropolis);
 		speterMacLeod.ajouterRepresentation(juin18JDrapeau);
+		speterMacLeod.setId(5002);
 		maCollection.add(speterMacLeod);
 		
 		selvis = new Spectacle();
@@ -125,6 +142,7 @@ public class Collection {
 		selvis.ajouterRepresentation(juin13CentreBell);
 		selvis.ajouterRepresentation(juin16Metropolis);
 		selvis.ajouterRepresentation(juin19JDrapeau);
+		selvis.setId(5003);
 		maCollection.add(selvis);
 		
 	}

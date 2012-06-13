@@ -3,6 +3,7 @@ import java.util.Date;
 
 
 public class Representation {
+	private int id;
 	private Salle salle;
 	private Date date;
 	private int billetsDispo;
@@ -27,6 +28,12 @@ public class Representation {
 	public void achatBillets(int nbBillets){
 		if (nbBillets < billetsDispo)
 			billetsDispo = billetsDispo - nbBillets;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
