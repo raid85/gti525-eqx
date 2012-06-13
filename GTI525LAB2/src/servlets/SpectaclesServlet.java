@@ -16,7 +16,9 @@ public class SpectaclesServlet extends HttpServlet{
 		String jsp; 
 		Collection collect = new Collection();
 				
-		request.setAttribute("collection", collect);
+		request.setAttribute("titres", collect.getSpectaclesTitre());
+		request.setAttribute("descriptions", collect.getSpectaclesDescription());
+		request.setAttribute("images", collect.getSpectaclesImages());
 		jsp = "/presentation.jsp";
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);

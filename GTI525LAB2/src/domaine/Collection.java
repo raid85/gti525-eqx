@@ -8,7 +8,7 @@ public class Collection {
 	Spectacle sliseDion, speterMacLeod, selvis;
 	Salle centreBell, metropolis, jeanDrapeau;
 	Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
-	private ArrayList maCollection = new ArrayList();
+	private ArrayList<Spectacle> maCollection = new ArrayList<Spectacle>();
 	
 	private void createArtistes(){
 		aliseDion = new Artiste();
@@ -19,12 +19,12 @@ public class Collection {
 		apeterMacLeod = new Artiste();
 		apeterMacLeod.setNom("Peter MacLeod");
 		apeterMacLeod.setDescription("The Funny");
-		apeterMacLeod.setPhoto("/images/Peter MacLeod_new_tpro.jpg");
+		apeterMacLeod.setPhoto("/images/peter.jpg");
 		
 		aelvis = new Artiste();
 		aelvis.setNom("Elvis");
 		aelvis.setDescription("The King");
-		aelvis.setPhoto("/images/Elvis poster_600.jpg");
+		aelvis.setPhoto("/images/elvis.jpg");
 	}
 	
 	private void createSalles(){
@@ -109,7 +109,7 @@ public class Collection {
 		speterMacLeod.setArtiste(apeterMacLeod);
 		speterMacLeod.setDescription("Après s’être lui-même canonisé Saint, l’humoriste à la gueule sympathique et aux propos corrosifs revient sur scène avec son 4e one man show Sagesse Reportée, qui confronte l’humoriste avec la quarantaine et ses implications. En effet, MacLeod devrait prêcher par l’exemple et devenir socialement plus sage. Il devrait avoir une femme et non une blonde, un compte conjoint, un mini-van, un abonnement au Costco, une passe de saison au golf, s’intéresser soudainement au Cirque du Soleil et au train de Josélito! Mais, sa quête de liberté l’amène à laisser son auréole de côté pour nous prouver que vieillir n’est pas synonyme de s’assagir. Que ce soit la surconsommation, la société matriarcale, les jeunes, le couple, ses opinions sont tranchantes et assumées. Drôle, percutant et touchant, le justicier aux 700 000 billets vendus en carrière nous prouve avec ce quatrième rendez-vous, à la mise en scène spectaculaire, qu’il fait toujours partie de l’élite humoristique au Québec.");
 		speterMacLeod.setDuree(120);
-		speterMacLeod.setImage("images/Peter MacLeod_new_tpro.jpg");
+		speterMacLeod.setImage("images/peter.jpg");
 		speterMacLeod.setNom("Peter Spectacle");
 		speterMacLeod.ajouterRepresentation(juin12CentreBell);
 		speterMacLeod.ajouterRepresentation(juin15Metropolis);
@@ -120,7 +120,7 @@ public class Collection {
 		selvis.setArtiste(aelvis);
 		selvis.setDescription("Ce juillet, Robert Baggio est Elvis ! \nSur scène, Baggio offre ses interprétations des succès d’Elvis avec une voix étonnamment ressemblante. Il est entouré par des musiciens et choristes de talent, dont certains ont participé aux tournées d’artistes reconnus de Star Académie, Garou, Marie-Mai, Dan Bigras et de plusieurs autres. \nLe concert énergisant Viva Las Vegas inclura des classiques originaux du King et des remakes avec une touche moderne.\n Le tout pour garder la mémoire d'Elvis vivante avec une présentation inoubliable dans l'espoir de vous faire revivre un vrai concert du King.");
 		selvis.setDuree(120);
-		selvis.setImage("images/elvis poster_600.jpg");
+		selvis.setImage("images/elvis.jpg");
 		selvis.setNom("Elvis Spectacle");
 		selvis.ajouterRepresentation(juin13CentreBell);
 		selvis.ajouterRepresentation(juin16Metropolis);
@@ -138,6 +138,30 @@ public class Collection {
 	
     public ArrayList getCollection (){
         return maCollection;
+    }
+    
+    public String[] getSpectaclesTitre(){
+        String[] titres = new String[maCollection.size()];
+        for (int i=0;i<maCollection.size();i++){
+        	titres[i] = maCollection.get(i).getNom();
+        }
+        return titres;
+    }
+    
+    public String[] getSpectaclesDescription(){
+        String[] descriptions = new String[maCollection.size()];
+        for (int i=0;i<maCollection.size();i++){
+        	descriptions[i] = maCollection.get(i).getDescription();
+        }
+        return descriptions;
+    }
+    
+    public String[] getSpectaclesImages(){
+        String[] images = new String[maCollection.size()];
+        for (int i=0;i<maCollection.size();i++){
+        	images[i] = maCollection.get(i).getImage();
+        }
+        return images;
     }
 
 }
