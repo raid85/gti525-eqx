@@ -2,13 +2,23 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>GTI525LAB2</display-name>
   <servlet>
-  	<servlet-name>representations</servlet-name>
+  	<servlet-name>presentations</servlet-name>
   	<servlet-class>servlets.SpectaclesServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>representations</servlet-name>
+  	<servlet-name>presentations</servlet-name>
   	<url-pattern>/spectacles</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  		<servlet-name>representations</servlet-name>
+  		<servlet-class>servlets.RepresentationsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>representations</servlet-name>
+  	<url-pattern>/representations</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

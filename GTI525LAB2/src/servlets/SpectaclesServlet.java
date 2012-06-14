@@ -16,10 +16,11 @@ public class SpectaclesServlet extends HttpServlet{
 		String jsp; 
 		Collection collect = new Collection();
 				
-		request.setAttribute("titres", collect.getSpectaclesTitre());
-		request.setAttribute("descriptions", collect.getSpectaclesDescription());
+		request.setAttribute("titres", collect.getSpectaclesTitres());
+		request.setAttribute("descriptions", collect.getSpectaclesDescriptions());
 		request.setAttribute("images", collect.getSpectaclesImages());
-		jsp = "/presentation.jsp";
+		request.setAttribute("ids", collect.getSpectaclesids());
+		jsp = "/spectacles.jsp";
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);
 		dispatcher.forward(request, response);

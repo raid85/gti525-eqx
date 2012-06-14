@@ -10,6 +10,7 @@ public class Spectacle {
 	private String description;
 	private Artiste artiste;
 	private ArrayList representations = new ArrayList();
+	private int nbRepresentations;
 	
 	public String getNom() {
 		return nom;
@@ -44,16 +45,21 @@ public class Spectacle {
 	
 	public void ajouterRepresentation(Representation pRepresentation){
 		representations.add(pRepresentation);
+		nbRepresentations++;
 	}
 	
-	public Representation getrRepresentation(int id){
+	public Representation getRepresentation(int id){
 		return (Representation)representations.get(id);
 	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getNbRepresentations() {
+		return nbRepresentations;
 	}
 	
 

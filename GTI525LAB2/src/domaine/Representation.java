@@ -7,6 +7,7 @@ public class Representation {
 	private Salle salle;
 	private Date date;
 	private int billetsDispo;
+	private double prix;
 	public Salle getSalle() {
 		return salle;
 	}
@@ -34,6 +35,12 @@ public class Representation {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public double getPrix() {
+		return prix;
+	}
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}
 
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 
@@ -12,6 +12,14 @@ Released   : 20110315
 Description: A two-column web design, best for your personal and business blogging.
 
 -->
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%
+String[] titres = (String[])request.getAttribute("titres");
+String[] descriptions = (String[])request.getAttribute("descriptions");
+String[] images = (String[])request.getAttribute("images");
+Integer[] ids = (Integer[])request.getAttribute("ids");
+%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -19,6 +27,7 @@ Description: A two-column web design, best for your personal and business bloggi
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="default.css" rel="stylesheet" type="text/css" />
+        
 </head>
 <body>
 <!-- start header -->
@@ -41,56 +50,21 @@ Description: A two-column web design, best for your personal and business bloggi
 <!-- start page -->
 <div id="wrapper">
 	<div id="page">
+		<!-- start content -->
 		<div id="content">
-			<!-- start spectacle -->
-			<div class="spectacle">
-					<p class="date">mar<b>03</b></p>
-					<h2 class="title">lise dion</h2>
-					
-					<img  class="picture" src="images/lisedion2011tpro.jpg" />
-					<div class="entry">
-						<p>Mis en scène par Michel Courtemanche, Le temps qui court propose une réflexion sur le temps qui passe et les différentes étapes de la vie : il y est question de la vieillesse et de la mort, mais à la manière de Lise Dion bien sûr.  En plus de donner des détails sur ce qu’elle a fait pendant son absence des planches qui a duré six ans, elle nous donne aussi des nouvelles de Marcel et de ses ados… qui, en principe, ne sont plus des ados.  Parmi les multiples sujets abordés, l’humoriste revient avec le personnage de la femme afghane qui découvre les avantages de son costume et propose une réflexion sur les hommes qui partent avec des femmes plus jeunes… Tout un programme!</p>
-						<p>Le temps qui court est le 3e spectacle que présente Lise Dion en carrière. Son premier spectacle a raflé 3 Félix et a été présenté 50 fois au Théâtre St-Denis 1, ce qui fait de Lise la seule femme et une des rares artistes à avoir réussi un tel exploit. Lise Dion s’est vu remettre une plaque soulignant la vente de 140,000 billets vendus de son nouveau spectacle. C’est assurément un retour en force pour l’humoriste chouchou des Québécois! </p>
+		        <% for (int i=0; i<titres.length;i++){%>
+                    <div class="spectacle">
+						<p class="date">mar<b>03</b></p>
+						<a href="representations?spectacleid=<%=ids[i]%>"><h2 class="title"><%=titres[i]%></h2></a>
+				
+						<img  class="picture" src=<%=images[i]%> />
+						<div class="entry">
+							<%=descriptions[i] %>
+						</div>
 					</div>
-				<div class="representation">
-					<p class = "date"> 15 juillet 2012 </p>
-					<h3 class="salle">centre bell </h3>
-					<form class="acheter">
-						Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
-					</form>
-					<h3 class="prix"> Prix : 60$ </h3>
-					<h4 class="places"> Nb de places restantes : 150 </h4>
-				</div>
-				<div class="representation">
-					<p class = "date"> 16 juillet 2012 </p>
-					<h3 class="salle">centre bell </h3>
-					<form class="acheter">
-						Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
-					</form>
-					<h3 class="prix"> Prix : 60$ </h3>
-					<h4 class="places"> Nb de places restantes : 100 </h4>
-				</div>
-				<div class="representation">
-					<p class = "date"> 17 juillet 2012 </p>
-					<h3 class="salle">centre bell </h3>
-					<form class="acheter">
-						Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
-					</form>
-					<h3 class="prix"> Prix : 60$ </h3>
-					<h4 class="places"> Nb de places restantes : 50 </h4>
-				</div>
-				<div class="representation">
-					<p class = "date"> 18 juillet 2012 </p>
-					<h3 class="salle">centre bell </h3>
-					<form class="acheter">
-						Quantité: <input type="text" name="qte" class="qte" /> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
-					</form>
-					<h3 class="prix"> Prix : 60$ </h3>
-					<h4 class="places"> Nb de places restantes : 0 </h4>
-				</div>
-			</div>
-			<!-- end spectacle -->
+                <%}%>
 		</div>
+		<!-- end content -->
 		<!-- start sidebar -->
 		<div id="sidebar">
 				<li id="calendar">

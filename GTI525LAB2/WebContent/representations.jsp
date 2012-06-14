@@ -14,11 +14,18 @@ Description: A two-column web design, best for your personal and business bloggi
 -->
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <%
-String[] titres = (String[])request.getAttribute("titres");
-String[] descriptions = (String[])request.getAttribute("descriptions");
-String[] images = (String[])request.getAttribute("images");
+String titre = (String)request.getAttribute("titre");
+String description = (String)request.getAttribute("description");
+String image = (String)request.getAttribute("image");
+String[] salles = (String[])request.getAttribute("salles");
+int[] places = (int[])request.getAttribute("places");
+int[] jours = (int[])request.getAttribute("jours");
+int[] mois = (int[])request.getAttribute("mois");
+int[] annees = (int[])request.getAttribute("annee");
+int[] heures = (int[])request.getAttribute("heure");
+int[] minutes = (int[])request.getAttribute("minutes");
+double[] prix = (double[])request.getAttribute("prix");
 %>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -26,7 +33,6 @@ String[] images = (String[])request.getAttribute("images");
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="default.css" rel="stylesheet" type="text/css" />
-        
 </head>
 <body>
 <!-- start header -->
@@ -49,21 +55,30 @@ String[] images = (String[])request.getAttribute("images");
 <!-- start page -->
 <div id="wrapper">
 	<div id="page">
-		<!-- start content -->
 		<div id="content">
-		        <% for (int i=0; i<titres.length;i++){%>
-                    <div class="spectacle">
-						<p class="date">mar<b>03</b></p>
-						<a href="liseDion.jsp"><h2 class="title"><%=titres[i]%></h2></a>
-				
-						<img  class="picture" src=<%=images[i]%> />
-						<div class="entry">
-							<%=descriptions[i] %>
-						</div>
+			<!-- start spectacle -->
+			<div class="spectacle">
+					<p class="date">mar<b>03</b></p>
+					<h2 class="title"><%=titre%></h2>
+					
+					<img  class="picture" src=<%=image%> />
+					<div class="entry">
+						<%=description%>
 					</div>
-                <%}%>v
+					<% for (int i=0; i<salles.length;i++){%>
+						<div class="representation">
+							<p class = "date"> <%=jours[i] %> <%=mois[i] %> <%=annees[i] %> - <%=heures[i] %>:<%=minutes[i] %> </p>
+							<h3 class="salle"><%=salles[i]%> </h3>
+							<form class="acheter">
+								Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
+							</form>
+							<h3 class="prix"> Prix : <%=Double.toString(prix[i])%> </h3>
+							<h4 class="places"> Nb de places restantes : <%=places[i] %> </h4>
+						</div>
+					<%}%>
+			</div>
+			<!-- end spectacle -->
 		</div>
-		<!-- end content -->
 		<!-- start sidebar -->
 		<div id="sidebar">
 				<li id="calendar">
