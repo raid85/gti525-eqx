@@ -1,4 +1,4 @@
-package domaine;
+package modele;
 
 public class Artiste {
 	private int id;

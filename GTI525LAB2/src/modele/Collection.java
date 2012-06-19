@@ -1,4 +1,4 @@
-package domaine;
+package modele;
 import java.util.ArrayList;
 import java.util.Date;
 
