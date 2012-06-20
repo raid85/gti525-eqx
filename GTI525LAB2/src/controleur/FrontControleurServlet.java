@@ -44,8 +44,8 @@ import javax.servlet.http.HttpServletResponse;
 	 */
 	protected void traiter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//Redirige au contrôleur de messages. Dans un Front Controller normal, il pourrait y avoir plusieurs servlets!
-		ControleurMessage controleurMessage = new ControleurMessage();
-		String page = controleurMessage.executerTraitement(request, response);
+		Controleur controleur = new Controleur();
+		String page = controleur.executerTraitement(request, response);
 		redirige(request, response, page);
 	}
 	
