@@ -163,97 +163,20 @@ public class Collection {
 		createSpectacles();
 	}
 	
-    public ArrayList getCollection (){
-        return maCollection;
-    }
-    
-    public String[] getSpectaclesTitres(){
-        String[] titres = new String[maCollection.size()];
+    public Spectacle[] getSpectacles (){
+    	Spectacle[] spectacles = new Spectacle[maCollection.size()];
         for (int i=0;i<maCollection.size();i++){
-        	titres[i] = maCollection.get(i).getNom();
+        	spectacles[i] = ((Spectacle)maCollection.get(i));
         }
-        return titres;
+        return spectacles;
     }
     
-    public String[] getSpectaclesDescriptions(){
-        String[] descriptions = new String[maCollection.size()];
-        for (int i=0;i<maCollection.size();i++){
-        	descriptions[i] = maCollection.get(i).getDescription();
+    public Representation[] getRepresentations (int idSpectacle){
+    	Representation[] representations = new Representation[maCollection.get(idSpectacle).getNbRepresentations()];
+        for (int i=0;i<maCollection.get(idSpectacle).getNbRepresentations();i++){
+        	representations[i] = ((Representation)maCollection.get(idSpectacle).getRepresentation(i));
         }
-        return descriptions;
+        return representations;
     }
     
-    public String[] getSpectaclesImages(){
-        String[] images = new String[maCollection.size()];
-        for (int i=0;i<maCollection.size();i++){
-        	images[i] = maCollection.get(i).getImage();
-        }
-        return images;
-    }
-    
-    public Integer[] getSpectaclesids(){
-        Integer[] ids = new Integer[maCollection.size()];
-        for (int i=0;i<maCollection.size();i++){
-        	ids[i] = maCollection.get(i).getId();
-        }
-        return ids;
-    }
-
-    public String[] getSpectaclesRepresentationsSalles(int id){
-        String[] salles = new String[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	salles[i] = maCollection.get(id).getRepresentation(i).getSalle().getNom();
-        }
-        return salles;
-    }
-    public int[] getSpectaclesRepresentationsPlaces(int id){
-        int[] places = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	places[i] = maCollection.get(id).getRepresentation(i).getBilletsDispo();
-        }
-        return places;
-    }
-    public int[] getSpectaclesRepresentationsJours(int id){
-        int[] jours = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	jours[i] = maCollection.get(id).getRepresentation(i).getDate().getDate();
-        }
-        return jours;
-    }
-    public int[] getSpectaclesRepresentationsMois(int id){
-        int[] mois = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	mois[i] = maCollection.get(id).getRepresentation(i).getDate().getMonth();
-        }
-        return mois;
-    }
-    public int[] getSpectaclesRepresentationsAnnee(int id){
-        int[] annee = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	annee[i] = maCollection.get(id).getRepresentation(i).getDate().getYear();
-        }
-        return annee;
-    }
-    public int[] getSpectaclesRepresentationsHeure(int id){
-        int[] annee = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	annee[i] = maCollection.get(id).getRepresentation(i).getDate().getHours();
-        }
-        return annee;
-    }
-    public int[] getSpectaclesRepresentationsMinutes(int id){
-        int[] annee = new int[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	annee[i] = maCollection.get(id).getRepresentation(i).getDate().getMinutes();
-        }
-        return annee;
-    }
-    
-    public double[] getSpectaclesRepresentationsPrix(int id){
-    	double[] prix = new double[maCollection.get(id).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(id).getNbRepresentations();i++){
-        	prix[i] = maCollection.get(id).getRepresentation(i).getPrix();
-        }
-        return prix;
-    }
 }

@@ -1,4 +1,4 @@
-package servlets;
+package controleur;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -16,11 +16,7 @@ public class SpectaclesServlet extends HttpServlet{
 	{
 		String jsp; 
 		Collection collect = new Collection();
-				
-		request.setAttribute("titres", collect.getSpectaclesTitres());
-		request.setAttribute("descriptions", collect.getSpectaclesDescriptions());
-		request.setAttribute("images", collect.getSpectaclesImages());
-		request.setAttribute("ids", collect.getSpectaclesids());
+		request.setAttribute("spectacles", collect.getSpectacles());
 		jsp = "/spectacles.jsp";
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jsp);

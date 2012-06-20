@@ -13,18 +13,11 @@ Description: A two-column web design, best for your personal and business bloggi
 
 -->
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page import="modele.Spectacle"%>
+<%@ page import="modele.Representation"%>
 <%
-String titre = (String)request.getAttribute("titre");
-String description = (String)request.getAttribute("description");
-String image = (String)request.getAttribute("image");
-String[] salles = (String[])request.getAttribute("salles");
-int[] places = (int[])request.getAttribute("places");
-int[] jours = (int[])request.getAttribute("jours");
-int[] mois = (int[])request.getAttribute("mois");
-int[] annees = (int[])request.getAttribute("annee");
-int[] heures = (int[])request.getAttribute("heure");
-int[] minutes = (int[])request.getAttribute("minutes");
-double[] prix = (double[])request.getAttribute("prix");
+Spectacle spectacle = (Spectacle)request.getAttribute("spectacle");
+Representation[] representations = (Representation[])request.getAttribute("representations");
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -59,21 +52,21 @@ double[] prix = (double[])request.getAttribute("prix");
 			<!-- start spectacle -->
 			<div class="spectacle">
 					<p class="date">mar<b>03</b></p>
-					<h2 class="title"><%=titre%></h2>
+					<h2 class="title"><%=spectacle.getNom()%></h2>
 					
-					<img  class="picture" src=<%=image%> />
+					<img  class="picture" src=<%=spectacle.getImage()%> />
 					<div class="entry">
-						<%=description%>
+						<%=spectacle.getDescription()%>
 					</div>
-					<% for (int i=0; i<salles.length;i++){%>
+					<% for (int i=0; i<representations.length;i++){%>
 						<div class="representation">
-							<p class = "date"> <%=jours[i] %> <%=mois[i] %> <%=annees[i] %> - <%=heures[i] %>:<%=minutes[i] %> </p>
-							<h3 class="salle"><%=salles[i]%> </h3>
+							<p class = "date"> <%=representations[i].getDate().getDate() %> <%=representations[i].getDate().getMonth() %> <%=representations[i].getDate().getYear() %> - <%=representations[i].getDate().getHours() %>:<%=representations[i].getDate().getMinutes() %> </p>
+							<h3 class="salle"><%=representations[i].getSalle().getNom()%> </h3>
 							<form class="acheter">
 								Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
 							</form>
-							<h3 class="prix"> Prix : <%=Double.toString(prix[i])%> </h3>
-							<h4 class="places"> Nb de places restantes : <%=places[i] %> </h4>
+							<h3 class="prix"> Prix : <%=Double.toString(representations[i].getPrix())%> </h3>
+							<h4 class="places"> Nb de places restantes : <%=representations[i].getBilletsDispo() %> </h4>
 						</div>
 					<%}%>
 			</div>

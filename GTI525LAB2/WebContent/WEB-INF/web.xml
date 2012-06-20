@@ -3,7 +3,7 @@
   <display-name>GTI525LAB2</display-name>
   <servlet>
   	<servlet-name>presentations</servlet-name>
-  	<servlet-class>servlets.SpectaclesServlet</servlet-class>
+  	<servlet-class>controleur.SpectaclesServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -13,7 +13,7 @@
   
    <servlet>
   		<servlet-name>representations</servlet-name>
-  		<servlet-class>servlets.RepresentationsServlet</servlet-class>
+  		<servlet-class>controleur.RepresentationsServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -22,11 +22,6 @@
   </servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

@@ -13,11 +13,9 @@ Description: A two-column web design, best for your personal and business bloggi
 
 -->
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page import="modele.Spectacle"%>
 <%
-String[] titres = (String[])request.getAttribute("titres");
-String[] descriptions = (String[])request.getAttribute("descriptions");
-String[] images = (String[])request.getAttribute("images");
-Integer[] ids = (Integer[])request.getAttribute("ids");
+Spectacle[] spectacles = (Spectacle[])request.getAttribute("spectacles");
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,14 +50,14 @@ Integer[] ids = (Integer[])request.getAttribute("ids");
 	<div id="page">
 		<!-- start content -->
 		<div id="content">
-		        <% for (int i=0; i<titres.length;i++){%>
+		        <% for (int i=0; i<spectacles.length;i++){%>
                     <div class="spectacle">
 						<p class="date">mar<b>03</b></p>
-						<a href="representations?spectacleid=<%=ids[i]%>"><h2 class="title"><%=titres[i]%></h2></a>
+						<a href="representations?spectacleid=<%=spectacles[i].getId()%>"><h2 class="title"><%=spectacles[i].getNom()%></h2></a>
 				
-						<img  class="picture" src=<%=images[i]%> />
+						<img  class="picture" src=<%=spectacles[i].getImage()%> />
 						<div class="entry">
-							<%=descriptions[i] %>
+							<%=spectacles[i].getDescription() %>
 						</div>
 					</div>
                 <%}%>
