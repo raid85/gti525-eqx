@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.Collection;
+
 /**
  * Petit servlet démontrant une façon de faire un front controller
  *

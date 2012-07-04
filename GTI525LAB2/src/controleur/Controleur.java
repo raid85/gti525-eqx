@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.Collection;
+
 /**
  * Classe sous-contrôleur qui exécute les opérations en rapport à l'affichage et la lecture des messages
  *
@@ -21,9 +23,12 @@ public class Controleur {
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
 		
-		int lol = request.getParameterMap().size();
-		if (lol < 1)
+		if (request.getParameterMap().size() < 1){
+			Collection collect = new Collection();
+			request.setAttribute("spectacles", collect.getSpectacles());
 			return "spectacles.jsp";
+		}
+			
 		else
 			return "FUCK YOU VASCO";
 	}
