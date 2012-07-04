@@ -20,6 +20,10 @@ public class Controleur {
 	private static final long serialVersionUID = 1391688820894808468L;
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
+		int lol = request.getParameterMap().size();
+		if (lol < 1)
+			return "spectacles.jsp";
+		else
 			return "FUCK YOU VASCO";
 	}
 }
