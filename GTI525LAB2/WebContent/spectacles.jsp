@@ -43,7 +43,7 @@ Spectacle[] spectacles = (Spectacle[])request.getAttribute("spectacles");
 		        <% for (int i=0; i<spectacles.length;i++){%>
                     <div class="spectacle">
 						<p class="date">mar<b>03</b></p>
-						<a href="representations?spectacleid=<%=spectacles[i].getId()%>"><h2 class="title"><%=spectacles[i].getNom()%></h2></a>
+						<a href="./?action=afficherSpectacle&spectacleid=<%=spectacles[i].getId()%>"><h2 class="title"><%=spectacles[i].getNom()%></h2></a>
 				
 						<img  class="picture" src=<%=spectacles[i].getImage()%> />
 						<div class="entry">
