@@ -168,6 +168,7 @@ public class Collection {
 		createSalles();
 		createRepresentations();
 		createSpectacles();
+		createUsers();
 	}
 	
     public Spectacle[] getSpectacles (){
