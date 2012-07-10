@@ -36,5 +36,13 @@ public class User {
 		public void setActivePanier(Panier activePanier) {
 			this.activePanier = activePanier;
 		}
+		
+		public User(int pId, String pNom, String pPrenom, String pAdresse, Panier pPanier){
+			id = pId;
+			nom = pNom;
+			prenom = pPrenom;
+			adresse = pAdresse;
+			activePanier = pPanier;
+		}
 
 }

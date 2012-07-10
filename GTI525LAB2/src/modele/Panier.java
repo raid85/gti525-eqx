@@ -9,8 +9,9 @@ public class Panier {
 	private int id;
 	private int userID;
 	
-	public Panier(){
-		
+	public Panier(int pId, int pUserID){
+		setId(pId);
+		setUserID(pUserID);
 	}
 	
 	public Panier(Representation pRep, int pId, int pUserID){
