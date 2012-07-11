@@ -9,6 +9,14 @@ public class Panier {
 	private int id;
 	private int userID;
 	
+	public void retournerBillets(){
+		for(int i = 0; i < monPanier.size(); i ++){
+			monPanier.get(i).getRep().retournerBillet(monPanier.get(i).getNbBillets());
+			monPanier.remove(i);
+		}
+		
+	}
+	
 	public Panier(int pId, int pUserID){
 		setId(pId);
 		setUserID(pUserID);

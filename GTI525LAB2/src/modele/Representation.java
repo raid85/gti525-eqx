@@ -8,6 +8,10 @@ public class Representation {
 	private Date date;
 	private int billetsDispo;
 	private double prix;
+	
+	public void retournerBillet(int nombre){
+		if(nombre > 0){	billetsDispo = billetsDispo + nombre;	}
+	}
 	public Salle getSalle() {
 		return salle;
 	}

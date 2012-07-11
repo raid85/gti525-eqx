@@ -34,7 +34,16 @@ import modele.Collection;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Redirige afin de centraliser les requêtes
+		try{
+		long vingtMinutes=1200000;
+		request.getSession().setMaxInactiveInterval(600);
+		if(request.getSession().getCreationTime() < (request.getSession().getCreationTime()+ vingtMinutes)){
+			//request.
+		}
 		traiter(request, response);
+		}catch(IllegalStateException iSE){
+			
+		}
 	}   
 	
 	/**
