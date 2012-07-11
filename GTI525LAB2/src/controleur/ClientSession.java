@@ -14,7 +14,7 @@ public class ClientSession implements HttpSessionListener {
 		String userID = se.getSession().getId();
 		User monUser = new User(userID);
 		se.getSession().setAttribute("panier", new Panier(monUser.getId()));
-		
+		se.getSession().setMaxInactiveInterval(600);
 		
 	}
 
