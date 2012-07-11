@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele.Collection;
+import modele.Representation;
+import modele.Panier;
 
 /**
  * Classe sous-contrôleur qui exécute les opérations en rapport à l'affichage et la lecture des messages
@@ -37,6 +39,23 @@ public class Controleur {
 			request.setAttribute("representations", collect.getRepresentations(i));
 			
 			return "representations.jsp";
+		}
+		else if (request.getParameter("action").equals("reserverBillets")){
+			if (Integer.parseInt(request.getParameter("nbBillets")) < 0 && request.getParameter("repID") != null){
+				Representation[] reps = collect.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
+				Representation maRepresentation = null;
+				int i = 0;
+				while (maRepresentation==null){
+					if (reps[i].getId() == Integer.parseInt(request.getParameter("repID")))
+						maRepresentation = reps[i];
+				}
+				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+				monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("nbBillets")));
+				
+			}
+				
+			
+			return "confReserv.jsp";
 		}
 			
 		else

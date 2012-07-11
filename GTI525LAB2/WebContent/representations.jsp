@@ -53,7 +53,7 @@ Representation[] representations = (Representation[])request.getAttribute("repre
 							<p class = "date"> <%=representations[i].getDate().getDate() %> <%=representations[i].getDate().getMonth() %> <%=representations[i].getDate().getYear() %> - <%=representations[i].getDate().getHours() %>:<%=representations[i].getDate().getMinutes() %> </p>
 							<h3 class="salle"><%=representations[i].getSalle().getNom()%> </h3>
 							<form class="acheter">
-								Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='reserver.jsp'"/>
+								Quantité: <input type="text" name="qte" class="qte"/> <input type='button' name='acheter' value='Réserver' ONCLICK="window.location.href='./?action=reserverBillets&nbBillets=qte&repID=<%=representations[i].getId()%>&spectacle=<%= spectacle.getId()%> "'"/>
 							</form>
 							<h3 class="prix"> Prix : <%=Double.toString(representations[i].getPrix())%> </h3>
 							<h4 class="places"> Nb de places restantes : <%=representations[i].getBilletsDispo() %> </h4>
