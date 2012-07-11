@@ -12,9 +12,9 @@ public class Collection {
 	private ArrayList<Spectacle> maCollection = new ArrayList<Spectacle>();
 	
 	private void createUsers(){
-		brousseau = new User(9001, "Brousseau", "Nicolas", "11 rue yoyo", new Panier (8001, 9001));
-		vasco = new User(9001, "Vasco", "Jo", "12 rue yaya", new Panier (8002, 9002));
-		riad = new User(9001, "Chebli", "Riad", "13 rue yiyi", new Panier (8003, 9003));
+//		brousseau = new User(9001, "Brousseau", "Nicolas", "11 rue yoyo", new Panier (8001, 9001));
+//		vasco = new User(9001, "Vasco", "Jo", "12 rue yaya", new Panier (8002, 9002));
+//		riad = new User(9001, "Chebli", "Riad", "13 rue yiyi", new Panier (8003, 9003));
 	}
 	
 	private void createArtistes(){

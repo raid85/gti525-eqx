@@ -1,15 +1,16 @@
 package modele;
 
 public class User {
-		private int id;
+		private String id;
 		private String nom;
 		private String prenom;
 		private String adresse;
 		private Panier activePanier;
-		public int getId() {
+	
+		public String getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getNom() {
@@ -36,13 +37,17 @@ public class User {
 		public void setActivePanier(Panier activePanier) {
 			this.activePanier = activePanier;
 		}
-		
-		public User(int pId, String pNom, String pPrenom, String pAdresse, Panier pPanier){
+		public User(String pId){
+			id = pId;			
+		}
+		public User(String pId, String pNom, String pPrenom, String pAdresse, Panier pPanier){
 			id = pId;
 			nom = pNom;
 			prenom = pPrenom;
 			adresse = pAdresse;
 			activePanier = pPanier;
 		}
+		
+		
 
 }

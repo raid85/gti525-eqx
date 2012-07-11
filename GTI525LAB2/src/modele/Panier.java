@@ -6,29 +6,26 @@ import sun.nio.ch.SocketOpts.IP;
 
 public class Panier {
 	private ArrayList<LignePanier> monPanier = new ArrayList<LignePanier>();
-	private int id;
-	private int userID;
+	private String id;
+	private String userID;	
 	
-	public void retournerBillets(){
-		for(int i = 0; i < monPanier.size(); i ++){
-			monPanier.get(i).getRep().retournerBillet(monPanier.get(i).getNbBillets());
-			monPanier.remove(i);
-		}
-		
-	}
+	public Panier(String pUserID){
+		setId(pUserID);
+		setUserID(pUserID);
+	}	
 	
-	public Panier(int pId, int pUserID){
+	public Panier(String pId, String pUserID){
 		setId(pId);
 		setUserID(pUserID);
-	}
+	}	
 	
-	public Panier(Representation pRep, int pId, int pUserID){
+	public Panier(Representation pRep, String pId, String pUserID){
 		setId(pId);
 		setUserID(pUserID);
 		monPanier.add(new LignePanier(pRep,1));
 	}
 	
-	public Panier(Representation pRep, int pNbBillets, int pId, int pUserID){
+	public Panier(Representation pRep, int pNbBillets, String pId, String pUserID){
 		setId(pId);
 		setUserID(pUserID);
 		monPanier.add(new LignePanier(pRep,pNbBillets));
@@ -40,25 +37,32 @@ public class Panier {
 	
 	public LignePanier[] getPanier(){
 		LignePanier[] panier = new LignePanier[monPanier.size()];
-        for (int i=0;i<monPanier.size();i++){
+		for (int i=0;i<monPanier.size();i++){
         	panier[i] = ((LignePanier)monPanier.get(i));
         }
         return panier;
 	}
-
-	public int getId() {
+	
+	public void retournerBillets(){
+		for(int i = 0; i < monPanier.size(); i ++){
+			monPanier.get(i).getRep().retournerBillet(monPanier.get(i).getNbBillets());
+			monPanier.remove(i);
+		}		
+	}
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 
