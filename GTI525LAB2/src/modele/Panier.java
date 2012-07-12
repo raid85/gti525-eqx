@@ -2,7 +2,7 @@ package modele;
 
 import java.util.ArrayList;
 
-import sun.nio.ch.SocketOpts.IP;
+//import sun.nio.ch.SocketOpts.IP;
 
 public class Panier {
 	private ArrayList<LignePanier> monPanier = new ArrayList<LignePanier>();
