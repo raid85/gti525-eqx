@@ -42,7 +42,7 @@ public class Controleur {
 			return "representations.jsp";
 		}
 		else if (request.getParameter("action").equals("reserverBillets")){
-			if (Integer.parseInt(request.getParameter("nbBillets")) < 0 && request.getParameter("repID") != null){
+			if (Integer.parseInt(request.getParameter("nbBillets")) > 0 && request.getParameter("repID") != null){
 				Representation[] reps = collect.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
 				Representation maRepresentation = null;
 				int i = 0;
