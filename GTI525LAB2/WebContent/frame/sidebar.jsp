@@ -1,3 +1,4 @@
+<%@ page import="modele.Panier"%>
 <div id="sidebar">
 				<li id="calendar">
 					<h2>Calendar</h2>
@@ -75,8 +76,16 @@
 				<li>
 					<h2>Mon Panier</h2>
 					<ul>
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
+					<%
+					Panier monPanier = (Panier)session.getAttribute("panier");
+					if (monPanier.getPanier().length == 0)%>
+						<li><a href="#">PANIER VIDE</a></li>
+					<%if (monPanier.getPanier().length > 0)%>
+					<%{%> 
+					<%for (int i = 0; i < monPanier.getPanier().length; i++){%>
+						<li><a href="#"><%=monPanier.getPanier()[i].getRep().getId() %>  :  <%=monPanier.getPanier()[i].getNbBillets() %></a></li>
+					<%}%>
+					<%}%>
 					</ul>
 				</li>
 			</ul>

@@ -9,9 +9,6 @@ public class Representation {
 	private int billetsDispo;
 	private double prix;
 	
-	public void retournerBillet(int nombre){
-		if(nombre > 0){	billetsDispo = billetsDispo + nombre;	}
-	}
 	public Salle getSalle() {
 		return salle;
 	}
@@ -30,10 +27,14 @@ public class Representation {
 	public void setBilletsDispo(int billetsDispo) {
 		this.billetsDispo = billetsDispo;
 	}
-	public void achatBillets(int nbBillets){
+	public void reserverBillets(int nbBillets){
 		if (nbBillets < billetsDispo)
 			billetsDispo = billetsDispo - nbBillets;
 	}
+	public void retournerBillet(int nombre){
+		if(nombre > 0){	billetsDispo = billetsDispo + nombre;	}
+	}
+	
 	public int getId() {
 		return id;
 	}

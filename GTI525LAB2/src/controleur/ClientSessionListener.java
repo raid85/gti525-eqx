@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSessionListener;
 import modele.Panier;
 import modele.User;
 
-public class ClientSession implements HttpSessionListener {
+public class ClientSessionListener implements HttpSessionListener {
 
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {

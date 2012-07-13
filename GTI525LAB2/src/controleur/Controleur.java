@@ -51,7 +51,6 @@ public class Controleur {
 						maRepresentation = reps[i];
 				}
 				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-				System.out.println(monPanier.getId());
 				monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
 				
 			}

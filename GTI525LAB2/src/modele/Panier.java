@@ -34,6 +34,7 @@ public class Panier {
 	
 	public void ajouterLigne(Representation pRep, int pNbBillets){
 		monPanier.add(new LignePanier(pRep, pNbBillets));
+		pRep.reserverBillets(pNbBillets);
 	}
 	
 	public LignePanier[] getPanier(){
