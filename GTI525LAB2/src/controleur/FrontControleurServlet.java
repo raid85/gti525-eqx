@@ -3,12 +3,9 @@ package controleur;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import modele.Collection;
 
 /**
  * Petit servlet démontrant une façon de faire un front controller
@@ -30,21 +27,22 @@ import modele.Collection;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Redirige afin de centraliser les requêtes
 		traiter(request, response);
-	}  	
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Redirige afin de centraliser les requêtes
-		try{
-		long vingtMinutes=1200000;
-		request.getSession().setMaxInactiveInterval(600);
-		if(request.getSession().getCreationTime() < (request.getSession().getCreationTime()+ vingtMinutes)){
-			//request.
-		}
+//		try{
+//		long vingtMinutes=1200000;
+//		request.getSession().setMaxInactiveInterval(600);
+//		if(request.getSession().getCreationTime() < (request.getSession().getCreationTime()+ vingtMinutes)){
+//			//request.
+//		}
+//		traiter(request, response);
+//		}catch(IllegalStateException iSE){
+//			
+//		}
 		traiter(request, response);
-		}catch(IllegalStateException iSE){
-			
-		}
-	}   
+	}
 	
 	/**
 	 * Cette méthode reçoit toutes les requêtes du servlet, et fais les redirections nécessaires

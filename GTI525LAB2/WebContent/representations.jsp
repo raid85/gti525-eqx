@@ -52,10 +52,13 @@ Representation[] representations = (Representation[])request.getAttribute("repre
 						<div class="representation">
 							<p class = "date"> <%=representations[i].getDate().getDate() %> <%=representations[i].getDate().getMonth() %> <%=representations[i].getDate().getYear() %> - <%=representations[i].getDate().getHours() %>:<%=representations[i].getDate().getMinutes() %> </p>
 							<h3 class="salle"><%=representations[i].getSalle().getNom()%> </h3>
-							<form method="post" action="reserverBillets">
-			Quantité: <input type="text" name="qte" size="20" maxlength="140">	
-			<input type="submit" value="Soumettre">
-			</form>
+							<form method="post" action="./">
+								<input type="hidden" name="action" id="action" value="reserverBillets" />
+								<input type="hidden" name="repId" id="repId" value="<%=representations[i].getId() %>" />
+								<input type="hidden" name="spectacle" id="spectacle" value="<%=spectacle.getId()%>" />
+								Quantité: <input type="text" name="qte" id="qte" size="20" maxlength="140">	
+								<input type="submit" value="Soumettre">
+							</form>
 							
 							<h3 class="prix"> Prix : <%=Double.toString(representations[i].getPrix())%> </h3>
 							<h4 class="places"> Nb de places restantes : <%=representations[i].getBilletsDispo() %> </h4>

@@ -180,9 +180,16 @@ public class Collection {
     }
     
     public Representation[] getRepresentations (int idSpectacle){
-    	Representation[] representations = new Representation[maCollection.get(idSpectacle).getNbRepresentations()];
-        for (int i=0;i<maCollection.get(idSpectacle).getNbRepresentations();i++){
-        	representations[i] = ((Representation)maCollection.get(idSpectacle).getRepresentation(i));
+    	int i = 0;
+    	while (i < maCollection.size()){
+    		if (maCollection.get(i).getId() == idSpectacle)
+    			break;
+    		i++;
+    	}
+    	
+    	Representation[] representations = new Representation[maCollection.get(i).getNbRepresentations()];
+        for (int j=0;j<maCollection.get(i).getNbRepresentations();j++){
+        	representations[j] = (Representation)maCollection.get(i).getRepresentation(j);
         }
         return representations;
     }

@@ -37,21 +37,22 @@ public class Controleur {
 				i++;
 			}
 			request.setAttribute("spectacle", collect.getSpectacles()[i]);
-			request.setAttribute("representations", collect.getRepresentations(i));
+			request.setAttribute("representations", collect.getRepresentations(collect.getSpectacles()[i].getId()));
 			
 			return "representations.jsp";
 		}
 		else if (request.getParameter("action").equals("reserverBillets")){
-			if (Integer.parseInt(request.getParameter("nbBillets")) > 0 && request.getParameter("repID") != null){
+			if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null){
 				Representation[] reps = collect.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
 				Representation maRepresentation = null;
 				int i = 0;
 				while (maRepresentation==null){
-					if (reps[i].getId() == Integer.parseInt(request.getParameter("repID")))
+					if (reps[i].getId() == Integer.parseInt(request.getParameter("repId")))
 						maRepresentation = reps[i];
 				}
 				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-				monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("nbBillets")));
+				System.out.println(monPanier.getId());
+				monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
 				
 			}
 				
