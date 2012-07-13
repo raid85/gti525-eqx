@@ -49,6 +49,7 @@ public class Controleur {
 				while (maRepresentation==null){
 					if (reps[i].getId() == Integer.parseInt(request.getParameter("repId")))
 						maRepresentation = reps[i];
+					i++;
 				}
 				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 				monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));

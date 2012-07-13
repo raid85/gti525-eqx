@@ -9,7 +9,7 @@ public class Collection {
 	Salle centreBell, metropolis, jeanDrapeau;
 	Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
 	User brousseau, vasco, riad;
-	private ArrayList<Spectacle> maCollection = new ArrayList<Spectacle>();
+	private ArrayList<Spectacle> listeSpectacles = new ArrayList<Spectacle>();
 	static Collection collect = new Collection();
 	
 	private void createUsers(){
@@ -140,7 +140,7 @@ public class Collection {
 		sliseDion.ajouterRepresentation(juin14Metropolis);
 		sliseDion.ajouterRepresentation(juin17JDrapeau);
 		sliseDion.setId(5001);
-		maCollection.add(sliseDion);
+		listeSpectacles.add(sliseDion);
 		
 		speterMacLeod = new Spectacle();
 		speterMacLeod.setArtiste(apeterMacLeod);
@@ -152,7 +152,7 @@ public class Collection {
 		speterMacLeod.ajouterRepresentation(juin15Metropolis);
 		speterMacLeod.ajouterRepresentation(juin18JDrapeau);
 		speterMacLeod.setId(5002);
-		maCollection.add(speterMacLeod);
+		listeSpectacles.add(speterMacLeod);
 		
 		selvis = new Spectacle();
 		selvis.setArtiste(aelvis);
@@ -164,7 +164,7 @@ public class Collection {
 		selvis.ajouterRepresentation(juin16Metropolis);
 		selvis.ajouterRepresentation(juin19JDrapeau);
 		selvis.setId(5003);
-		maCollection.add(selvis);
+		listeSpectacles.add(selvis);
 		
 	}
 	
@@ -177,24 +177,24 @@ public class Collection {
 	}
 	
     public Spectacle[] getSpectacles (){
-    	Spectacle[] spectacles = new Spectacle[maCollection.size()];
-        for (int i=0;i<maCollection.size();i++){
-        	spectacles[i] = ((Spectacle)maCollection.get(i));
+    	Spectacle[] spectacles = new Spectacle[listeSpectacles.size()];
+        for (int i=0;i<listeSpectacles.size();i++){
+        	spectacles[i] = ((Spectacle)listeSpectacles.get(i));
         }
         return spectacles;
     }
     
     public Representation[] getRepresentations (int idSpectacle){
     	int i = 0;
-    	while (i < maCollection.size()){
-    		if (maCollection.get(i).getId() == idSpectacle)
+    	while (i < listeSpectacles.size()){
+    		if (listeSpectacles.get(i).getId() == idSpectacle)
     			break;
     		i++;
     	}
     	
-    	Representation[] representations = new Representation[maCollection.get(i).getNbRepresentations()];
-        for (int j=0;j<maCollection.get(i).getNbRepresentations();j++){
-        	representations[j] = (Representation)maCollection.get(i).getRepresentation(j);
+    	Representation[] representations = new Representation[listeSpectacles.get(i).getNbRepresentations()];
+        for (int j=0;j<listeSpectacles.get(i).getNbRepresentations();j++){
+        	representations[j] = (Representation)listeSpectacles.get(i).getRepresentation(j);
         }
         return representations;
     }
