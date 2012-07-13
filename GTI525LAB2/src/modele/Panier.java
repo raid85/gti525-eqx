@@ -66,6 +66,14 @@ public class Panier {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
+	
+	public double getTotal(){
+		double cash=0;
+		for (int i=0;i<monPanier.size();i++){
+			cash += monPanier.get(i).getPrixTot();
+		}
+		return cash;
+	}
 
 
 }

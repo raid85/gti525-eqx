@@ -58,6 +58,9 @@ public class Controleur {
 			
 			return "confReserv.jsp";
 		}
+		else if (request.getParameter("action").equals("afficherPanier")){
+			return "panier.jsp";
+		}
 			
 		else
 			return "FUCK YOU VASCO";

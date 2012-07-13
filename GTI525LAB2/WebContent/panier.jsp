@@ -1,3 +1,4 @@
+<%@ page import="modele.Panier"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -34,16 +35,24 @@ Description: A two-column web design, best for your personal and business bloggi
 		<!-- start content -->
 		<div id="content">
 			<h1> Panier </h1>
-			<ul>
-				<li> Item 1 <input type='text' name='qte' value='3' /> <input type='button' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.jsp'"/>  180$ </li>
-				<li> Item 2 <input type='text' name='qte' value='3' /> <input type='button' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.jsp'"/>  180$ </li>
-			</ul>
-			Total : 360$
+				<ul>
+					<%
+					Panier monPanier = (Panier)session.getAttribute("panier");
+					if (monPanier.getPanier().length == 0)%>
+						<li><a href="#">PANIER VIDE</a></li>
+					<%if (monPanier.getPanier().length > 0)%>
+					<%{%> 
+					<%for (int i = 0; i < monPanier.getPanier().length; i++){%>
+						<li><a href="#"><%=monPanier.getPanier()[i].getRep().getId() %>[<%=monPanier.getPanier()[i].getRep().getPrix()%>$]</a>  <input type='text' name='qte' value='<%=monPanier.getPanier()[i].getNbBillets() %>' /><input type='button' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.jsp'"/></li>
+					<%}%>
+					Total : <%= monPanier.getTotal() %>$
+					<%}%>
+				</ul>
+			
 			<p> <input type='button' name='update' value='Paiement' ONCLICK="window.location.href='achat.jsp'"/> </p>
 		</div>
 		<!-- end content -->
 		<!-- start sidebar -->
-		<%@ include file="frame/sidebar.jsp" %>
 		<!-- end sidebar -->
 		<br style="clear: both;" />
 	</div>

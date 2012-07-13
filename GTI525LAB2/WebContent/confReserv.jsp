@@ -37,7 +37,7 @@ Description: A two-column web design, best for your personal and business bloggi
 				<h1>Réservation</h>
 				<h3>Les billets sont réservés pour <b>20</b> minutes </h>
 				<p> Acheter les billets via le panier pour assurer vos billets </p>
-				<input type='button' name='acheter' value='Panier' ONCLICK="window.location.href='panier.jsp'"/>
+				<input type='button' name='acheter' value='Panier' ONCLICK="window.location.href='./?action=afficherPanier'"/>
 				<input type='button' name='acheter' value='Page daccueil' ONCLICK="window.location.href='./'"/>
 			</div>
 		</div>
