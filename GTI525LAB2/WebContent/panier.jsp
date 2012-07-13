@@ -38,9 +38,7 @@ Description: A two-column web design, best for your personal and business bloggi
 				<ul>
 					<%
 					Panier monPanier = (Panier)session.getAttribute("panier");
-					if (monPanier.getPanier().length == 0)%>
-						<li><a href="#">PANIER VIDE</a></li>
-					<%if (monPanier.getPanier().length > 0)%>
+					if (monPanier.getPanier().length > 0)%>
 					<%{%> 
 					<%for (int i = 0; i < monPanier.getPanier().length; i++){%>
 						<li><a href="#"><%=monPanier.getPanier()[i].getRep().getId() %>[<%=monPanier.getPanier()[i].getRep().getPrix()%>$]</a>  <input type='text' name='qte' value='<%=monPanier.getPanier()[i].getNbBillets() %>' /><input type='button' name='update' value='Changer quantité' ONCLICK="window.location.href='panier.jsp'"/></li>

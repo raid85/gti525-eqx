@@ -78,9 +78,7 @@
 					<ul>
 					<%
 					Panier monPanier = (Panier)session.getAttribute("panier");
-					if (monPanier.getPanier().length == 0)%>
-						<li><a href="#">PANIER VIDE</a></li>
-					<%if (monPanier.getPanier().length > 0)%>
+					if (monPanier.getPanier().length > 0)%>
 					<%{%> 
 					<%for (int i = 0; i < monPanier.getPanier().length; i++){%>
 						<li><a href="#"><%=monPanier.getPanier()[i].getRep().getId() %>  :  <%=monPanier.getPanier()[i].getNbBillets() %></a></li>
