@@ -25,7 +25,7 @@ public class Controleur {
 	private static final long serialVersionUID = 1391688820894808468L;
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
-		Collection collect = new Collection();
+		Collection collect = Collection.getCollection();
 		if (request.getParameterMap().size() < 1){
 			
 			request.setAttribute("spectacles", collect.getSpectacles());
