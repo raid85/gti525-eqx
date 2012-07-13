@@ -10,7 +10,6 @@ public class Panier {
 	private String userID;	
 	
 	public Panier(String pUserID){
-		System.out.println(pUserID);
 		setId(pUserID);
 		setUserID(pUserID);
 	}	
