@@ -1,8 +1,11 @@
 package modele;
 
+import java.util.Date;
+
 public class LignePanier {
 	private Representation rep;
 	private int nbBillets;
+	private Date dateReservation;
 	
 	public Representation getRep() {
 		return rep;
@@ -28,6 +31,14 @@ public class LignePanier {
 	public LignePanier(Representation pRep, int pNbBillets){
 		rep = pRep;
 		nbBillets = pNbBillets;
+		dateReservation = new Date();
 	}
+	public Date getDateReservation() {
+		return dateReservation;
+	}
+	public void setDateReservation(Date dateReservation) {
+		this.dateReservation = dateReservation;
+	}
+	
 
 }

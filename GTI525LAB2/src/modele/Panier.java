@@ -44,11 +44,11 @@ public class Panier {
         return panier;
 	}
 	
-	public void retournerBillets(){
+	public void viderPanier(){
 		for(int i = 0; i < monPanier.size(); i ++){
 			monPanier.get(i).getRep().retournerBillet(monPanier.get(i).getNbBillets());
 			monPanier.remove(i);
-		}		
+		}
 	}
 	
 	public String getId() {

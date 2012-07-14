@@ -23,7 +23,7 @@ public class ClientSessionListener implements HttpSessionListener {
 		// TODO Auto-generated method stub
 		Panier monPanier = (Panier)se.getSession().getAttribute("panier");
 		if(monPanier.getPanier().length > 0 )
-		monPanier.retournerBillets();
+			monPanier.viderPanier();
 		
 	}
 
