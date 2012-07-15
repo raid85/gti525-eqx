@@ -2,6 +2,12 @@ package modele;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Cette classe agit comme le DAO (local)
+ * Une simple collection populée avec nos données
+ * @author Riad Chebli, Nicolas Brousseau
+ * @version 07/15/2012
+ */
 
 public class Collection {
 	Artiste aliseDion, apeterMacLeod, aelvis;
