@@ -1,10 +1,9 @@
 package modele;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 
-public class Collection1 {
+public class Collection {
 	Artiste aliseDion, apeterMacLeod, aelvis;
 	Spectacle sliseDion, speterMacLeod, selvis;
 	Salle centreBell, metropolis, jeanDrapeau;
@@ -169,7 +168,7 @@ public class Collection1 {
 		
 	}
 	
-	public Collection1(){
+	public Collection(){
 		createArtistes();
 		createSalles();
 		createRepresentations();
