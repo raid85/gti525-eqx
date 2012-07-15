@@ -1,16 +1,20 @@
 package modele;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
-
-public class Collection {
-	Artiste aliseDion, apeterMacLeod, aelvis;
-	Spectacle sliseDion, speterMacLeod, selvis;
-	Salle centreBell, metropolis, jeanDrapeau;
-	Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
-	User brousseau, vasco, riad;
-	private ArrayList<Spectacle> listeSpectacles = new ArrayList<Spectacle>();
-	static Collection collect = new Collection();
+public class SpectaclesDAOlocal {
+	
+	static Artiste aliseDion;
+	static Artiste apeterMacLeod;
+	static Artiste aelvis;
+	static Spectacle sliseDion, speterMacLeod, selvis;
+	static Salle centreBell, metropolis, jeanDrapeau;
+	static Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
+	static User brousseau, vasco, riad;
+	private static ArrayList<Spectacle> listeSpectacles = new ArrayList<Spectacle>();
+	static Collection collect ;// = new Collection();
 	
 	private void createUsers(){
 //		brousseau = new User(9001, "Brousseau", "Nicolas", "11 rue yoyo", new Panier (8001, 9001));
@@ -22,7 +26,7 @@ public class Collection {
 		return collect;
 	}
 	
-	private void createArtistes(){
+	private static void createArtistes(){
 		aliseDion = new Artiste();
 		aliseDion.setNom("Lise Dion");
 		aliseDion.setDescription("The Famous");
@@ -168,7 +172,8 @@ public class Collection {
 		
 	}
 	
-	public Collection(){
+	public SpectaclesDAOlocal(){
+		System.out.println ("imhere");
 		createArtistes();
 		createSalles();
 		createRepresentations();
@@ -176,7 +181,7 @@ public class Collection {
 		createUsers();
 	}
 	
-    public Spectacle[] getSpectacles (){
+    public static Spectacle[] getSpectacles (){
     	Spectacle[] spectacles = new Spectacle[listeSpectacles.size()];
         for (int i=0;i<listeSpectacles.size();i++){
         	spectacles[i] = ((Spectacle)listeSpectacles.get(i));
@@ -184,7 +189,7 @@ public class Collection {
         return spectacles;
     }
     
-    public Representation[] getRepresentations (int idSpectacle){
+    public static Representation[] getRepresentations (int idSpectacle){
     	int i = 0;
     	while (i < listeSpectacles.size()){
     		if (listeSpectacles.get(i).getId() == idSpectacle)
@@ -198,5 +203,5 @@ public class Collection {
         }
         return representations;
     }
-    
+
 }

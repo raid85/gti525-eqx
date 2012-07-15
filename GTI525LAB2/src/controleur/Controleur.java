@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import modele.Collection;
+
+import modele.DelegateSpectacles;
 import modele.Representation;
 import modele.Panier;
 
@@ -25,25 +26,25 @@ public class Controleur {
 	private static final long serialVersionUID = 1391688820894808468L;
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
-		Collection collect = Collection.getCollection();
+		//Collection collect = Collection.getCollection();
 		if (request.getParameterMap().size() < 1){
 			
-			request.setAttribute("spectacles", collect.getSpectacles());
+			request.setAttribute("spectacles", DelegateSpectacles.getSpectacleCol());
 			return "spectacles.jsp";
 		}
 		else if (request.getParameter("action").equals("afficherSpectacle")){
 			int i = 0;
-			while (collect.getSpectacles()[i].getId() != Integer.parseInt(request.getParameter("spectacleid")) && i < collect.getSpectacles().length){
+			while (DelegateSpectacles.obtenirSpectacles()[i].getId() != Integer.parseInt(request.getParameter("spectacleid")) && i < DelegateSpectacles.obtenirSpectacles().length){
 				i++;
 			}
-			request.setAttribute("spectacle", collect.getSpectacles()[i]);
-			request.setAttribute("representations", collect.getRepresentations(collect.getSpectacles()[i].getId()));
+			request.setAttribute("spectacle", DelegateSpectacles.obtenirSpectacles()[i]);
+			request.setAttribute("representations", DelegateSpectacles.obtenirRepresentation(DelegateSpectacles.obtenirSpectacles()[i].getId()));
 			
 			return "representations.jsp";
 		}
 		else if (request.getParameter("action").equals("reserverBillets")){
 			if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null){
-				Representation[] reps = collect.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
+				Representation[] reps =DelegateSpectacles.obtenirRepresentation(Integer.parseInt(request.getParameter("spectacle")));
 				Representation maRepresentation = null;
 				int i = 0;
 				while (maRepresentation==null){
