@@ -57,7 +57,7 @@ Representation[] representations = (Representation[])request.getAttribute("repre
 								<input type="hidden" name="repId" id="repId" value="<%=representations[i].getId() %>" />
 								<input type="hidden" name="spectacle" id="spectacle" value="<%=spectacle.getId()%>" />
 								Quantité: <input type="text" name="qte" id="qte" size="20" maxlength="140">	
-								<input type="submit" value="Soumettre">
+								<input type="submit" value="Confirmer">
 							</form>
 							
 							<h3 class="prix"> Prix : <%=Double.toString(representations[i].getPrix())%> </h3>

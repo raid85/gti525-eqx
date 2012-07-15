@@ -75,6 +75,9 @@ public class Controleur {
 		else if (request.getParameter("action").equals("afficherPanier")){
 			return "panier.jsp";
 		}
+		else if (request.getParameter("action").equals("processPaiement")){
+			return "erreurBillet.jsp";
+		}
 
 		else
 			return "";

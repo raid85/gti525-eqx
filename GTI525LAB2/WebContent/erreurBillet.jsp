@@ -23,8 +23,8 @@
 		<!-- start content -->
 		<div id="content">
 			<div class="alert">			
-				<h4>Erreur !</h>
-				<h2>Le nombre de billets doit être entre 1 et 99</h2>
+				<h3>Erreur !</h>
+				<h2>La quantité  de billets doit être un nombre entre 1 et 99</h2>
 				<br />		
 				<br />	
 				<input type='button' name='acheter' value='Page daccueil' ONCLICK="window.location.href='./'"/>
