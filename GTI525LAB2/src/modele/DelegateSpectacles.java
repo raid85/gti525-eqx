@@ -6,20 +6,22 @@ import java.util.Collection;
 
 
 public class DelegateSpectacles {
-	
-	
-	public static Collection getSpectacleCol() {
+	static modele.Collection col = new modele.Collection();
+
+	public static modele.Collection getCollection() {
+		return col.getCollection();
 		
-		return SpectaclesDAOlocal.getCollection();
+	}	
+	public static Spectacle[] getSpectacles() {
+		return col.getSpectacles() ;
+
 	}
 	
-	public static Spectacle[] obtenirSpectacles() {
-		return SpectaclesDAOlocal.getSpectacles();
-	}
+	public static Representation[] getRepresentations(int i) {
+		return col.getRepresentations(i);
 	
-	public static Representation[] obtenirRepresentation(int i) {
-		return SpectaclesDAOlocal.getRepresentations(i);
 	}
 
+		
 	
 }
