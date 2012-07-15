@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Petit servlet démontrant une façon de faire un front controller
  *
- * @author Eric Boivin
+ * @author Nicolas Brousseau
  * @version 01/28/2010
  */
 

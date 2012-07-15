@@ -17,8 +17,9 @@ import modele.Panier;
 /**
  * Classe sous-contrôleur qui exécute les opérations en rapport à l'affichage et la lecture des messages
  *
- * @author Eric Boivin
- * @version 01/29/2010
+ * @author Nicolas Brousseau
+ * @author Riad Chebli
+ * @version 07/15/2012
  */
 
 public class Controleur {
@@ -76,6 +77,6 @@ public class Controleur {
 		}
 
 		else
-			return "FUCK YOU VASCO";
+			return "";
 	}
 }
