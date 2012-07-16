@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+import modele.Client;
 import modele.DelegateSpectacles;
 import modele.Representation;
 import modele.Panier;
@@ -49,7 +50,7 @@ public class Controleur {
 
 
 			try {
-				
+
 				if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null){
 					Representation[] reps = DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
 					Representation maRepresentation = null;
@@ -63,20 +64,38 @@ public class Controleur {
 					monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
 					return "confReserv.jsp";
 				} else return "erreurBillet.jsp";
-				
+
 			} catch (NumberFormatException e){
-				
+
 				return "erreurBillet.jsp";
 
 			} 
-			
+
 
 		}
 		else if (request.getParameter("action").equals("afficherPanier")){
 			return "panier.jsp";
 		}
+		else if (request.getParameter("action").equals("preparePaiement")){
+			
+			Client c1 = new Client();
+			
+			c1.setAddrClient(request.getParameter("AddrClient"));
+			c1.setCCClient(request.getParameter("CCClient"));
+			c1.setCourrielClient(request.getParameter("CourrielClient"));
+			c1.setExpClient(request.getParameter("ExpClient"));
+			c1.setNomClient(request.getParameter("NomClient"));
+			c1.setPaysClient(request.getParameter("PaysClient"));
+			c1.setPreClient(request.getParameter("PreClient"));
+			c1.setProvinceClient(request.getParameter("ProvinceClient"));
+			c1.setVilleClient(request.getParameter("VilleClient"));
+			
+			return "confPaie.jsp";
+
+		}
 		else if (request.getParameter("action").equals("processPaiement")){
-			return "erreurBillet.jsp";
+			return "CACAPOIL";
+
 		}
 
 		else

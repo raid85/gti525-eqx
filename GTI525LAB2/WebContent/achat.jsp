@@ -34,19 +34,23 @@ Description: A two-column web design, best for your personal and business bloggi
 		<!-- start content -->
 		<div id="content">
 			<h1>Paiement</h1>
+			<form method="post" action="./">
 			<ul>
-				<li> Nom <input type='text' name='qte' value='Smith' /> </li>
-				<li> Prénom <input type='text' name='qte' value='John' /> </li>
-				<li> Courriel <input type='text' name='qte' value='john.smith@etsmtl.ca' /> </li>
-				<li> Adresse <input type='text' name='qte' value='1110 Notre-Dame' /> </li>
-				<li> Ville <input type='text' name='qte' value='Montréal' /> </li>
-				<li> Province <input type='text' name='qte' value='Québec' /> </li>
-				<li> Pays <input type='text' name='qte' value='Canada' /> </li>
-				<li> Carte de crédit <input type='text' name='qte' value='1111 2222 3333 4444 5555' /> </li>
-				<li> Expiration (MM-YY) <input type='text' name='qte' value='12-12' /> </li>
-
-			</ul>
-			<p> <input type='button' name='update' value='Payer' ONCLICK="window.location.href='confPaie.jsp'"/> <input type='button' name='update' value='Annuler' ONCLICK="window.location.href='panier.jsp'"/> </p>
+								<li>Nom : <input type="text" name="NomClient" value='Smith'></li>
+								<li>Prénom : <input type="text" name="PreClient" value='John' /></li>
+								<li>Courriel :<input type="text" name="CourrielClient" value='john.smith@etsmtl.ca' /></li>
+								<li>Adresse :<input type="text" name="AddrClient" value='1110 Notre-Dame' /></li>
+								<li>Ville :<input type="text" name="VilleClient" value='Montréal' /></li>
+								<li>Province :<input type="text" name="ProvinceClient" value='Québec' /></li>
+								<li>Pays :<input type="text" name="PaysClient" value='Canada' /></li>
+								<li>Carte de crédit :<input type="text" name="CCClient" value='1111 2222 3333 4444 5555' /></li>
+								<li>Expiration :<input type="text" name="ExpClient" value='12-12' /></li>
+								<input type="hidden" name="action" id="action" value="preparePaiement" />							
+								<p> <input type="submit" value="Payer"/> <input type='button' name='update' value='Annuler' ONCLICK="window.location.href='panier.jsp'"/> </p>
+							</ul>
+							</form>
+			
+			
 		</div>
 		<!-- end content -->
 		<!-- start sidebar -->
