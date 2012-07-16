@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import gti525.paiement.*;
 import modele.Client;
 import modele.DelegateSpectacles;
 import modele.Representation;
@@ -77,10 +77,8 @@ public class Controleur {
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("preparePaiement")){
-
+			//Il aurait fallu faire un servlet ici....
 			Client c1 = new Client();
-
-
 			c1.setAddrClient(request.getParameter("AddrClient"));			
 			c1.setCCClient(request.getParameter("CCClient"));
 			c1.setCourrielClient(request.getParameter("CourrielClient"));
@@ -90,12 +88,28 @@ public class Controleur {
 			c1.setPreClient(request.getParameter("PreClient"));
 			c1.setProvinceClient(request.getParameter("ProvinceClient"));
 			c1.setVilleClient(request.getParameter("VilleClient"));
-			request.setAttribute("Client", c1);	
+			request.setAttribute("Client", c1);
 
 			return "confPaie.jsp";
-
 		}
 		else if (request.getParameter("action").equals("processPaiement")){
+			//Il aurait fallu faire un servlet ici....
+			InformationsPaiementTO ipC = new InformationsPaiementTO () ;
+			ReponseSystemePaiementTO rsp = new ReponseSystemePaiementTO ();
+			//			ipC.setFirst_name(first_name);
+			//			ipC.setLast_name(last_name);
+			//			ipC.setAmount(amount);			
+			//			ipC.setCard_number(card_number);
+			//			ipC.setMonth(month);
+			//			ipC.setYear(year);
+			//			ipC.setSecurity_code(security_code);
+			//			ipC.setApi_key(api_key);
+			//			ipC.setOrder_id(order_id);			
+			//			ipC.setStore_id(store_id);
+			//			IPaiementDAO ipdao = null;
+			//			rsp = ipdao.effectuerPreauthorisation(ipC);
+			// ...a complèter			
+
 			return "CACAPOIL";
 
 		}
