@@ -26,6 +26,11 @@ public class DelegateSpectacles {
 		return col.getRepresentations(i);
 	
 	}
+	
+	public static Representation[] getRepresentations() {
+		return col.getRepresentations();
+	
+	}
 
 		
 	

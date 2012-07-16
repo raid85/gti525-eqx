@@ -8,6 +8,7 @@ public class Representation {
 	private Date date;
 	private int billetsDispo;
 	private double prix;
+	private int spectacle;
 	
 	public Salle getSalle() {
 		return salle;
@@ -46,6 +47,12 @@ public class Representation {
 	}
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+	public int getSpectacle() {
+		return spectacle;
+	}
+	public void setSpectacle(int spectacle) {
+		this.spectacle = spectacle;
 	}
 
 }

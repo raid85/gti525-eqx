@@ -73,6 +73,7 @@ public class Controleur {
 
 
 		}
+		
 		else if (request.getParameter("action").equals("afficherPanier")){
 			return "panier.jsp";
 		}
@@ -111,6 +112,17 @@ public class Controleur {
 			// ...a complèter			
 
 			return "CACAPOIL";
+
+		}
+		else if (request.getParameter("action").equals("changerQte")){
+			
+			if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0) {
+				Panier monPanier = (Panier)request.getSession().getAttribute("Panier");
+				//if (DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("repId")))[1].
+			}
+			
+			return "panier.jsp";
+
 
 		}
 

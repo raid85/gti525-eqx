@@ -16,6 +16,7 @@ public class Collection {
 	Representation juin11CentreBell, juin12CentreBell, juin13CentreBell, juin14Metropolis, juin15Metropolis, juin16Metropolis, juin17JDrapeau, juin18JDrapeau, juin19JDrapeau;
 	User brousseau, vasco, riad;
 	private ArrayList<Spectacle> listeSpectacles = new ArrayList<Spectacle>();
+	private ArrayList<Representation> listeRepresentations = new ArrayList<Representation>();
 	static Collection collect ;//= new Collection();
 	
 	private void createUsers(){
@@ -75,6 +76,8 @@ public class Collection {
 		juin11CentreBell.setSalle(centreBell);
 		juin11CentreBell.setPrix(60);
 		juin11CentreBell.setId(3001);
+		juin11CentreBell.setSpectacle(5001);
+		listeRepresentations.add(juin11CentreBell);
 		
 		juin12CentreBell = new Representation();
 		juin12CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
@@ -82,6 +85,8 @@ public class Collection {
 		juin12CentreBell.setSalle(centreBell);
 		juin12CentreBell.setPrix(30.30);
 		juin12CentreBell.setId(3002);
+		juin12CentreBell.setSpectacle(5002);
+		listeRepresentations.add(juin12CentreBell);
 		
 		juin13CentreBell = new Representation();
 		juin13CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
@@ -89,6 +94,8 @@ public class Collection {
 		juin13CentreBell.setSalle(centreBell);
 		juin13CentreBell.setPrix(100.12);
 		juin13CentreBell.setId(3003);
+		juin13CentreBell.setSpectacle(5003);
+		listeRepresentations.add(juin13CentreBell);
 		
 		juin14Metropolis = new Representation();
 		juin14Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
@@ -96,6 +103,8 @@ public class Collection {
 		juin14Metropolis.setSalle(metropolis);
 		juin14Metropolis.setPrix(55.50);
 		juin14Metropolis.setId(3004);
+		juin14Metropolis.setSpectacle(5001);
+		listeRepresentations.add(juin14Metropolis);
 		
 		juin15Metropolis = new Representation();
 		juin15Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
@@ -103,6 +112,8 @@ public class Collection {
 		juin15Metropolis.setSalle(metropolis);
 		juin15Metropolis.setPrix(60);
 		juin15Metropolis.setId(3005);
+		juin15Metropolis.setSpectacle(5002);
+		listeRepresentations.add(juin15Metropolis);
 		
 		juin16Metropolis = new Representation();
 		juin16Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
@@ -110,6 +121,8 @@ public class Collection {
 		juin16Metropolis.setSalle(metropolis);
 		juin16Metropolis.setPrix(123);
 		juin16Metropolis.setId(3006);
+		juin16Metropolis.setSpectacle(5003);
+		listeRepresentations.add(juin16Metropolis);
 		
 		juin17JDrapeau = new Representation();
 		juin17JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
@@ -117,6 +130,8 @@ public class Collection {
 		juin17JDrapeau.setSalle(jeanDrapeau);
 		juin17JDrapeau.setPrix(45);
 		juin17JDrapeau.setId(3007);
+		juin17JDrapeau.setSpectacle(5001);
+		listeRepresentations.add(juin17JDrapeau);
 		
 		juin18JDrapeau = new Representation();
 		juin18JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
@@ -124,6 +139,8 @@ public class Collection {
 		juin18JDrapeau.setSalle(jeanDrapeau);
 		juin18JDrapeau.setPrix(34);
 		juin18JDrapeau.setId(3008);
+		juin18JDrapeau.setSpectacle(5002);
+		listeRepresentations.add(juin18JDrapeau);
 		
 		juin19JDrapeau = new Representation();
 		juin19JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
@@ -131,6 +148,8 @@ public class Collection {
 		juin19JDrapeau.setSalle(jeanDrapeau);
 		juin19JDrapeau.setPrix(67.66);
 		juin19JDrapeau.setId(3009);
+		juin19JDrapeau.setSpectacle(5003);
+		listeRepresentations.add(juin19JDrapeau);
 		
 	}
 	
@@ -188,6 +207,13 @@ public class Collection {
         	spectacles[i] = ((Spectacle)listeSpectacles.get(i));
         }
         return spectacles;
+    }
+    public Representation[] getRepresentations (){
+    	Representation[] representations = new Representation[listeRepresentations.size()];
+        for (int i=0;i<listeSpectacles.size();i++){
+        	representations[i] = ((Representation)listeRepresentations.get(i));
+        }
+        return representations;
     }
     
     public Representation[] getRepresentations (int idSpectacle){
