@@ -54,8 +54,12 @@ public class Client {
 	public void setPaysClient(String paysClient) {
 		PaysClient = paysClient;
 	}
-	public String getCCClient() {
+	public String getCCClient() {		
 		return CCClient;
+	}
+	public String getCCs() {
+		String s = CCClient.substring(14);
+		return s;
 	}
 	public void setCCClient(String cCClient) {
 		CCClient = cCClient;

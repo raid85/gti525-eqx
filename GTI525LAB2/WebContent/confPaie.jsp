@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page import="modele.Client"%>
+<%@ page import="modele.Panier"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 
@@ -12,6 +14,9 @@ Released   : 20110315
 Description: A two-column web design, best for your personal and business blogging.
 
 -->
+<% Panier p1 = (Panier)request.getSession().getAttribute("panier"); %>
+<% Client client = (Client)request.getAttribute("Client"); %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -34,21 +39,26 @@ Description: A two-column web design, best for your personal and business bloggi
 		<!-- start content -->
 		<div id="content">
 			<div class="alert">
-				<h2>Confirmation</h2>
-					<p><b>3</b> billets pour <b>Lise Dion</b></p>
-					<p><b>3</b> billets pour <b>Elvis</b></p>
-					<p>360$</p>
-				<ul>
-					<li> Nom : Smith </li>
-					<li> Prénom : John </li>
-					<li> Courriel : john.smith@etsmtl.ca </li>
-					<li> Adresse : 1110 Notre-Dame </li>
-					<li> Ville : Montréal </li>
-					<li> Province : Québec </li>
-					<li> Pays : Canada </li>
-					<li> Carte de crédit : 1111 2222 3333 4444 5555 </li>
-					<li> Expiration : 12-12 </li>
-				</ul>
+				<h2>Confirmation</h2>					
+				<!-- start content -->
+		<div id="content">
+		        <% for (int i=0; i<p1.getPanier().length;i++){%>		             
+                    <div class="panier">                    			
+						<h5  >Nom de la salle : <i><%=p1.getPanier()[i].getRep().getSalle().getNom()%></i></h5>
+						<h5  >Date de la représentation : <i><%=p1.getPanier()[i].getRep().getDate()%></i> </h5>
+						<h5  >Nombre de billets pour cette représentation : <i><%=p1.getPanier()[i].getNbBillets()%></i> </h5>
+						<h5  >Prix total : <i><%=p1.getPanier()[i].getPrixTot() %> $ </i> </h5>
+						<h1>--------------------------------------------------------------</h1>  
+						
+						
+					</div>
+                <%}%>
+		</div>
+		<h3>Facturé à : </h3>
+                <h5  >Nom  : <i><%=client.getNomClient()%> , <%=client.getPreClient() %> </i></h5>
+				<h5  >Carte de credit # XXXX-XXXX-XXXX-<i><%=client.getCCs()%></i> </h5>
+		<!-- end content -->
+	
 				<form method="post" action="./">
 								<input type="hidden" name="action" id="action" value="processPaiement" />
 								<input type="submit" value="Soumettre">

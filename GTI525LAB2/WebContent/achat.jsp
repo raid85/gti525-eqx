@@ -43,7 +43,7 @@ Description: A two-column web design, best for your personal and business bloggi
 								<li>Ville :<input type="text" name="VilleClient" value='Montréal' /></li>
 								<li>Province :<input type="text" name="ProvinceClient" value='Québec' /></li>
 								<li>Pays :<input type="text" name="PaysClient" value='Canada' /></li>
-								<li>Carte de crédit :<input type="text" name="CCClient" value='1111 2222 3333 4444 5555' /></li>
+								<li>Carte de crédit :<input type="text" name="CCClient" value='1111 2222 3333 4444' /></li>
 								<li>Expiration :<input type="text" name="ExpClient" value='12-12' /></li>
 								<input type="hidden" name="action" id="action" value="preparePaiement" />							
 								<p> <input type="submit" value="Payer"/> <input type='button' name='update' value='Annuler' ONCLICK="window.location.href='panier.jsp'"/> </p>

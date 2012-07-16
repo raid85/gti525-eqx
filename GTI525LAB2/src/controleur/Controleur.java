@@ -77,10 +77,11 @@ public class Controleur {
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("preparePaiement")){
-			
+
 			Client c1 = new Client();
-			
-			c1.setAddrClient(request.getParameter("AddrClient"));
+
+
+			c1.setAddrClient(request.getParameter("AddrClient"));			
 			c1.setCCClient(request.getParameter("CCClient"));
 			c1.setCourrielClient(request.getParameter("CourrielClient"));
 			c1.setExpClient(request.getParameter("ExpClient"));
@@ -89,7 +90,8 @@ public class Controleur {
 			c1.setPreClient(request.getParameter("PreClient"));
 			c1.setProvinceClient(request.getParameter("ProvinceClient"));
 			c1.setVilleClient(request.getParameter("VilleClient"));
-			
+			request.setAttribute("Client", c1);	
+
 			return "confPaie.jsp";
 
 		}
