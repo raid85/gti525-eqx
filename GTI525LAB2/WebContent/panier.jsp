@@ -44,7 +44,7 @@ Description: A two-column web design, best for your personal and business bloggi
 					<form method="post" action="./">
 						<input type="hidden" name="action" id="action" value="changerQte" />
 						<input type="hidden" name="repId" id="repId" value="<%=monPanier.getPanier()[i].getRep().getId() %>" />
-						<li><a href="./?action=afficherSpectacle&spectacleId=<%=monPanier.getPanier()[i].getRep().getSpectacle()%>">IdSpectacle : <%=monPanier.getPanier()[i].getRep().getSpectacle() %> [Prix Unitaire : <%=monPanier.getPanier()[i].getRep().getPrix()%>$]</a> <input type="submit" value="ChangerQuantité"> <input type='text' name='qte' value='<%=monPanier.getPanier()[i].getNbBillets() %>' /> Sous-Total Ligne : <%=monPanier.getPanier()[i].getPrixTot()%>$</li>
+						<li><a href="./?action=afficherSpectacle&spectacleId=<%=monPanier.getPanier()[i].getRep().getSpectacle()%>">IdSpectacle : <%=monPanier.getPanier()[i].getRep().getSpectacle() %> [Prix Unitaire : <%=monPanier.getPanier()[i].getRep().getPrix()%>$]</a> <input type='text' size="2" maxlength="2" name='qte' value='<%=monPanier.getPanier()[i].getNbBillets() %>' /> <input type="submit" value="ChangerQuantité">  Sous-Total Ligne : <%=monPanier.getPanier()[i].getPrixTot()%>$</li>
 					</form>
 					<%}%>
 					Total Panier: <%= monPanier.getTotal() %>$
