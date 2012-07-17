@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import gti525.paiement.*;
 import modele.Client;
+import modele.DAOPaiementStub;
 import modele.DelegateSpectacles;
 import modele.LignePanier;
 import modele.Representation;
@@ -75,53 +76,54 @@ public class Controleur {
 
 
 		}
-		
+
 		else if (request.getParameter("action").equals("afficherPanier")){
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("preparePaiement")){
-			
+
 			Client monClient = new Client();
 			monClient.setAddrClient(request.getParameter("AddrClient"));			
 			monClient.setCCClient(request.getParameter("CCClient"));
 			monClient.setCourrielClient(request.getParameter("CourrielClient"));
-			monClient.setExpClient(request.getParameter("ExpClient"));
+			monClient.setExpMClient(request.getParameter("ExpMClient"));
+			monClient.setExpAClient(request.getParameter("ExpAClient"));
 			monClient.setNomClient(request.getParameter("NomClient"));
 			monClient.setPaysClient(request.getParameter("PaysClient"));
 			monClient.setPreClient(request.getParameter("PreClient"));
 			monClient.setProvinceClient(request.getParameter("ProvinceClient"));
 			monClient.setVilleClient(request.getParameter("VilleClient"));
+			monClient.setcS(request.getParameter("CsClient"));
 			request.setAttribute("Client", monClient);
 
 			return "confPaie.jsp";
 		}
 		else if (request.getParameter("action").equals("processPaiement")){
 			//Creation des objets requis par le DAO de paiement
-			InformationsPaiementTO ipC = new InformationsPaiementTO () ;
-			ReponseSystemePaiementTO rsp = new ReponseSystemePaiementTO ();
+			InformationsPaiementTO ipC = new InformationsPaiementTO () ;			
 			//On recupere les infos des beans dans la requete
 			Client monClient = (Client) request.getAttribute("Client");
 			Panier monPanier = (Panier) request.getAttribute("panier");
 			//On remplit l'objet requis par le service de transactions
-						ipC.setFirst_name(monClient.getPreClient());
-						ipC.setLast_name(monClient.getNomClient());
-						ipC.setAmount(BigDecimal.valueOf(monPanier.getTotal()));			
-						ipC.setCard_number(Long.valueOf(monClient.getCCClient()));
-//						ipC.setMonth(monClient.get);
-//						ipC.setYear(year);
-//						ipC.setSecurity_code(security_code);
-//						ipC.setApi_key(api_key);
-//						ipC.setOrder_id(order_id);			
-//						ipC.setStore_id(store_id);
-			//			IPaiementDAO ipdao = null;
-			//			rsp = ipdao.effectuerPreauthorisation(ipC);
-			// ...a compl�ter			
+			ipC.setFirst_name(monClient.getPreClient());
+			ipC.setLast_name(monClient.getNomClient());
+			ipC.setAmount(BigDecimal.valueOf(monPanier.getTotal()));			
+			ipC.setCard_number(Long.valueOf(monClient.getCCClient()));
+			ipC.setMonth(Integer.valueOf(monClient.getExpMClient()));
+			ipC.setYear(Integer.valueOf(monClient.getExpAClient()));
+			ipC.setSecurity_code(Integer.valueOf(monClient.getcS()));
+			//						ipC.setApi_key(api_key);
+			//						ipC.setOrder_id(order_id);			
+			//						ipC.setStore_id(store_id);
+			DAOPaiementStub stubDAO = new DAOPaiementStub() ;
+			stubDAO.effectuerPreauthorisation(ipC);
+
 
 			return "CACAPOIL";
 
 		}
 		else if (request.getParameter("action").equals("changerQte")){
-			
+
 			if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0) {
 				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 				int repId = Integer.parseInt(request.getParameter("repId"));
@@ -133,7 +135,7 @@ public class Controleur {
 					maLigne.setNbBillets(nouveauNbBillets);
 				}
 			}
-			
+
 			return "panier.jsp";
 
 

@@ -11,7 +11,10 @@ public class Client {
 	private String ProvinceClient ;
 	private String PaysClient ;
 	private String CCClient ;
-	private String ExpClient ;
+	private String ExpAClient ;
+	private String ExpMClient ;
+	private String cS ;
+	
 	public String getNomClient() {
 		return NomClient;
 	}
@@ -64,12 +67,25 @@ public class Client {
 	public void setCCClient(String cCClient) {
 		CCClient = cCClient;
 	}
-	public String getExpClient() {
-		return ExpClient;
+	public String getExpAClient() {
+		return ExpAClient;
 	}
-	public void setExpClient(String expClient) {
-		ExpClient = expClient;
+	public void setExpAClient(String expAClient) {
+		ExpAClient = expAClient;
 	}
+	public String getExpMClient() {
+		return ExpMClient;
+	}
+	public void setExpMClient(String expMClient) {
+		ExpMClient = expMClient;
+	}
+	public String getcS() {
+		return cS;
+	}
+	public void setcS(String cS) {
+		this.cS = cS;
+	}
+
 	
 
 
