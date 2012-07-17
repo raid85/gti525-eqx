@@ -1,6 +1,8 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 //import sun.nio.ch.SocketOpts.IP;
 
@@ -8,6 +10,10 @@ public class Panier {
 	private ArrayList<LignePanier> monPanier = new ArrayList<LignePanier>();
 	private String id;
 	private String userID;	
+	private int sessionTimeout=0;
+	private Date d = new Date();
+	private static int TEMPS_MAX_SESSION = 20;
+	
 	
 	public Panier(String pUserID){
 		setId(pUserID);
@@ -32,8 +38,17 @@ public class Panier {
 	}
 	
 	public void ajouterLigne(Representation pRep, int pNbBillets){
+		if(monPanier.size()<=0 ){
+			d = new Date();
+			System.out.println("Panier pas vide");
+			System.out.println(d.getMinutes());
+			sessionTimeout = d.getMinutes() + TEMPS_MAX_SESSION;
+			System.out.println("Initialisation :" + sessionTimeout);
+			}
+		if(checkTimeOut()){
 		monPanier.add(new LignePanier(pRep, pNbBillets));
 		pRep.reserverBillets(pNbBillets);
+		}else{ajouterLigne(pRep, pNbBillets);}
 	}
 	
 	public LignePanier[] getPanier(){
@@ -74,6 +89,22 @@ public class Panier {
 		}
 		return cash;
 	}
+
+	public boolean checkTimeOut(){
+		Date dTimeout = new Date();
+		System.out.println("on valide");
+		System.out.println(sessionTimeout);
+		int timeout = dTimeout.getMinutes();
+		System.out.println(timeout);
+		if(timeout>=sessionTimeout){
+			System.out.println("Timeout : " + sessionTimeout + "Temps actuel:"+ timeout);
+			viderPanier();
+			sessionTimeout=0;
+			return false;
+		}
+		return true;
+	}
+
 	
 	public LignePanier getLignePanier(int idRep){
 		int i = 0;
@@ -85,6 +116,7 @@ public class Panier {
 		}
 		return null;
 	}
+
 
 
 }
