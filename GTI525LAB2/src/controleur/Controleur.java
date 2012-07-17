@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import gti525.paiement.*;
 import modele.Client;
 import modele.DelegateSpectacles;
+import modele.LignePanier;
 import modele.Representation;
 import modele.Panier;
 
@@ -117,8 +118,15 @@ public class Controleur {
 		else if (request.getParameter("action").equals("changerQte")){
 			
 			if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0) {
-				Panier monPanier = (Panier)request.getSession().getAttribute("Panier");
-				//if (DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("repId")))[1].
+				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+				int repId = Integer.parseInt(request.getParameter("repId"));
+				LignePanier maLigne = monPanier.getLignePanier(repId);
+				int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
+				if (maLigne.getRep().getBilletsDispo() + monPanier.getLignePanier(repId).getNbBillets() - nouveauNbBillets >= 0){
+					maLigne.getRep().retournerBillet(maLigne.getNbBillets());
+					maLigne.getRep().reserverBillets(nouveauNbBillets);
+					maLigne.setNbBillets(nouveauNbBillets);
+				}
 			}
 			
 			return "panier.jsp";

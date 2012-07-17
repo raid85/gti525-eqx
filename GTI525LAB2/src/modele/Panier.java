@@ -74,6 +74,17 @@ public class Panier {
 		}
 		return cash;
 	}
+	
+	public LignePanier getLignePanier(int idRep){
+		int i = 0;
+		while (i<monPanier.size()){
+			if (monPanier.get(i).getRep().getId() == idRep)
+				return monPanier.get(i);
+			i++;
+			
+		}
+		return null;
+	}
 
 
 }
