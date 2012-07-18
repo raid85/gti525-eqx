@@ -61,7 +61,7 @@ public class Controleur {
 
 			try {
 
-				if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null){
+				if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null && Integer.parseInt(request.getParameter("qte")) <= 6){
 					Representation[] reps = DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
 					Representation maRepresentation = null;
 					int i = 0;
@@ -70,9 +70,11 @@ public class Controleur {
 							maRepresentation = reps[i];
 						i++;
 					}
-					//Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-					monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
-					return "confReserv.jsp";
+					if (monPanier.getTotalBillets() + Integer.parseInt(request.getParameter("qte")) <= 6){
+						monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
+						return "confReserv.jsp";
+					}
+					else return "erreurBillet.jsp";
 				} else return "erreurBillet.jsp";
 
 			} catch (NumberFormatException e){

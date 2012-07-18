@@ -15,6 +15,7 @@ public class Panier {
 	private Date d = new Date();
 	private int sessionTimeoutH=d.getHours();
 	private static int TEMPS_MAX_SESSION = 20;
+	private int totalBillets =0;
 	
 	
 	public Panier(String pUserID){
@@ -56,6 +57,7 @@ public class Panier {
 		if(checkTimeOut()){
 		monPanier.add(new LignePanier(pRep, pNbBillets));
 		pRep.reserverBillets(pNbBillets);
+		totalBillets += pNbBillets;
 		}else{ajouterLigne(pRep, pNbBillets);}
 	}
 	
@@ -126,6 +128,14 @@ public class Panier {
 			
 		}
 		return null;
+	}
+
+	public int getTotalBillets() {
+		return totalBillets;
+	}
+
+	public void setTotalBillets(int totalBillet) {
+		this.totalBillets = totalBillet;
 	}
 
 
