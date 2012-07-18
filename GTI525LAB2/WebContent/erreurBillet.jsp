@@ -24,7 +24,7 @@
 		<div id="content">
 			<div class="alert">			
 				<h3>Erreur !</h>
-				<h2>La quantité  de billets doit être un nombre entre 1 et 99</h2>
+				<h2>La quantité  de billets doit être un nombre et le total de billets dans le panier est 6 billets</h2>
 				<br />		
 				<br />	
 				<input type='button' name='acheter' value='Page daccueil' ONCLICK="window.location.href='./'"/>
