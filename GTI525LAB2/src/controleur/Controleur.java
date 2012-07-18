@@ -160,14 +160,17 @@ public class Controleur {
 
 			if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0) {
 				//Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-				int repId = Integer.parseInt(request.getParameter("repId"));
-				LignePanier maLigne = monPanier.getLignePanier(repId);
-				int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
-				if (maLigne.getRep().getBilletsDispo() + monPanier.getLignePanier(repId).getNbBillets() - nouveauNbBillets >= 0){
-					maLigne.getRep().retournerBillet(maLigne.getNbBillets());
-					maLigne.getRep().reserverBillets(nouveauNbBillets);
-					maLigne.setNbBillets(nouveauNbBillets);
+				if (monPanier.getTotalBillets() + Integer.parseInt(request.getParameter("qte")) <= 6){
+					int repId = Integer.parseInt(request.getParameter("repId"));
+					LignePanier maLigne = monPanier.getLignePanier(repId);
+					int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
+					if (maLigne.getRep().getBilletsDispo() + monPanier.getLignePanier(repId).getNbBillets() - nouveauNbBillets >= 0){
+						maLigne.getRep().retournerBillet(maLigne.getNbBillets());
+						maLigne.getRep().reserverBillets(nouveauNbBillets);
+						maLigne.setNbBillets(nouveauNbBillets);
+					}
 				}
+				else return "erreurBillet.jsp";
 			}
 
 			return "panier.jsp";
