@@ -152,7 +152,7 @@ Description: A two-column web design, best for your personal and business bloggi
 						return false;
 					}
 
-					if ((ExpMClient.value == null) || (ExpMClient.value == "" || parseInt(ExpMclient.value)<0 || parseInt(ExpMclient.value)>12)) {
+					if ((ExpMClient.value == null) || (ExpMClient.value == "" || parseInt(ExpMClient.value)<0 || parseInt(ExpMClient.value)>12)) {
 						alert("Veuillez un mois d'expiration");
 						ExpMClient.focus();
 						return false;
@@ -163,7 +163,7 @@ Description: A two-column web design, best for your personal and business bloggi
 						ExpMClient.focus();
 						return false
 					}
-					if ((ExpAClient.value == null) || (ExpAClient.value == ""|| parseInt(ExpAclient.value)<0 || parseInt(ExpAclient.value)>99)) {
+					if ((ExpAClient.value == null) || (ExpAClient.value == ""|| parseInt(ExpAClient.value)<0 || parseInt(ExpAClient.value)>99)) {
 						alert("Veuillez une année d'expiration");
 						ExpAClient.focus();
 						return false
