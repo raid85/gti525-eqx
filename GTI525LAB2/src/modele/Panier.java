@@ -12,7 +12,7 @@ public class Panier {
 	private String userID;	
 	private int sessionTimeout=0;
 	private Date d = new Date();
-	private static int TEMPS_MAX_SESSION = 20;
+	private static int TEMPS_MAX_SESSION = 1;
 	
 	
 	public Panier(String pUserID){
@@ -96,7 +96,7 @@ public class Panier {
 		System.out.println(sessionTimeout);
 		int timeout = dTimeout.getMinutes();
 		System.out.println(timeout);
-		if(timeout>=sessionTimeout){
+		if(sessionTimeout!=0 && timeout>=sessionTimeout){
 			System.out.println("Timeout : " + sessionTimeout + "Temps actuel:"+ timeout);
 			viderPanier();
 			sessionTimeout=0;
