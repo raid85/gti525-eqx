@@ -135,8 +135,8 @@ Description: A two-column web design, best for your personal and business bloggi
 						return false
 					}
 
-					if ((PaysClient.value == null) || (PaysClient.value == "")) {
-						alert("Veuillez inscrire un pays");
+					if ((PaysClient.value == null) || (PaysClient.value == "")||(PaysClient.value=="Canada")) {
+						alert("Vous devez etre au Canada");
 						PaysClient.focus();
 						return false;
 					}
