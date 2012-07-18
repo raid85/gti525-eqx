@@ -67,6 +67,7 @@ Description: A two-column web design, best for your personal and business bloggi
 					var CCClient = document.form.CCClient;
 					var ExpMClient = document.form.ExpMClient;
 					var ExpAClient = document.form.ExpAClient;
+					var SecClient = document.form.SecClient;
 
 					if ((NomClient.value == null) || (NomClient.value == "")) {
 						alert("Veuillez inscrire votre nom")
@@ -161,18 +162,23 @@ Description: A two-column web design, best for your personal and business bloggi
 						ExpMClient.value = "";
 						alert("Format du mois d'expiration invalide");
 						ExpMClient.focus();
-						return false
+						return false;
 					}
 					if ((ExpAClient.value == null) || (ExpAClient.value == ""|| parseInt(ExpAClient.value)<0 || parseInt(ExpAClient.value)>99)) {
 						alert("Veuillez une année d'expiration");
 						ExpAClient.focus();
-						return false
+						return false;
 					}
 					if (isInteger(ExpAClient.value) == false) {
 						ExpAClient.value = "";
 						alert("Format de l'année d'expiration invalide");
 						ExpAClient.focus();
-						return false
+						return false;
+					}
+					if (!/^[0-9][0-9][0-9]$/.test(SecClient.value)) {
+						alert("Le code de sécurité est 3 chiffres");
+						SecClient.focus();
+						return false;
 					}
 
 					return true
@@ -198,7 +204,7 @@ Description: A two-column web design, best for your personal and business bloggi
 							value='Quebec' /></li>
 						<li>Pays :<input type="text" name="PaysClient" value='Canada' /></li>
 						<li>Carte de crédit :<input type="text" name="CCClient"
-							value='' /></li>
+							value='1324-1234-1234-1234' /></li>
 						<li>Mois Expiration :<input type="text" name="ExpMClient"
 							value='12' /></li>
 						<li>Année Expiration :<input type="text" name="ExpAClient"
