@@ -146,7 +146,7 @@ Description: A two-column web design, best for your personal and business bloggi
 						PaysClient.focus();
 						return false;
 					}
-					if ((CCClient.value == null) || (CCClient.value == "") || !CCClient.value.match("/[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/")) {
+					if ((CCClient.value == null) || (CCClient.value == "") || !CCClient.value.match("\b\d{13,16}\b")) {
 						alert("Veuillez un numéro de carte de crédit de 16 chiffres dans le format suivant XXXX-XXXX-XXXX-XXXX");
 						CCClient.focus();
 						return false;
