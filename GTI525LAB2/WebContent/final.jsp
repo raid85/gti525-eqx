@@ -34,24 +34,11 @@ Description: A two-column web design, best for your personal and business bloggi
 		<!-- start content -->
 		<div id="content">
 			<div class="alert">
-				<h2>Félicitation !!</h2>
-					<p> <h3> Numéro de confirmation : <b>1234567890</b> </h3> </p>
-				
-					<p><b>3</b> billets pour <b>Lise Dion</b></p>
-					<p><b>3</b> billets pour <b>Elvis</b></p>
-					<p>360$</p>
-				<ul>
-					<li> Nom : Smith </li>
-					<li> Prénom : John </li>
-					<li> Courriel : john.smith@etsmtl.ca </li>
-					<li> Adresse : 1110 Notre-Dame </li>
-					<li> Ville : Montréal </li>
-					<li> Province : Québec </li>
-					<li> Pays : Canada </li>
-					<li> Carte de crédit : 1111 2222 3333 4444 5555 </li>
-					<li> Expiration : 12-12 </li>
-				</ul>
-				<p> <input type='button' name='update' value='Page daccueil' ONCLICK="window.location.href='./'"/> </p>
+				<h2>Felicitations le paiement a ete effectue avec succes !!</h2>
+				<h4> Numero de confirmation : 1234 </h4>
+					
+				<input type="hidden" id="action" name ="action" value="home" />							
+				<input type="submit" value="OK"/>
 			</div>
 		</div>
 		<!-- end content -->
