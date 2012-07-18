@@ -31,13 +31,20 @@ public class Controleur {
 	private static final long serialVersionUID = 1391688820894808468L;
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
+		
+		//Creation du panier
 		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-		//Collection collect = Collection.getCollection();
+		
+		//Creation des objets requis par le DAO de paiement
+		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
+		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
+		DAOPaiementStub stubDAO = new DAOPaiementStub() ;
+	
 		if(monPanier.checkTimeOut()==false){
 			//return "pisseuse";
 			System.out.println("Vidage");
 		}
-			
+
 		if (request.getParameterMap().size() < 1){
 
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
@@ -67,7 +74,7 @@ public class Controleur {
 							maRepresentation = reps[i];
 						i++;
 					}
-					//Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+					
 					monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
 					return "confReserv.jsp";
 				} else return "erreurBillet.jsp";
@@ -101,15 +108,8 @@ public class Controleur {
 			monClient.setVilleClient(request.getParameter("VilleClient"));
 			monClient.setcS(request.getParameter("CsClient"));
 			request.setAttribute("Client", monClient);
-
-			return "confPaie.jsp";
-		}
-		else if (request.getParameter("action").equals("processPaiement")){
-			//Creation des objets requis par le DAO de paiement
-			InformationsPaiementTO ipC = new InformationsPaiementTO () ;			
-			//On recupere les infos des beans dans la requete
-			Client monClient = (Client) request.getAttribute("Client");
-		//	Panier monPanier = (Panier) request.getAttribute("panier");
+			
+	
 			//On remplit l'objet requis par le service de transactions
 			ipC.setFirst_name(monClient.getPreClient());
 			ipC.setLast_name(monClient.getNomClient());
@@ -118,14 +118,34 @@ public class Controleur {
 			ipC.setMonth(Integer.valueOf(monClient.getExpMClient()));
 			ipC.setYear(Integer.valueOf(monClient.getExpAClient()));
 			ipC.setSecurity_code(Integer.valueOf(monClient.getcS()));
-			//						ipC.setApi_key(api_key);
-			//						ipC.setOrder_id(order_id);			
-			//						ipC.setStore_id(store_id);
-			DAOPaiementStub stubDAO = new DAOPaiementStub() ;
-			stubDAO.effectuerPreauthorisation(ipC);
+			ipC.setApi_key(null);
+			ipC.setOrder_id((Long) null);			
+			ipC.setStore_id((Integer) null);
+			
+			rspPre = stubDAO.effectuerPreauthorisation(ipC);
 
+			return "confPaie.jsp";
+		}
+		else if (request.getParameter("action").equals("processPaiement")){			
+			
+			//Si la preauthorisation a passee...(-1) est fictif)
+			if(rspPre.getCode() != -1){
+			
+			//On effectue l approbation de la transaction				
+			RequeteAuthorisationTO rqAut = new RequeteAuthorisationTO ();
+			rqAut.setTransaction_id(rspPre.getTransactionId());
+			rqAut.setApi_key(ipC.getApi_key());
+			rqAut.setStore_id(ipC.getStore_id());
+			ReponseSystemePaiementTO rspFinal = stubDAO.approuverTransaction(rqAut);
+			
+			if (rspFinal.getMessage().compareTo("Passed")==0){
+				return "final.jsp" ;
+			}
+			else return "erreurPaiement.jsp";
+			}
+			else return "erreurPaiement.jsp";
 
-			return "CACAPOIL";
+			
 
 		}
 		else if (request.getParameter("action").equals("changerQte")){
