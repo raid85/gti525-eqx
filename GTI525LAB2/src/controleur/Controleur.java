@@ -38,12 +38,12 @@ public class Controleur {
 		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
 		DAOPaiementStub stubDAO = new DAOPaiementStub() ;
 		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
-	
-		if(monPanier.checkTimeOut()==true){
-			//return "pisseuse";
-			System.out.println("Vidage");
-		}
-			
+		//monPanier.checkTimeOut();
+//	
+//		if(monPanier.checkTimeOut()==false){
+//		 return "erreur.jsp";
+//		}
+		
 		if (request.getParameterMap().size() < 1){
 
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());

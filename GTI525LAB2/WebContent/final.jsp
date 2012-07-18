@@ -37,8 +37,10 @@ Description: A two-column web design, best for your personal and business bloggi
 				<h2>Felicitations le paiement a ete effectue avec succes !!</h2>
 				<h4> Numero de confirmation : 1234 </h4>
 					
-				<input type="hidden" id="action" name ="action" value="home" />							
-				<input type="submit" value="OK"/>
+				<form method="post" action="./">
+								<input type="hidden" name="action" id="action" value="home" />
+								<input type="submit" align="Center" value="Ok">
+							</form>
 			</div>
 		</div>
 		<!-- end content -->
