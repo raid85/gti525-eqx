@@ -51,7 +51,7 @@ Description: A two-column web design, best for your personal and business bloggi
 					<li> Carte de crédit : 1111 2222 3333 4444 5555 </li>
 					<li> Expiration : 12-12 </li>
 				</ul>
-				<p> <input type='button' name='update' value='Page daccueil' ONCLICK="window.location.href='index.jsp'"/> </p>
+				<p> <input type='button' name='update' value='Page daccueil' ONCLICK="window.location.href='./'"/> </p>
 			</div>
 		</div>
 		<!-- end content -->
