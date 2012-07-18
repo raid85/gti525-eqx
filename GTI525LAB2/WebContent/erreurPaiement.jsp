@@ -24,7 +24,7 @@
 		<div id="content">
 			<div class="alert">			
 				<h3>Erreur !</h>
-				<h2>Une erreur est survenur lors de l operation de paiement</h2>
+				<h2>Une erreur est survenue lors de votre paiement</h2>
 				<br />		
 				<br />	
 				<input type='button' name='acheter' value='Page daccueil' ONCLICK="window.location.href='./'"/>
