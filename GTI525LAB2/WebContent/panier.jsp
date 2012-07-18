@@ -51,7 +51,10 @@ Description: A two-column web design, best for your personal and business bloggi
 					<%}%>
 				</ul>
 			
-			<p> <input type='button' name='update' value='Paiement' ONCLICK="window.location.href='achat.jsp'"/> </p>
+			<p> <form method="post" action="./">
+			<input type="hidden" name="action" id="action" value="payer" />
+					<input type='submit' name='Paiement' value='Paiement'/> </p>
+				</form>
 		</div>
 		<!-- end content -->
 		<!-- start sidebar -->

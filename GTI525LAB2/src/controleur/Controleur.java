@@ -91,6 +91,11 @@ public class Controleur {
 			monPanier.checkTimeOut();
 			return "panier.jsp";
 		}
+		else if (request.getParameter("action").equals("payer")){
+			//monpanier = (Panier)request.getSession().getAttribute("panier");
+			monPanier.checkTimeOut();
+			return "achat.jsp";
+		}
 		else if (request.getParameter("action").equals("preparePaiement")){
 
 			Client monClient = new Client();
