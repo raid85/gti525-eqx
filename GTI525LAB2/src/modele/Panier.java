@@ -10,7 +10,8 @@ public class Panier {
 	private ArrayList<LignePanier> monPanier = new ArrayList<LignePanier>();
 	private String id;
 	private String userID;	
-	private int sessionTimeout=0;
+	private int sessionTimeoutM=0;
+	private int sessionTimeoutH=-1;
 	private Date d = new Date();
 	private static int TEMPS_MAX_SESSION = 1;
 	
@@ -42,8 +43,13 @@ public class Panier {
 			d = new Date();
 			System.out.println("Panier pas vide");
 			System.out.println(d.getMinutes());
-			sessionTimeout = d.getMinutes() + TEMPS_MAX_SESSION;
-			System.out.println("Initialisation :" + sessionTimeout);
+			sessionTimeoutH = d.getHours();
+			
+			sessionTimeoutM = d.getMinutes();
+			if(sessionTimeoutM > 60 - TEMPS_MAX_SESSION){
+				sessionTimeoutM = sessionTimeoutM - TEMPS_MAX_SESSION;
+			}else{sessionTimeoutM = sessionTimeoutM + TEMPS_MAX_SESSION;}
+			System.out.println("Initialisation :" + sessionTimeoutM);
 			}
 		if(checkTimeOut()){
 		monPanier.add(new LignePanier(pRep, pNbBillets));
@@ -93,15 +99,18 @@ public class Panier {
 	public boolean checkTimeOut(){
 		Date dTimeout = new Date();
 		System.out.println("on valide");
-		System.out.println(sessionTimeout);
-		int timeout = dTimeout.getMinutes();
-		System.out.println(timeout);
-		if(sessionTimeout!=0 && timeout>=sessionTimeout){
-			System.out.println("Timeout : " + sessionTimeout + "Temps actuel:"+ timeout);
-			viderPanier();
-			sessionTimeout=0;
+		System.out.println(sessionTimeoutM);
+		int timeoutM = dTimeout.getMinutes();
+		int timeoutH = dTimeout.getHours();
+		System.out.println(timeoutM);
+		if(sessionTimeoutH == timeoutH){
+			if(sessionTimeoutM!=-1 && timeoutM>=sessionTimeoutM){
+				System.out.println("Timeout : " + sessionTimeoutM + "Temps actuel:"+ timeoutM);
+				viderPanier();
+				sessionTimeoutM=-1;
 			return false;
-		}
+			}		
+		}else if(sessionTimeoutH < timeoutH){return false;}
 		return true;
 	}
 
