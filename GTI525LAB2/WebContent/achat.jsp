@@ -105,7 +105,7 @@ Description: A two-column web design, best for your personal and business bloggi
 
 					if ((AddrClient.value == null) || (AddrClient.value == "")) {
 						alert("Veuillez inscrire une adresse");
-						add.focus();
+						AddrClient.focus();
 						return false;
 					}
 
