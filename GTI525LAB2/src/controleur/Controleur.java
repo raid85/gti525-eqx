@@ -39,10 +39,10 @@ public class Controleur {
 		DAOPaiementStub stubDAO = new DAOPaiementStub() ;
 		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
 	
-//		if(monPanier.checkTimeOut()==true){
-//			//return "pisseuse";
-//			System.out.println("Vidage");
-//		}
+		if(monPanier.checkTimeOut()==true){
+			//return "pisseuse";
+			System.out.println("Vidage");
+		}
 			
 		if (request.getParameterMap().size() < 1){
 
@@ -88,8 +88,8 @@ public class Controleur {
 		}
 
 		else if (request.getParameter("action").equals("afficherPanier")){
-			Panier monpanier = (Panier)request.getSession().getAttribute("panier");
-			monpanier.checkTimeOut();
+			//monpanier = (Panier)request.getSession().getAttribute("panier");
+			monPanier.checkTimeOut();
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("preparePaiement")){
@@ -167,6 +167,7 @@ public class Controleur {
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("home")){
+			System.out.println("cacapute");
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
 			return "spectacles.jsp";
 		}
