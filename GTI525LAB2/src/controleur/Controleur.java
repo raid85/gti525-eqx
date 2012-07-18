@@ -31,9 +31,13 @@ public class Controleur {
 	private static final long serialVersionUID = 1391688820894808468L;
 
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
-
+		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 		//Collection collect = Collection.getCollection();
-
+		if(monPanier.checkTimeOut()==false){
+			//return "pisseuse";
+			System.out.println("Vidage");
+		}
+			
 		if (request.getParameterMap().size() < 1){
 
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
@@ -63,7 +67,7 @@ public class Controleur {
 							maRepresentation = reps[i];
 						i++;
 					}
-					Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+					//Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 					monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
 					return "confReserv.jsp";
 				} else return "erreurBillet.jsp";
@@ -78,6 +82,8 @@ public class Controleur {
 		}
 
 		else if (request.getParameter("action").equals("afficherPanier")){
+			Panier monpanier = (Panier)request.getSession().getAttribute("panier");
+			monpanier.checkTimeOut();
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("preparePaiement")){
@@ -103,7 +109,7 @@ public class Controleur {
 			InformationsPaiementTO ipC = new InformationsPaiementTO () ;			
 			//On recupere les infos des beans dans la requete
 			Client monClient = (Client) request.getAttribute("Client");
-			Panier monPanier = (Panier) request.getAttribute("panier");
+		//	Panier monPanier = (Panier) request.getAttribute("panier");
 			//On remplit l'objet requis par le service de transactions
 			ipC.setFirst_name(monClient.getPreClient());
 			ipC.setLast_name(monClient.getNomClient());
@@ -125,7 +131,7 @@ public class Controleur {
 		else if (request.getParameter("action").equals("changerQte")){
 
 			if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0) {
-				Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+				//Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 				int repId = Integer.parseInt(request.getParameter("repId"));
 				LignePanier maLigne = monPanier.getLignePanier(repId);
 				int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
