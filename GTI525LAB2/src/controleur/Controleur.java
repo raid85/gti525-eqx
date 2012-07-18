@@ -34,6 +34,7 @@ public class Controleur {
 		
 		
 		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
+		
 		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
 		DAOPaiementStub stubDAO = new DAOPaiementStub() ;
 		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
