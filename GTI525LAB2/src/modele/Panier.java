@@ -14,7 +14,7 @@ public class Panier {
 	
 	private Date d = new Date();
 	private int sessionTimeoutH=d.getHours();
-	private static int TEMPS_MAX_SESSION = 2;
+	private static int TEMPS_MAX_SESSION = 20;
 	private int totalBillets =0;
 	
 	
