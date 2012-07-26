@@ -28,11 +28,11 @@ public class Panier {
 		setUserID(pUserID);
 	}	
 	
-	public Panier(Representation pRep, String pId, String pUserID){
-		setId(pId);
-		setUserID(pUserID);
-		monPanier.add(new LignePanier(pRep,1));
-	}
+//	public Panier(Representation pRep, String pId, String pUserID){
+//		setId(pId);
+//		setUserID(pUserID);
+//		monPanier.add(new LignePanier(pRep,1));
+//	}
 	
 	public Panier(Representation pRep, int pNbBillets, String pId, String pUserID){
 		setId(pId);
@@ -41,30 +41,37 @@ public class Panier {
 	}
 	
 	public void ajouterLigne(Representation pRep, int pNbBillets){
-		if(monPanier.size()<=0 ){
+		if(totalBillets <= 0 ){
 			d = new Date();
-//			System.out.println("Panier pas vide");
-//			System.out.println(d.getMinutes());
+			//			System.out.println("Panier pas vide");
+			//			System.out.println(d.getMinutes());
 			sessionTimeoutH = d.getHours();
-			
+
 			sessionTimeoutM = d.getMinutes();
 			if(sessionTimeoutM > 60 - TEMPS_MAX_SESSION){
 				sessionTimeoutM = sessionTimeoutM - TEMPS_MAX_SESSION;
 				sessionTimeoutH = d.getHours() + 1;
 			}else{sessionTimeoutM = sessionTimeoutM + TEMPS_MAX_SESSION;}
-//			System.out.println("Initialisation :" + sessionTimeoutM);
-			}
+			//			System.out.println("Initialisation :" + sessionTimeoutM);
+		}
 		if(checkTimeOut()){
-		monPanier.add(new LignePanier(pRep, pNbBillets));
-		pRep.reserverBillets(pNbBillets);
-		totalBillets += pNbBillets;
-		}else{ajouterLigne(pRep, pNbBillets);}
+			monPanier.add(new LignePanier(pRep, pNbBillets));
+			pRep.reserverBillets(pNbBillets);
+			totalBillets += pNbBillets;
+		}
+		else{ajouterLigne(pRep, pNbBillets);}
 	}
 	
 	public LignePanier[] getPanier(){
 		LignePanier[] panier = new LignePanier[monPanier.size()];
 		for (int i=0;i<monPanier.size();i++){
-        	panier[i] = ((LignePanier)monPanier.get(i));
+			if (monPanier.get(i).getNbBillets() > 0)
+				panier[i] = ((LignePanier)monPanier.get(i));
+			else
+			{
+				monPanier.remove(i);
+				i--;
+			}
         }
         return panier;
 	}

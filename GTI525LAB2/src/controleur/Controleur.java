@@ -1,5 +1,9 @@
 package controleur;
 
+import gti525.paiement.InformationsPaiementTO;
+import gti525.paiement.ReponseSystemePaiementTO;
+import gti525.paiement.RequeteAuthorisationTO;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -10,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import gti525.paiement.*;
 import modele.Client;
 import modele.DAOPaiementStub;
 import modele.DelegateSpectacles;
@@ -158,13 +161,26 @@ public class Controleur {
 		}
 		else if (request.getParameter("action").equals("changerQte")){
 			try {
-				if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && Integer.parseInt(request.getParameter("repId")) > 0 && Integer.parseInt(request.getParameter("qte")) > 0 && monPanier.getTotalBillets() + Integer.parseInt(request.getParameter("qte")) <= 6)  {
+				
+				if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && request.getParameter("qte") != null && request.getParameter("qte").matches("[0-9]*") && Integer.parseInt(request.getParameter("qte")) >= 0)  {
+					
 					int repId = Integer.parseInt(request.getParameter("repId"));
 					LignePanier maLigne = monPanier.getLignePanier(repId);
 					int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
-					if (maLigne.getRep().getBilletsDispo() + monPanier.getLignePanier(repId).getNbBillets() - nouveauNbBillets >= 0){
+					
+					if (nouveauNbBillets < maLigne.getNbBillets()){
+						monPanier.setTotalBillets(monPanier.getTotalBillets() - maLigne.getNbBillets());
 						maLigne.getRep().retournerBillet(maLigne.getNbBillets());
 						maLigne.getRep().reserverBillets(nouveauNbBillets);
+						monPanier.setTotalBillets(monPanier.getTotalBillets() + nouveauNbBillets);
+						maLigne.setNbBillets(nouveauNbBillets);
+						
+					}
+					else if ((maLigne.getRep().getBilletsDispo() + maLigne.getNbBillets() - nouveauNbBillets >= 0  && monPanier.getTotalBillets() - maLigne.getNbBillets() + nouveauNbBillets <= 6)){
+						monPanier.setTotalBillets(monPanier.getTotalBillets() - maLigne.getNbBillets());
+						maLigne.getRep().retournerBillet(maLigne.getNbBillets());
+						maLigne.getRep().reserverBillets(nouveauNbBillets);
+						monPanier.setTotalBillets(monPanier.getTotalBillets() + nouveauNbBillets);
 						maLigne.setNbBillets(nouveauNbBillets);
 					}
 					else
