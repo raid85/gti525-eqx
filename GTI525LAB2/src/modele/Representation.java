@@ -38,33 +38,45 @@ public class Representation {
 		this.billetsDispo = billetsDispo;
 	}
 	public void reserverBillets(int nbBillets){
-		for(int i = 0 ; i < listeBilletDispo.size();i++){
+		for(int i = 0 ; i < listeBilletDispo.size()-nbBillets;i++){
 			if (listeBilletDispo.get(i).getState()	!= "Reserve" || listeBilletDispo.get(i).getState()	!= "Vendu" ){			
 				for(int j = 0; j<nbBillets;j++){
 					if (listeBilletDispo.get(i+j).getState()	!= "Reserve" || listeBilletDispo.get(i+j).getState()	!= "Vendu" ){
 						listeBilletDispo.get(i+j).setState("Reserve");
-						//billetsDispo = billetsDispo - nbBillets;
+						
 					}
 				}
 			}
 		}
+		billetsDispo = billetsDispo - nbBillets;
 	}
 	public void retournerBillet(int nombre){
 		if(nombre > 0){	
-			for(int i = 0 ; i < listeBilletDispo.size();i++){
+			for(int i = 0 ; i < listeBilletDispo.size()-nombre;i++){
 				if (listeBilletDispo.get(i).getState()	== "Reserve" && listeBilletDispo.get(i).getState()	!= "Vendu" ){			
 					for(int j = 0; j<nombre;j++){
 						if (listeBilletDispo.get(i+j).getState()	== "Reserve" && listeBilletDispo.get(i+j).getState()	!= "Vendu" ){
 							listeBilletDispo.get(i+j).setState("Libre");
-							//billetsDispo = billetsDispo - nbBillets;
+							
 						}
 					}
 				}
 			}
-			//billetsDispo = billetsDispo + nombre;
+			billetsDispo = billetsDispo + nombre;
 		}
 	}
-	
+	public void vendreBillet(int nbBillets){
+		for(int i = 0 ; i < listeBilletDispo.size()-nbBillets;i++){
+			if (listeBilletDispo.get(i).getState()	== "Reserve" && listeBilletDispo.get(i).getState()	!= "Vendu" ){			
+				for(int j = 0; j<nbBillets;j++){
+					if (listeBilletDispo.get(i+j).getState()	== "Reserve" && listeBilletDispo.get(i+j).getState()	!= "Vendu" ){
+						listeBilletDispo.get(i+j).setState("Vendu");						
+					}
+				}
+			}
+		}
+		billetsDispo = billetsDispo - nbBillets;
+	}
 	public int getId() {
 		return id;
 	}

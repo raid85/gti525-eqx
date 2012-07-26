@@ -71,7 +71,7 @@ public class Collection {
 	
 	private void createRepresentations(){
 		juin11CentreBell = new Representation();
-		juin11CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
+		juin11CentreBell.setBilletsDispo(200);
 		juin11CentreBell.setDate(new Date(2012,06,11,18,0));
 		juin11CentreBell.setSalle(centreBell);
 		juin11CentreBell.setPrix(60);
@@ -80,7 +80,7 @@ public class Collection {
 		listeRepresentations.add(juin11CentreBell);
 		
 		juin12CentreBell = new Representation();
-		juin12CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
+		juin12CentreBell.setBilletsDispo(60);
 		juin12CentreBell.setDate(new Date(2012,06,12,18,0));
 		juin12CentreBell.setSalle(centreBell);
 		juin12CentreBell.setPrix(30.30);
@@ -98,7 +98,7 @@ public class Collection {
 		listeRepresentations.add(juin13CentreBell);
 		
 		juin14Metropolis = new Representation();
-		juin14Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
+		juin14Metropolis.setBilletsDispo(600);
 		juin14Metropolis.setDate(new Date(2012,06,14,18,0));
 		juin14Metropolis.setSalle(metropolis);
 		juin14Metropolis.setPrix(55.50);
@@ -107,7 +107,7 @@ public class Collection {
 		listeRepresentations.add(juin14Metropolis);
 		
 		juin15Metropolis = new Representation();
-		juin15Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
+		juin15Metropolis.setBilletsDispo(45);
 		juin15Metropolis.setDate(new Date(2012,06,15,18,0));
 		juin15Metropolis.setSalle(metropolis);
 		juin15Metropolis.setPrix(60);
@@ -116,7 +116,7 @@ public class Collection {
 		listeRepresentations.add(juin15Metropolis);
 		
 		juin16Metropolis = new Representation();
-		juin16Metropolis.setBilletsDispo(metropolis.getNbPlaceMax());
+		juin16Metropolis.setBilletsDispo(75);
 		juin16Metropolis.setDate(new Date(2012,06,16,18,0));
 		juin16Metropolis.setSalle(metropolis);
 		juin16Metropolis.setPrix(123);
@@ -125,7 +125,7 @@ public class Collection {
 		listeRepresentations.add(juin16Metropolis);
 		
 		juin17JDrapeau = new Representation();
-		juin17JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
+		juin17JDrapeau.setBilletsDispo(2000);
 		juin17JDrapeau.setDate(new Date(2012,06,17,18,0));
 		juin17JDrapeau.setSalle(jeanDrapeau);
 		juin17JDrapeau.setPrix(45);
@@ -134,7 +134,7 @@ public class Collection {
 		listeRepresentations.add(juin17JDrapeau);
 		
 		juin18JDrapeau = new Representation();
-		juin18JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
+		juin18JDrapeau.setBilletsDispo(250);
 		juin18JDrapeau.setDate(new Date(2012,06,18,18,0));
 		juin18JDrapeau.setSalle(jeanDrapeau);
 		juin18JDrapeau.setPrix(34);
@@ -143,7 +143,7 @@ public class Collection {
 		listeRepresentations.add(juin18JDrapeau);
 		
 		juin19JDrapeau = new Representation();
-		juin19JDrapeau.setBilletsDispo(jeanDrapeau.getNbPlaceMax());
+		juin19JDrapeau.setBilletsDispo(3000);
 		juin19JDrapeau.setDate(new Date(2012,06,19,18,0));
 		juin19JDrapeau.setSalle(jeanDrapeau);
 		juin19JDrapeau.setPrix(67.66);

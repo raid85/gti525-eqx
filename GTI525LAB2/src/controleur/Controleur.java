@@ -133,7 +133,7 @@ public class Controleur {
 
 			rspPre = payDAO.effectuerPreauthorisation(ipC);
 			
-//			System.out.println("Code de préAuthorisation"+rspPre.getCode());
+//			System.out.println("Code de prï¿½Authorisation"+rspPre.getCode());
 //			System.out.println("Message "+rspPre.getMessage());
 //			System.out.println("Status"+rspPre.getStatus());
 //			System.out.println("TransactionId"+rspPre.getTransactionId());
@@ -152,6 +152,7 @@ public class Controleur {
 
 
 				if (rspFinal.getMessage().compareTo("The transaction was completed successfully")==0){
+					monPanier.finaliserVente();
 					request.getSession().setAttribute("panier",new Panier(request.getSession().getId()));
 					return "final.jsp" ;
 				}

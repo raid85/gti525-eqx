@@ -126,6 +126,12 @@ public class Panier {
 	}
 
 	
+	public void finaliserVente(){
+		for(int i = 0; i<monPanier.size();i ++){
+			monPanier.get(i).getRep().vendreBillet(monPanier.get(i).getNbBillets());
+		}
+		
+	}
 	public LignePanier getLignePanier(int idRep){
 		int i = 0;
 		while (i<monPanier.size()){
