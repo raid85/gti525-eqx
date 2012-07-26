@@ -4,16 +4,10 @@ import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import modele.Client;
 import modele.DAOPaiementStub;
 import modele.DelegateSpectacles;
