@@ -75,7 +75,6 @@ public class Representation {
 				}
 			}
 		}
-		billetsDispo = billetsDispo - nbBillets;
 	}
 	public int getId() {
 		return id;

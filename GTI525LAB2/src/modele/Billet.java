@@ -10,7 +10,7 @@ public class Billet {
 	
 	public Billet(){
 		setID(Math.round((long)Math.random()*1000));
-		
+		setState("Libre");
 	}
 	public int getID() {
 		return ID;
