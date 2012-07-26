@@ -45,13 +45,11 @@ Description: A two-column web design, best for your personal and business bloggi
 						<input type="hidden" name="repId" id="repId" value="<%=monPanier.getPanier()[i].getRep().getId() %>" />
 						<li><a href="./?action=afficherSpectacle&spectacleId=<%=monPanier.getPanier()[i].getRep().getSpectacle()%>">IdSpectacle : <%=monPanier.getPanier()[i].getRep().getSpectacle() %> [Prix Unitaire : <%=monPanier.getPanier()[i].getRep().getPrix()%>$]</a> <input type='text' size="2" maxlength="2" name='qte' value='<%=monPanier.getPanier()[i].getNbBillets() %>' /> <input type="submit" value="ChangerQuantité">  Sous-Total Ligne : <%=monPanier.getPanier()[i].getPrixTot()%>$</li>
 					</form>
-					<%}%>Total Panier: <%= monPanier.getTotal() %>$
-					
-				</ul>
+					<%}%>Total Panier: <%= monPanier.getTotal() %>$ </ul>
 			
-					<p> <form method="post" action="./">
+					<form method="post" action="./">
 					<input type="hidden" name="action" id="action" value="payer" />
-					<input type='submit' name='Paiement' value='Paiement'/> </form> </p>
+					<input type='submit' name='Paiement' value='Paiement'/> </form>
 			<%}%>
 				
 		</div>
