@@ -1,4 +1,5 @@
 package modele;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -9,7 +10,12 @@ public class Representation {
 	private int billetsDispo;
 	private double prix;
 	private int spectacle;
+	private Billet billet;
+	private ArrayList<Billet> listeBilletDispo;
 	
+	public Representation(){
+		listeBilletDispo = new ArrayList<Billet>();
+	}
 	public Salle getSalle() {
 		return salle;
 	}
@@ -26,14 +32,37 @@ public class Representation {
 		return billetsDispo;
 	}
 	public void setBilletsDispo(int billetsDispo) {
+		for(int i=0; i<billetsDispo;i++){
+			listeBilletDispo.add(new Billet());
+		}
 		this.billetsDispo = billetsDispo;
 	}
 	public void reserverBillets(int nbBillets){
-		if (nbBillets < billetsDispo)
-			billetsDispo = billetsDispo - nbBillets;
+		for(int i = 0 ; i < listeBilletDispo.size();i++){
+			if (listeBilletDispo.get(i).getState()	!= "Reserve" || listeBilletDispo.get(i).getState()	!= "Vendu" ){			
+				for(int j = 0; j<nbBillets;j++){
+					if (listeBilletDispo.get(i+j).getState()	!= "Reserve" || listeBilletDispo.get(i+j).getState()	!= "Vendu" ){
+						listeBilletDispo.get(i+j).setState("Reserve");
+						//billetsDispo = billetsDispo - nbBillets;
+					}
+				}
+			}
+		}
 	}
 	public void retournerBillet(int nombre){
-		if(nombre > 0){	billetsDispo = billetsDispo + nombre;	}
+		if(nombre > 0){	
+			for(int i = 0 ; i < listeBilletDispo.size();i++){
+				if (listeBilletDispo.get(i).getState()	== "Reserve" && listeBilletDispo.get(i).getState()	!= "Vendu" ){			
+					for(int j = 0; j<nombre;j++){
+						if (listeBilletDispo.get(i+j).getState()	== "Reserve" && listeBilletDispo.get(i+j).getState()	!= "Vendu" ){
+							listeBilletDispo.get(i+j).setState("Libre");
+							//billetsDispo = billetsDispo - nbBillets;
+						}
+					}
+				}
+			}
+			//billetsDispo = billetsDispo + nombre;
+		}
 	}
 	
 	public int getId() {

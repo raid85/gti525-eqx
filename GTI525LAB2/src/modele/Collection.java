@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Cette classe agit comme le DAO (local)
- * Une simple collection populée avec nos données
+ * Une simple collection populï¿½e avec nos donnï¿½es
  * @author Riad Chebli, Nicolas Brousseau
  * @version 07/15/2012
  */
@@ -59,7 +59,7 @@ public class Collection {
 		metropolis = new Salle();
 		metropolis.setAdresse("5678 Rue Ste-Catherine");
 		metropolis.setNbPlaceMax(600);
-		metropolis.setNom("Métropolis");
+		metropolis.setNom("Mï¿½tropolis");
 		metropolis.setId(2002);
 		
 		jeanDrapeau = new Salle();
@@ -89,7 +89,7 @@ public class Collection {
 		listeRepresentations.add(juin12CentreBell);
 		
 		juin13CentreBell = new Representation();
-		juin13CentreBell.setBilletsDispo(centreBell.getNbPlaceMax());
+		juin13CentreBell.setBilletsDispo(700);
 		juin13CentreBell.setDate(new Date(2012,06,13,18,0));
 		juin13CentreBell.setSalle(centreBell);
 		juin13CentreBell.setPrix(100.12);
@@ -157,7 +157,7 @@ public class Collection {
 
 		sliseDion = new Spectacle();
 		sliseDion.setArtiste(aliseDion);
-		sliseDion.setDescription("Mis en scène par Michel Courtemanche, Le temps qui court propose une réflexion sur le temps qui passe et les différentes étapes de la vie : il y est question de la vieillesse et de la mort, mais à la manière de Lise Dion bien sûr. En plus de donner des détails sur ce qu’elle a fait pendant son absence des planches qui a duré six ans, elle nous donne aussi des nouvelles de Marcel et de ses ados… qui, en principe, ne sont plus des ados. Parmi les multiples sujets abordés, l’humoriste revient avec le personnage de la femme afghane qui découvre les avantages de son costume et propose une réflexion sur les hommes qui partent avec des femmes plus jeunes… Tout un programme!/n Le temps qui court est le 3e spectacle que présente Lise Dion en carrière. Son premier spectacle a raflé 3 Félix et a été présenté 50 fois au Théâtre St-Denis 1, ce qui fait de Lise la seule femme et une des rares artistes à avoir réussi un tel exploit. Lise Dion s’est vu remettre une plaque soulignant la vente de 140,000 billets vendus de son nouveau spectacle. C’est assurément un retour en force pour l’humoriste chouchou des Québécois!");
+		sliseDion.setDescription("Mis en scï¿½ne par Michel Courtemanche, Le temps qui court propose une rï¿½flexion sur le temps qui passe et les diffï¿½rentes ï¿½tapes de la vie : il y est question de la vieillesse et de la mort, mais ï¿½ la maniï¿½re de Lise Dion bien sï¿½r. En plus de donner des dï¿½tails sur ce quï¿½elle a fait pendant son absence des planches qui a durï¿½ six ans, elle nous donne aussi des nouvelles de Marcel et de ses adosï¿½ qui, en principe, ne sont plus des ados. Parmi les multiples sujets abordï¿½s, lï¿½humoriste revient avec le personnage de la femme afghane qui dï¿½couvre les avantages de son costume et propose une rï¿½flexion sur les hommes qui partent avec des femmes plus jeunesï¿½ Tout un programme!/n Le temps qui court est le 3e spectacle que prï¿½sente Lise Dion en carriï¿½re. Son premier spectacle a raflï¿½ 3 Fï¿½lix et a ï¿½tï¿½ prï¿½sentï¿½ 50 fois au Thï¿½ï¿½tre St-Denis 1, ce qui fait de Lise la seule femme et une des rares artistes ï¿½ avoir rï¿½ussi un tel exploit. Lise Dion sï¿½est vu remettre une plaque soulignant la vente de 140,000 billets vendus de son nouveau spectacle. Cï¿½est assurï¿½ment un retour en force pour lï¿½humoriste chouchou des Quï¿½bï¿½cois!");
 		sliseDion.setDuree(120);
 		sliseDion.setImage("images/lisedion2011tpro.jpg");
 		sliseDion.setNom("Lise Dion Spectacle");
@@ -169,7 +169,7 @@ public class Collection {
 		
 		speterMacLeod = new Spectacle();
 		speterMacLeod.setArtiste(apeterMacLeod);
-		speterMacLeod.setDescription("Après s’être lui-même canonisé Saint, l’humoriste à la gueule sympathique et aux propos corrosifs revient sur scène avec son 4e one man show Sagesse Reportée, qui confronte l’humoriste avec la quarantaine et ses implications. En effet, MacLeod devrait prêcher par l’exemple et devenir socialement plus sage. Il devrait avoir une femme et non une blonde, un compte conjoint, un mini-van, un abonnement au Costco, une passe de saison au golf, s’intéresser soudainement au Cirque du Soleil et au train de Josélito! Mais, sa quête de liberté l’amène à laisser son auréole de côté pour nous prouver que vieillir n’est pas synonyme de s’assagir. Que ce soit la surconsommation, la société matriarcale, les jeunes, le couple, ses opinions sont tranchantes et assumées. Drôle, percutant et touchant, le justicier aux 700 000 billets vendus en carrière nous prouve avec ce quatrième rendez-vous, à la mise en scène spectaculaire, qu’il fait toujours partie de l’élite humoristique au Québec.");
+		speterMacLeod.setDescription("Aprï¿½s sï¿½ï¿½tre lui-mï¿½me canonisï¿½ Saint, lï¿½humoriste ï¿½ la gueule sympathique et aux propos corrosifs revient sur scï¿½ne avec son 4e one man show Sagesse Reportï¿½e, qui confronte lï¿½humoriste avec la quarantaine et ses implications. En effet, MacLeod devrait prï¿½cher par lï¿½exemple et devenir socialement plus sage. Il devrait avoir une femme et non une blonde, un compte conjoint, un mini-van, un abonnement au Costco, une passe de saison au golf, sï¿½intï¿½resser soudainement au Cirque du Soleil et au train de Josï¿½lito! Mais, sa quï¿½te de libertï¿½ lï¿½amï¿½ne ï¿½ laisser son aurï¿½ole de cï¿½tï¿½ pour nous prouver que vieillir nï¿½est pas synonyme de sï¿½assagir. Que ce soit la surconsommation, la sociï¿½tï¿½ matriarcale, les jeunes, le couple, ses opinions sont tranchantes et assumï¿½es. Drï¿½le, percutant et touchant, le justicier aux 700 000 billets vendus en carriï¿½re nous prouve avec ce quatriï¿½me rendez-vous, ï¿½ la mise en scï¿½ne spectaculaire, quï¿½il fait toujours partie de lï¿½ï¿½lite humoristique au Quï¿½bec.");
 		speterMacLeod.setDuree(120);
 		speterMacLeod.setImage("images/peter.jpg");
 		speterMacLeod.setNom("Peter Spectacle");
@@ -181,7 +181,7 @@ public class Collection {
 		
 		selvis = new Spectacle();
 		selvis.setArtiste(aelvis);
-		selvis.setDescription("Ce juillet, Robert Baggio est Elvis ! \nSur scène, Baggio offre ses interprétations des succès d’Elvis avec une voix étonnamment ressemblante. Il est entouré par des musiciens et choristes de talent, dont certains ont participé aux tournées d’artistes reconnus de Star Académie, Garou, Marie-Mai, Dan Bigras et de plusieurs autres. \nLe concert énergisant Viva Las Vegas inclura des classiques originaux du King et des remakes avec une touche moderne.\n Le tout pour garder la mémoire d'Elvis vivante avec une présentation inoubliable dans l'espoir de vous faire revivre un vrai concert du King.");
+		selvis.setDescription("Ce juillet, Robert Baggio est Elvis ! \nSur scï¿½ne, Baggio offre ses interprï¿½tations des succï¿½s dï¿½Elvis avec une voix ï¿½tonnamment ressemblante. Il est entourï¿½ par des musiciens et choristes de talent, dont certains ont participï¿½ aux tournï¿½es dï¿½artistes reconnus de Star Acadï¿½mie, Garou, Marie-Mai, Dan Bigras et de plusieurs autres. \nLe concert ï¿½nergisant Viva Las Vegas inclura des classiques originaux du King et des remakes avec une touche moderne.\n Le tout pour garder la mï¿½moire d'Elvis vivante avec une prï¿½sentation inoubliable dans l'espoir de vous faire revivre un vrai concert du King.");
 		selvis.setDuree(120);
 		selvis.setImage("images/elvis.jpg");
 		selvis.setNom("Elvis Spectacle");
