@@ -82,7 +82,8 @@
 					if (monPanier.getTotalBillets() > 0){
 					for (int i = 0; i < monPanier.getPanier().length; i++){ %>
 						<li><a href="#"><%=monPanier.getPanier()[i].getRep().getId() %>  :  <%=monPanier.getPanier()[i].getNbBillets() %></a></li> <%
-					}} %>
+					}}else { %>
+					PANIER VIDE <%}%>
 					</ul>
 				</li>
 		</div>

@@ -50,7 +50,9 @@ Description: A two-column web design, best for your personal and business bloggi
 					<form method="post" action="./">
 					<input type="hidden" name="action" id="action" value="payer" />
 					<input type='submit' name='Paiement' value='Paiement'/> </form>
-			<%}%>
+			<%} else {%>
+			PANIER VIDE
+			<%} %>
 				
 		</div>
 		<!-- end content -->
