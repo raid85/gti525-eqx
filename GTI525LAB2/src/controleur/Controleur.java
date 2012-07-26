@@ -13,6 +13,7 @@ import modele.DAOPaiementStub;
 //import modele.PaiementDAO;
 import modele.DelegateSpectacles;
 import modele.LignePanier;
+import modele.PaiementDAO;
 import modele.Representation;
 import modele.Panier;
 
@@ -36,7 +37,7 @@ public class Controleur {
 		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 		//Objets de paiement
 		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
-		DAOPaiementStub payDAO = new DAOPaiementStub() ;
+		PaiementDAO payDAO = new PaiementDAO () ;
 		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
 		monPanier.checkTimeOut();
 
@@ -107,7 +108,7 @@ public class Controleur {
 			monClient.setPreClient(request.getParameter("PreClient"));
 			monClient.setProvinceClient(request.getParameter("ProvinceClient"));
 			monClient.setVilleClient(request.getParameter("VilleClient"));
-			monClient.setcS(request.getParameter("CsClient"));
+			monClient.setcS(request.getParameter("SecClient"));
 			request.setAttribute("Client", monClient);
 
 			//On remplit l'objet InformationsPaiementTO requis par le service de transactions			
@@ -131,6 +132,11 @@ public class Controleur {
 
 
 			rspPre = payDAO.effectuerPreauthorisation(ipC);
+			
+//			System.out.println("Code de préAuthorisation"+rspPre.getCode());
+//			System.out.println("Message "+rspPre.getMessage());
+//			System.out.println("Status"+rspPre.getStatus());
+//			System.out.println("TransactionId"+rspPre.getTransactionId());
 
 			return "confPaie.jsp";
 		}

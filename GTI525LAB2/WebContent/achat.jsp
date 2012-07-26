@@ -164,7 +164,7 @@ Description: A two-column web design, best for your personal and business bloggi
 						ExpMClient.focus();
 						return false;
 					}
-					if ((ExpAClient.value == null) || (ExpAClient.value == ""|| parseInt(ExpAClient.value)<0 || parseInt(ExpAClient.value)>99)) {
+					if ((ExpAClient.value == null) || (ExpAClient.value == ""|| parseInt(ExpAClient.value)<2012 || parseInt(ExpAClient.value)>3000)) {
 						alert("Veuillez une année d'expiration");
 						ExpAClient.focus();
 						return false;
@@ -208,7 +208,7 @@ Description: A two-column web design, best for your personal and business bloggi
 						<li>Mois Expiration :<input type="text" name="ExpMClient"
 							value='12' /></li>
 						<li>Année Expiration :<input type="text" name="ExpAClient"
-							value='14' /></li>
+							value='2014' /></li>
 						<li>Code de sécurité :<input type="text" name="SecClient"
 							value='123' /></li>
 						<input type="hidden" name="action" id="action"
