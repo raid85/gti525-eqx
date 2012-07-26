@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.Client;
 import modele.DAOPaiementStub;
+//import modele.PaiementDAO;
 import modele.DelegateSpectacles;
 import modele.LignePanier;
 import modele.Representation;
@@ -26,18 +27,20 @@ import modele.Panier;
 public class Controleur {
 
 	private static final long serialVersionUID = 1391688820894808468L;
-
-	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){
-		
-		
+	private static final long CarteCreditClient = Long.valueOf("8675309000000000") ;
+	private static final String apiKey = "5952a3501dfcd5135a58";
+	private static final int storeID = 69 ;
+	private static final int PreAuthOk = 10200 ;
+	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){		
+		//Panier 
 		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
-		
+		//Objets de paiement
 		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
-		DAOPaiementStub stubDAO = new DAOPaiementStub() ;
+		DAOPaiementStub payDAO = new DAOPaiementStub() ;
 		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
 		monPanier.checkTimeOut();
 
-		
+
 		if (request.getParameterMap().size() < 1){
 
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
@@ -84,12 +87,10 @@ public class Controleur {
 		}
 
 		else if (request.getParameter("action").equals("afficherPanier")){
-			//monpanier = (Panier)request.getSession().getAttribute("panier");
 			monPanier.checkTimeOut();
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("payer")){
-			//monpanier = (Panier)request.getSession().getAttribute("panier");
 			monPanier.checkTimeOut();
 			return "achat.jsp";
 		}
@@ -108,67 +109,67 @@ public class Controleur {
 			monClient.setVilleClient(request.getParameter("VilleClient"));
 			monClient.setcS(request.getParameter("CsClient"));
 			request.setAttribute("Client", monClient);
-			
-			//On remplit l'objet requis par le service de transactions
-			
+
+			//On remplit l'objet InformationsPaiementTO requis par le service de transactions			
 			ipC.setFirst_name(monClient.getPreClient());
 			ipC.setLast_name(monClient.getNomClient());
 			try{
-			ipC.setAmount(BigDecimal.valueOf(monPanier.getTotal()));			
-			ipC.setCard_number(Long.valueOf(monClient.getCCClient()));
-			ipC.setMonth(Integer.valueOf(monClient.getExpMClient()));
-			ipC.setYear(Integer.valueOf(monClient.getExpAClient()));
-			ipC.setSecurity_code(Integer.valueOf(monClient.getcS()));
-			ipC.setApi_key(null);
-			ipC.setOrder_id((Long) null);			
-			ipC.setStore_id((Integer) null);
-			}catch (NumberFormatException e){}
-			
-			
-			
-			rspPre = stubDAO.effectuerPreauthorisation(ipC);
+				ipC.setAmount(BigDecimal.valueOf(monPanier.getTotal()));			
+				ipC.setCard_number(CarteCreditClient);
+				ipC.setMonth(Integer.valueOf(monClient.getExpMClient()));
+				ipC.setYear(Integer.valueOf(monClient.getExpAClient()));
+				ipC.setSecurity_code(Integer.valueOf(monClient.getcS()));
+				ipC.setApi_key(apiKey);
+				//En attendant...
+				ipC.setOrder_id((long) ((Math.random()*100)));			
+				ipC.setStore_id(storeID);
+			}catch (NumberFormatException e){
+				System.out.println ("Internal Parsing/Casting exception");
+				e.printStackTrace();
+			}
+
+
+
+			rspPre = payDAO.effectuerPreauthorisation(ipC);
 
 			return "confPaie.jsp";
 		}
-		else if (request.getParameter("action").equals("processPaiement")){
+		else if (request.getParameter("action").equals("processPaiement")){			
+			if(rspPre.getCode() == PreAuthOk ){
+
+				//On effectue l approbation de la transaction				
+				RequeteAuthorisationTO rqAut = new RequeteAuthorisationTO ();
+				rqAut.setTransaction_id(rspPre.getTransactionId());
+				rqAut.setApi_key(ipC.getApi_key());
+				rqAut.setStore_id(ipC.getStore_id());
+				ReponseSystemePaiementTO rspFinal = payDAO.approuverTransaction(rqAut);
 
 
-			//Si la preauthorisation a passee...(-1) est fictif)
-			if(rspPre.getCode() != -1){
-			
-			//On effectue l approbation de la transaction				
-			RequeteAuthorisationTO rqAut = new RequeteAuthorisationTO ();
-			rqAut.setTransaction_id(rspPre.getTransactionId());
-			rqAut.setApi_key(ipC.getApi_key());
-			rqAut.setStore_id(ipC.getStore_id());
-			ReponseSystemePaiementTO rspFinal = stubDAO.approuverTransaction(rqAut);
-		
-			
-			if (rspFinal.getMessage().compareTo("Passed")==0){
-				request.getSession().setAttribute("panier",new Panier(request.getSession().getId()));
-				return "final.jsp" ;
-			}
-			else return "erreurPaiement.jsp";
+				if (rspFinal.getMessage().compareTo("The transaction was completed successfully")==0){
+					request.getSession().setAttribute("panier",new Panier(request.getSession().getId()));
+					return "final.jsp" ;
+				}
+				else return "erreurPaiement.jsp";
 			}
 			else return "erreurPaiement.jsp";
 
 		}
 		else if (request.getParameter("action").equals("changerQte")){
 			try {
-				
+
 				if (request.getParameter("repId") != null && request.getParameter("repId").matches("[0-9]*") && request.getParameter("qte") != null && request.getParameter("qte").matches("[0-9]*") && Integer.parseInt(request.getParameter("qte")) >= 0)  {
-					
+
 					int repId = Integer.parseInt(request.getParameter("repId"));
 					LignePanier maLigne = monPanier.getLignePanier(repId);
 					int nouveauNbBillets = Integer.parseInt(request.getParameter("qte"));
-					
+
 					if (nouveauNbBillets < maLigne.getNbBillets()){
 						monPanier.setTotalBillets(monPanier.getTotalBillets() - maLigne.getNbBillets());
 						maLigne.getRep().retournerBillet(maLigne.getNbBillets());
 						maLigne.getRep().reserverBillets(nouveauNbBillets);
 						monPanier.setTotalBillets(monPanier.getTotalBillets() + nouveauNbBillets);
 						maLigne.setNbBillets(nouveauNbBillets);
-						
+
 					}
 					else if ((maLigne.getRep().getBilletsDispo() + maLigne.getNbBillets() - nouveauNbBillets >= 0  && monPanier.getTotalBillets() - maLigne.getNbBillets() + nouveauNbBillets <= 6)){
 						monPanier.setTotalBillets(monPanier.getTotalBillets() - maLigne.getNbBillets());
@@ -180,7 +181,7 @@ public class Controleur {
 					else
 						return "panier.jsp";
 				}
-				
+
 			}
 			catch (NumberFormatException e){
 				return "panier.jsp";
@@ -189,11 +190,11 @@ public class Controleur {
 			return "panier.jsp";
 		}
 		else if (request.getParameter("action").equals("home")){
-			
+
 			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
 			return "spectacles.jsp";
 		}
-		
+
 
 		else
 			return "erreur.jsp";
