@@ -31,14 +31,15 @@ public class Controleur {
 	private static final long CarteCreditClient = Long.valueOf("8675309000000000") ;
 	private static final String apiKey = "5952a3501dfcd5135a58";
 	private static final int storeID = 69 ;
-	private static final int PreAuthOk = 10200 ;
+	private static final int Ok = 10200 ;
+
 	public String executerTraitement(HttpServletRequest request, HttpServletResponse response){		
 		//Panier 
 		Panier monPanier = (Panier)request.getSession().getAttribute("panier");
 		//Objets de paiement
 		InformationsPaiementTO ipC = new InformationsPaiementTO () ;
 		PaiementDAO payDAO = new PaiementDAO () ;
-		ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
+	
 		monPanier.checkTimeOut();
 
 
@@ -130,28 +131,36 @@ public class Controleur {
 			}
 
 
-
-			rspPre = payDAO.effectuerPreauthorisation(ipC);
+			ReponseSystemePaiementTO rspPre = new ReponseSystemePaiementTO ();
+			rspPre = payDAO.effectuerPreauthorisation(ipC);			
+		
+			request.getSession().setAttribute("trID", rspPre.getTransactionId());
+			request.getSession().setAttribute("cdR",rspPre.getCode());
 			
-//			System.out.println("Code de pr�Authorisation"+rspPre.getCode());
-//			System.out.println("Message "+rspPre.getMessage());
-//			System.out.println("Status"+rspPre.getStatus());
-//			System.out.println("TransactionId"+rspPre.getTransactionId());
+			
+
 
 			return "confPaie.jsp";
 		}
-		else if (request.getParameter("action").equals("processPaiement")){			
-			if(rspPre.getCode() == PreAuthOk ){
+		else if (request.getParameter("action").equals("processPaiement")){	
+			
+			int cdR = Integer.parseInt(request.getSession().getAttribute("cdR").toString());
+			int trID =Integer.parseInt(request.getSession().getAttribute("trID").toString());
+			
+			
+			if(cdR == Ok ){
 
 				//On effectue l approbation de la transaction				
 				RequeteAuthorisationTO rqAut = new RequeteAuthorisationTO ();
-				rqAut.setTransaction_id(rspPre.getTransactionId());
-				rqAut.setApi_key(ipC.getApi_key());
-				rqAut.setStore_id(ipC.getStore_id());
-				ReponseSystemePaiementTO rspFinal = payDAO.approuverTransaction(rqAut);
+				rqAut.setTransaction_id(trID);
+				rqAut.setApi_key(apiKey);
+				rqAut.setStore_id(storeID);
+				ReponseSystemePaiementTO rspFinal = payDAO.approuverTransaction(rqAut);				
+				
+				
 
-
-				if (rspFinal.getMessage().compareTo("The transaction was completed successfully")==0){
+				if (rspFinal.getCode()== Ok){
+					
 					monPanier.finaliserVente();
 					request.getSession().setAttribute("panier",new Panier(request.getSession().getId()));
 					return "final.jsp" ;
