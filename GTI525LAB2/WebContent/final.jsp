@@ -35,7 +35,7 @@ Description: A two-column web design, best for your personal and business bloggi
 		<div id="content">
 			<div class="alert">
 				<h2>Felicitations le paiement a ete effectue avec succes !!</h2>
-				<h4> Numero de confirmation : 1234 </h4>
+				<h4> Numero de confirmation : <%=request.getSession().getAttribute("trID").toString()%></h4> 
 					
 				<form method="post" action="./">
 								<input type="hidden" name="action" id="action" value="home" />
