@@ -1,15 +1,18 @@
 package modele;
 
+import java.util.Random;
+
 public class Billet {
 
 	
 	
 	private int ID;
 	private String state;
+	private Random randomGenerator = new Random();
 	
 	
 	public Billet(){
-		setID(Math.round((long)Math.random()*1000));
+		setID(randomGenerator.nextInt(100000));
 		setState("Libre");
 	}
 	public int getID() {
