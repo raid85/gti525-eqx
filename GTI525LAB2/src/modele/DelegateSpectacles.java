@@ -1,5 +1,6 @@
 package modele;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,12 +13,14 @@ import java.util.Collection;
 
 public class DelegateSpectacles {
 	static modele.Collection col = new modele.Collection();
+	
 
 	public static modele.Collection getCollection() {
 		return col.getCollection();
 		
 	}	
-	public static Spectacle[] getSpectacles() {
+	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException {
+		SpectacleDAO.test();
 		return col.getSpectacles() ;
 
 	}

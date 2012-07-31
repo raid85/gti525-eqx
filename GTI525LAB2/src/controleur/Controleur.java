@@ -5,6 +5,7 @@ import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,13 +42,12 @@ public class Controleur {
 		PaiementDAO payDAO = new PaiementDAO () ;
 	
 		monPanier.checkTimeOut();
-
-
+		try {
 		if (request.getParameterMap().size() < 1){
-
-			request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
-			return "spectacles.jsp";
-		}
+				request.setAttribute("spectacles", DelegateSpectacles.getSpectacles());
+				return "spectacles.jsp";
+			}
+			
 		else if (request.getParameter("action").equals("afficherSpectacle")){
 			int i = 0;
 			while (DelegateSpectacles.getSpectacles()[i].getId() != Integer.parseInt(request.getParameter("spectacleid")) && i < DelegateSpectacles.getSpectacles().length){
@@ -58,6 +58,7 @@ public class Controleur {
 
 			return "representations.jsp";
 		}
+		
 		else if (request.getParameter("action").equals("reserverBillets")){
 
 
@@ -92,10 +93,12 @@ public class Controleur {
 			monPanier.checkTimeOut();
 			return "panier.jsp";
 		}
+		
 		else if (request.getParameter("action").equals("payer")){
 			monPanier.checkTimeOut();
 			return "achat.jsp";
 		}
+		
 		else if (request.getParameter("action").equals("preparePaiement")){
 
 			Client monClient = new Client();
@@ -142,6 +145,7 @@ public class Controleur {
 
 			return "confPaie.jsp";
 		}
+		
 		else if (request.getParameter("action").equals("processPaiement")){	
 			
 			int cdR = Integer.parseInt(request.getSession().getAttribute("cdR").toString());
@@ -170,6 +174,7 @@ public class Controleur {
 			else return "erreurPaiement.jsp";
 
 		}
+		
 		else if (request.getParameter("action").equals("changerQte")){
 			try {
 
@@ -214,6 +219,14 @@ public class Controleur {
 
 		else
 			return "erreur.jsp";
+	}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return "erreur.jsp";
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "erreur.jsp";
+		}
 	}
 
 }
