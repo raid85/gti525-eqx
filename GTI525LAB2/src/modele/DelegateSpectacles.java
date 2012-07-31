@@ -18,7 +18,7 @@ public class DelegateSpectacles {
 	public static modele.Collection getCollection() {
 		return col.getCollection();
 		
-	}	
+	}
 	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException {
 		//SpectacleDAO.test();
 		return col.getSpectacles() ;
