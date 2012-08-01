@@ -12,6 +12,7 @@ public class Representation {
 	private int spectacle;
 	private Billet billet;
 	private ArrayList<Billet> listeBilletDispo;
+	private String spectacleNom;
 	
 	public Representation(){
 		listeBilletDispo = new ArrayList<Billet>();
@@ -93,6 +94,12 @@ public class Representation {
 	}
 	public void setSpectacle(int spectacle) {
 		this.spectacle = spectacle;
+	}
+	public String getSpectacleNom() {
+		return spectacleNom;
+	}
+	public void setSpectacleNom(String spectacleNom) {
+		this.spectacleNom = spectacleNom;
 	}
 
 }

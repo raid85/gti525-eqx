@@ -77,6 +77,7 @@ public class Collection {
 		juin11CentreBell.setPrix(60);
 		juin11CentreBell.setId(3001);
 		juin11CentreBell.setSpectacle(5001);
+		juin11CentreBell.setSpectacleNom("Lise Dion");
 		listeRepresentations.add(juin11CentreBell);
 		
 		juin12CentreBell = new Representation();
@@ -86,6 +87,7 @@ public class Collection {
 		juin12CentreBell.setPrix(30.30);
 		juin12CentreBell.setId(3002);
 		juin12CentreBell.setSpectacle(5002);
+		juin12CentreBell.setSpectacleNom("Peter");
 		listeRepresentations.add(juin12CentreBell);
 		
 		juin13CentreBell = new Representation();
@@ -95,6 +97,7 @@ public class Collection {
 		juin13CentreBell.setPrix(100.12);
 		juin13CentreBell.setId(3003);
 		juin13CentreBell.setSpectacle(5003);
+		juin13CentreBell.setSpectacleNom("Elvis");
 		listeRepresentations.add(juin13CentreBell);
 		
 		juin14Metropolis = new Representation();
@@ -104,6 +107,7 @@ public class Collection {
 		juin14Metropolis.setPrix(55.50);
 		juin14Metropolis.setId(3004);
 		juin14Metropolis.setSpectacle(5001);
+		juin14Metropolis.setSpectacleNom("Lise Dion");
 		listeRepresentations.add(juin14Metropolis);
 		
 		juin15Metropolis = new Representation();
@@ -113,6 +117,7 @@ public class Collection {
 		juin15Metropolis.setPrix(60);
 		juin15Metropolis.setId(3005);
 		juin15Metropolis.setSpectacle(5002);
+		juin15Metropolis.setSpectacleNom("Peter");
 		listeRepresentations.add(juin15Metropolis);
 		
 		juin16Metropolis = new Representation();
@@ -122,6 +127,7 @@ public class Collection {
 		juin16Metropolis.setPrix(123);
 		juin16Metropolis.setId(3006);
 		juin16Metropolis.setSpectacle(5003);
+		juin16Metropolis.setSpectacleNom("Elvis");
 		listeRepresentations.add(juin16Metropolis);
 		
 		juin17JDrapeau = new Representation();
@@ -131,6 +137,7 @@ public class Collection {
 		juin17JDrapeau.setPrix(45);
 		juin17JDrapeau.setId(3007);
 		juin17JDrapeau.setSpectacle(5001);
+		juin17JDrapeau.setSpectacleNom("Lise Dion");
 		listeRepresentations.add(juin17JDrapeau);
 		
 		juin18JDrapeau = new Representation();
@@ -140,6 +147,7 @@ public class Collection {
 		juin18JDrapeau.setPrix(34);
 		juin18JDrapeau.setId(3008);
 		juin18JDrapeau.setSpectacle(5002);
+		juin18JDrapeau.setSpectacleNom("Peter");
 		listeRepresentations.add(juin18JDrapeau);
 		
 		juin19JDrapeau = new Representation();
@@ -149,6 +157,7 @@ public class Collection {
 		juin19JDrapeau.setPrix(67.66);
 		juin19JDrapeau.setId(3009);
 		juin19JDrapeau.setSpectacle(5003);
+		juin19JDrapeau.setSpectacleNom("Elvis");
 		listeRepresentations.add(juin19JDrapeau);
 		
 	}
@@ -160,7 +169,7 @@ public class Collection {
 		sliseDion.setDescription("Mis en sc�ne par Michel Courtemanche, Le temps qui court propose une r�flexion sur le temps qui passe et les diff�rentes �tapes de la vie : il y est question de la vieillesse et de la mort, mais � la mani�re de Lise Dion bien s�r. En plus de donner des d�tails sur ce qu�elle a fait pendant son absence des planches qui a dur� six ans, elle nous donne aussi des nouvelles de Marcel et de ses ados� qui, en principe, ne sont plus des ados. Parmi les multiples sujets abord�s, l�humoriste revient avec le personnage de la femme afghane qui d�couvre les avantages de son costume et propose une r�flexion sur les hommes qui partent avec des femmes plus jeunes� Tout un programme!/n Le temps qui court est le 3e spectacle que pr�sente Lise Dion en carri�re. Son premier spectacle a rafl� 3 F�lix et a �t� pr�sent� 50 fois au Th��tre St-Denis 1, ce qui fait de Lise la seule femme et une des rares artistes � avoir r�ussi un tel exploit. Lise Dion s�est vu remettre une plaque soulignant la vente de 140,000 billets vendus de son nouveau spectacle. C�est assur�ment un retour en force pour l�humoriste chouchou des Qu�b�cois!");
 		sliseDion.setDuree(120);
 		sliseDion.setImage("images/lisedion2011tpro.jpg");
-		sliseDion.setNom("Lise Dion Spectacle");
+		sliseDion.setNom("Lise Dion");
 		sliseDion.ajouterRepresentation(juin11CentreBell);
 		sliseDion.ajouterRepresentation(juin14Metropolis);
 		sliseDion.ajouterRepresentation(juin17JDrapeau);
@@ -172,7 +181,7 @@ public class Collection {
 		speterMacLeod.setDescription("Apr�s s��tre lui-m�me canonis� Saint, l�humoriste � la gueule sympathique et aux propos corrosifs revient sur sc�ne avec son 4e one man show Sagesse Report�e, qui confronte l�humoriste avec la quarantaine et ses implications. En effet, MacLeod devrait pr�cher par l�exemple et devenir socialement plus sage. Il devrait avoir une femme et non une blonde, un compte conjoint, un mini-van, un abonnement au Costco, une passe de saison au golf, s�int�resser soudainement au Cirque du Soleil et au train de Jos�lito! Mais, sa qu�te de libert� l�am�ne � laisser son aur�ole de c�t� pour nous prouver que vieillir n�est pas synonyme de s�assagir. Que ce soit la surconsommation, la soci�t� matriarcale, les jeunes, le couple, ses opinions sont tranchantes et assum�es. Dr�le, percutant et touchant, le justicier aux 700 000 billets vendus en carri�re nous prouve avec ce quatri�me rendez-vous, � la mise en sc�ne spectaculaire, qu�il fait toujours partie de l��lite humoristique au Qu�bec.");
 		speterMacLeod.setDuree(120);
 		speterMacLeod.setImage("images/peter.jpg");
-		speterMacLeod.setNom("Peter Spectacle");
+		speterMacLeod.setNom("Peter");
 		speterMacLeod.ajouterRepresentation(juin12CentreBell);
 		speterMacLeod.ajouterRepresentation(juin15Metropolis);
 		speterMacLeod.ajouterRepresentation(juin18JDrapeau);
@@ -184,7 +193,7 @@ public class Collection {
 		selvis.setDescription("Ce juillet, Robert Baggio est Elvis ! \nSur sc�ne, Baggio offre ses interpr�tations des succ�s d�Elvis avec une voix �tonnamment ressemblante. Il est entour� par des musiciens et choristes de talent, dont certains ont particip� aux tourn�es d�artistes reconnus de Star Acad�mie, Garou, Marie-Mai, Dan Bigras et de plusieurs autres. \nLe concert �nergisant Viva Las Vegas inclura des classiques originaux du King et des remakes avec une touche moderne.\n Le tout pour garder la m�moire d'Elvis vivante avec une pr�sentation inoubliable dans l'espoir de vous faire revivre un vrai concert du King.");
 		selvis.setDuree(120);
 		selvis.setImage("images/elvis.jpg");
-		selvis.setNom("Elvis Spectacle");
+		selvis.setNom("Elvis");
 		selvis.ajouterRepresentation(juin13CentreBell);
 		selvis.ajouterRepresentation(juin16Metropolis);
 		selvis.ajouterRepresentation(juin19JDrapeau);
