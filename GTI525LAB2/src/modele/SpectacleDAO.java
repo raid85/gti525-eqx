@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class SpectacleDAO {
 	private static String driver = "org.sqlite.JDBC";
-	private static String url = "jdbc:Data:GTI525";
+	private static String url = "jdbc:sqlite:C:/Users/bruce/workspace/GTI525LAB2/Data/GTI525";
 	private static String user = "USERICI";
 	private static String pass = "passICI";
 	
@@ -22,7 +22,7 @@ public class SpectacleDAO {
 	
 	private static ResultSet executeQuerry(String requete) throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(url, user, pass);
+		Connection conn = DriverManager.getConnection(url);
 		Statement stmt = conn.createStatement();
 		stmt.close();
 		return stmt.executeQuery(requete);	
@@ -43,7 +43,7 @@ public class SpectacleDAO {
 	}
 	public static void test() throws ClassNotFoundException{
 	    // load the sqlite-JDBC driver using the current class loader
-	    Class.forName("org.sqlite.JDBC");
+	    Class.forName(driver);
 	    Connection connection = null;
 	    try
 	    {

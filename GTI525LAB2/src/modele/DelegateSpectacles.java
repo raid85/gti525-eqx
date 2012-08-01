@@ -20,7 +20,8 @@ public class DelegateSpectacles {
 		
 	}
 	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException {
-		SpectacleDAO.test();
+		//SpectacleDAO.test();
+		SpectacleDAO.getSalle(2001);
 		return col.getSpectacles() ;
 
 	}
