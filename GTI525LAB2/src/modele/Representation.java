@@ -10,7 +10,6 @@ public class Representation {
 	private int billetsDispo;
 	private double prix;
 	private int spectacle;
-	private Billet billet;
 	private ArrayList<Billet> listeBilletDispo;
 	private String spectacleNom;
 	

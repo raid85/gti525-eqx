@@ -44,7 +44,6 @@ public class SpectacleDAO {
 	public static void test() throws ClassNotFoundException{
 	    // load the sqlite-JDBC driver using the current class loader
 	    Class.forName("org.sqlite.JDBC");
-	    
 	    Connection connection = null;
 	    try
 	    {
