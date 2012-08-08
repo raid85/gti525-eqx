@@ -29,5 +29,12 @@ public class Salle {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public Salle (){
+		
+	}
+	public Salle (String nomSalle){
+		nom = nomSalle;
+	}
 
 }

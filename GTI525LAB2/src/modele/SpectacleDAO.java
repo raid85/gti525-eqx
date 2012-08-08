@@ -1,24 +1,18 @@
 package modele;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 public class SpectacleDAO {
 	private static String driver = "org.sqlite.JDBC";
 	private static String url = "jdbc:sqlite:C:/Users/bruce/workspace/GTI525LAB2/Data/GTI525";
-	private static String user = "USERICI";
-	private static String pass = "passICI";
-	
-	private int update(String requete) throws SQLException, ClassNotFoundException{
-		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(url, user, pass);
-		Statement stmt = conn.createStatement();
-		stmt.close();
-		return stmt.executeUpdate(requete);
-	}
+	private static ResultSet rs;
 	
 	private static ResultSet executeQuerry(String requete) throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
@@ -27,27 +21,13 @@ public class SpectacleDAO {
 		stmt.close();
 		return stmt.executeQuery(requete);	
 	}
-	
-	public static void getSalle(int idSalle) throws ClassNotFoundException, SQLException{
-		ResultSet rs = executeQuerry("SELECT * FROM Salle WHERE ID_Salle = " + idSalle);
-		while ( rs.next() ) {
-            int numColumns = rs.getMetaData().getColumnCount();
-            for ( int i = 1 ; i <= numColumns ; i++ ) {
-               // Column numbers start at 1.
-               // Also there are many methods on the result set to return
-               //  the column as a particular type. Refer to the Sun documentation
-               //  for the list of valid conversions.
-               System.out.println( "COLUMN " + i + " = " + rs.getObject(i) );
-            }
-		}
-	}
+		
 	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException{
-		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(url);
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT Spectacle.ID_Spectacle, Spectacle.Nom, Spectacle.Description, Spectacle.Image" +
-				" FROM Spectacle");
-		Spectacle[] tableauSpectacles = new Spectacle[rs.getMetaData().getColumnCount() - 1];
+		rs = executeQuerry("SELECT COUNT(*) FROM Spectacle");
+		rs.next();
+		int rowCount = (Integer) rs.getObject(1);
+		rs = executeQuerry("SELECT Spectacle.ID_Spectacle, Spectacle.Nom, Spectacle.Description, Spectacle.Image FROM Spectacle");
+		Spectacle[] tableauSpectacles = new Spectacle[rowCount];
 		int i = 0;
 		while ( rs.next() ) {
 			Spectacle spectacle = new Spectacle();
@@ -58,54 +38,59 @@ public class SpectacleDAO {
             tableauSpectacles[i] = spectacle;
             i++;
 		}
-		stmt.close();
 		return tableauSpectacles;
 	}
 	
-	
-	public static void test() throws ClassNotFoundException{
-	    // load the sqlite-JDBC driver using the current class loader
-	    Class.forName(driver);
-	    Connection connection = null;
-	    try
-	    {
-	      // create a database connection
-	      connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
-	      Statement statement = connection.createStatement();
-	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
-	      
-	      statement.executeUpdate("drop table if exists person");
-	      statement.executeUpdate("create table person (id integer, name string)");
-	      statement.executeUpdate("insert into person values(1, 'leo')");
-	      statement.executeUpdate("insert into person values(2, 'yui')");
-	      ResultSet rs = statement.executeQuery("select * from person");
-	      while(rs.next())
-	      {
-	        // read the result set
-	        System.out.println("name = " + rs.getString("name"));
-	        System.out.println("id = " + rs.getInt("id"));
-	      }
-	    }
-	    catch(SQLException e)
-	    {
-	      // if the error message is "out of memory", 
-	      // it probably means no database file is found
-	      System.err.println(e.getMessage());
-	    }
-	    finally
-	    {
-	      try
-	      {
-	        if(connection != null)
-	          connection.close();
-	      }
-	      catch(SQLException e)
-	      {
-	        // connection close failed.
-	        System.err.println(e);
-	      }
-	    }
+	public static TORepresentations getRepresentations(int idSpectacle) throws ClassNotFoundException, SQLException, ClassCastException{
+		TORepresentations monTO= new TORepresentations();
+		rs = executeQuerry("SELECT Spectacle.Nom, Spectacle.Description, Spectacle.Image FROM Spectacle WHERE Spectacle.ID_Spectacle = " + idSpectacle);
+		Spectacle monSpectacle = new Spectacle();
+		monSpectacle.setNom((String) rs.getObject(1));
+		monSpectacle.setDescription((String) rs.getObject(2));
+		monSpectacle.setImage((String) rs.getObject(3));
+		
+		monTO.setSpectacle(monSpectacle);
+		rs = executeQuerry("SELECT COUNT(*) FROM Representation JOIN Salle USING (ID_Salle) WHERE Representation.ID_Spectacle = " + idSpectacle);
+		rs.next();
+		int rowCount = (Integer) rs.getObject(1);
+		rs = executeQuerry("SELECT Representation.ID_Rep, Representation.BilletDispo, Representation.Date, Representation.Prix, " +
+				"Salle.Nom FROM Representation JOIN Salle USING (ID_Salle) WHERE Representation.ID_Spectacle = " + idSpectacle);
+		Representation[] tableauRepresentations = new Representation[rowCount];
+		
+		int i = 0;
+		while ( rs.next() ) {
+			Representation representation = new Representation();
+			representation.setId((Integer) rs.getObject(1));
+			representation.setBilletsDispo((Integer) rs.getObject(2));
+			representation.setDate(new Date(Long.parseLong( (String) rs.getObject(3))));
+			representation.setPrix((Integer) rs.getObject(4));
+			representation.setSalle(new Salle((String)rs.getObject(5)));
+			tableauRepresentations[i] = representation;
+            i++;
+		}
+		monTO.setRepresentations(tableauRepresentations);
+		return monTO;
 	}
+	
+	public static int getNbBilletsDispo(int idRepresentation) throws ClassNotFoundException, SQLException{
+		rs = executeQuerry("SELECT BilletDispo FROM Representation WHERE ID_Rep = " + idRepresentation);
+		rs.next();
+		return (Integer) rs.getObject(1);
+		
+	}
+	
+	public static Representation getRep(int idRepresentation) throws ClassNotFoundException, SQLException{
+		rs = executeQuerry("SELECT * FROM Representation WHERE ID_Rep = " + idRepresentation);
+		rs.next();
+		Representation maRep = new Representation();
+		maRep.setBilletsDispo((Integer) rs.getObject(3));
+		maRep.setDate(new Date(Long.parseLong( (String) rs.getObject(4))));
+		maRep.setId(idRepresentation);
+		maRep.setPrix((Integer) rs.getObject(5));
+		return maRep;
+		
+	}
+	
 		
 }
 	

@@ -13,11 +13,11 @@ Description: A two-column web design, best for your personal and business bloggi
 
 -->
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
-<%@ page import="modele.Spectacle"%>
+<%@ page import="modele.TORepresentations"%>
 <%@ page import="modele.Representation"%>
 <%
-Spectacle spectacle = (Spectacle)request.getAttribute("spectacle");
-Representation[] representations = (Representation[])request.getAttribute("representations");
+TORepresentations monTO = (TORepresentations)request.getAttribute("spectacle");
+Representation[] representations = monTO.getRepresentations(); 
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -42,20 +42,20 @@ Representation[] representations = (Representation[])request.getAttribute("repre
 			<!-- start spectacle -->
 			<div class="spectacle">
 					<p class="date">mar<b>03</b></p>
-					<h2 class="title"><%=spectacle.getNom()%></h2>
+					<h2 class="title"><%=monTO.getSpectacle().getNom()%></h2>
 					
-					<img  class="picture" src=<%=spectacle.getImage()%> />
+					<img  class="picture" src=<%=monTO.getSpectacle().getImage()%> />
 					<div class="entry">
-						<%=spectacle.getDescription()%>
+						<%=monTO.getSpectacle().getDescription()%>
 					</div>
 					<% for (int i=0; i<representations.length;i++){%>
 						<div class="representation">
-							<p class = "date"> <%=representations[i].getDate().getDate() %> <%=representations[i].getDate().getMonth() %> <%=representations[i].getDate().getYear() %> - <%=representations[i].getDate().getHours() %>:<%=representations[i].getDate().getMinutes() %> </p>
+							<p class = "date"> <%=representations[i].getDate().toString() %> </p>
 							<h3 class="salle"><%=representations[i].getSalle().getNom()%> </h3>
 							<form method="post" action="./">
 								<input type="hidden" name="action" id="action" value="reserverBillets" />
 								<input type="hidden" name="repId" id="repId" value="<%=representations[i].getId() %>" />
-								<input type="hidden" name="spectacle" id="spectacle" value="<%=spectacle.getId()%>" />
+								<!--  <input type="hidden" name="spectacle" id="spectacle" value="spectacle.getId()" /> -->
 								Quantité: <input type="text" name="qte" id="qte" size="20" maxlength="140">	
 								<input type="submit" value="Confirmer">
 							</form>

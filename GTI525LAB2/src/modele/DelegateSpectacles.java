@@ -12,28 +12,20 @@ import java.util.Collection;
  */
 
 public class DelegateSpectacles {
-	static modele.Collection col = new modele.Collection();
-	
-
-	public static modele.Collection getCollection() {
-		return col.getCollection();
-		
-	}
 	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException {
-		//SpectacleDAO.test();
 		return SpectacleDAO.getSpectacles();
-		//return col.getSpectacles();
-
 	}
 	
-	public static Representation[] getRepresentations(int i) {
-		return col.getRepresentations(i);
-	
+	public static TORepresentations getRepresentations(int idSpectacle) throws ClassNotFoundException, SQLException, ClassCastException {
+		return SpectacleDAO.getRepresentations(idSpectacle);
 	}
 	
-	public static Representation[] getRepresentations() {
-		return col.getRepresentations();
-	
+	public static boolean reserverBillets(int idRep, int nbBillets, Panier monPanier) throws ClassNotFoundException, SQLException, ClassCastException {
+		if (SpectacleDAO.getNbBilletsDispo(idRep) >= nbBillets){
+			monPanier.ajouterLigne(SpectacleDAO.getRep(idRep), nbBillets);
+			
+		}
+		return SpectacleDAO.getNbBilletsDispo(idRep) >= nbBillets;
 	}
 
 		

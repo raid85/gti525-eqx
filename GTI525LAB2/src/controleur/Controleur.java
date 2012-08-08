@@ -49,42 +49,34 @@ public class Controleur {
 			}
 			
 		else if (request.getParameter("action").equals("afficherSpectacle")){
-			int i = 0;
-			while (DelegateSpectacles.getSpectacles()[i].getId() != Integer.parseInt(request.getParameter("spectacleid")) && i < DelegateSpectacles.getSpectacles().length){
-				i++;
-			}
-			request.setAttribute("spectacle", DelegateSpectacles.getSpectacles()[i]);
-			request.setAttribute("representations", DelegateSpectacles.getRepresentations(DelegateSpectacles.getSpectacles()[i].getId()));
 
+			try {
+				request.setAttribute("spectacle", DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("spectacleid"))));
+			}
+			catch (NumberFormatException e){
+				return "erreur.jsp";
+			}
+			catch (ClassCastException e){
+				e.printStackTrace();
+				return "erreur.jsp";
+			}
 			return "representations.jsp";
 		}
 		
 		else if (request.getParameter("action").equals("reserverBillets")){
-
-
 			try {
 
-				if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null && Integer.parseInt(request.getParameter("qte")) <= 6){
-					Representation[] reps = DelegateSpectacles.getRepresentations(Integer.parseInt(request.getParameter("spectacle")));
-					Representation maRepresentation = null;
-					int i = 0;
-					while (maRepresentation==null){
-						if (reps[i].getId() == Integer.parseInt(request.getParameter("repId")))
-							maRepresentation = reps[i];
-						i++;
-					}
-					if (monPanier.getTotalBillets() + Integer.parseInt(request.getParameter("qte")) <= 6){
-						monPanier.ajouterLigne(maRepresentation, Integer.parseInt(request.getParameter("qte")));
-						return "confReserv.jsp";
-					}
-					else return "erreurBillet.jsp";
-				} else return "erreurBillet.jsp";
+				if (Integer.parseInt(request.getParameter("qte")) > 0 && request.getParameter("repId") != null && monPanier.getTotalBillets() + Integer.parseInt(request.getParameter("qte")) <= 6){
+						if (DelegateSpectacles.reserverBillets(Integer.parseInt(request.getParameter("repId")), Integer.parseInt(request.getParameter("qte")), monPanier)){
+							return "confReserv.jsp";
+						}
+						else return "erreurBillet.jsp";
+				} 
+				else return "erreurBillet.jsp";
 
 			} catch (NumberFormatException e){
-
 				return "erreurBillet.jsp";
-
-			} 
+			}
 
 
 		}
