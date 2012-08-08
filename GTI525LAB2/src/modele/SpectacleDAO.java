@@ -41,6 +41,28 @@ public class SpectacleDAO {
             }
 		}
 	}
+	public static Spectacle[] getSpectacles() throws ClassNotFoundException, SQLException{
+		Class.forName(driver);
+		Connection conn = DriverManager.getConnection(url);
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT Spectacle.ID_Spectacle, Spectacle.Nom, Spectacle.Description, Spectacle.Image" +
+				" FROM Spectacle");
+		Spectacle[] tableauSpectacles = new Spectacle[rs.getMetaData().getColumnCount() - 1];
+		int i = 0;
+		while ( rs.next() ) {
+			Spectacle spectacle = new Spectacle();
+            spectacle.setId((Integer) rs.getObject(1));
+            spectacle.setNom((String) rs.getObject(2));
+            spectacle.setDescription((String) rs.getObject(3));
+            spectacle.setImage((String) rs.getObject(4));
+            tableauSpectacles[i] = spectacle;
+            i++;
+		}
+		stmt.close();
+		return tableauSpectacles;
+	}
+	
+	
 	public static void test() throws ClassNotFoundException{
 	    // load the sqlite-JDBC driver using the current class loader
 	    Class.forName(driver);
